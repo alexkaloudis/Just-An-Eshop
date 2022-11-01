@@ -23,6 +23,7 @@ public class FXMain extends Application {
     public void start(Stage primaryStage) {
         try {
             //allagh
+            //test
             Parent root = FXMLLoader.load(getClass().getResource("MainFXML.fxml"));
             
             Scene scene = new Scene(root, 300, 250);
