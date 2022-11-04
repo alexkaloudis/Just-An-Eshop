@@ -24,6 +24,7 @@ public class JDBCPosrgreSQLConnector {
             String username = "postgres";
             String password = "1234";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
+           
            JOptionPane.showMessageDialog(null,"Connection Established");
            return con;
         }catch(Exception e){

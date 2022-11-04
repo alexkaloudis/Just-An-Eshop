@@ -4,17 +4,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.MenuFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.MenuFXMLController">
    <children>
       <AnchorPane prefHeight="681.0" prefWidth="252.0" style="-fx-background-color: #3f2b63;">
          <children>
-            <Button fx:id="b_s1" layoutX="100.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleButtonScene1" text="Screen1" />
-            <Button fx:id="b_s2" layoutX="100.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonScene2" text="Screen2" />
-            <Button fx:id="b_home" layoutX="100.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleButtonHome" text="Home" />
+            <Button fx:id="b_home" layoutX="68.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleButtonHome" prefHeight="44.0" prefWidth="119.0" style="-fx-background-color: #3f2b63;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="b_s1" layoutX="89.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleButtonScene1" style="-fx-background-color: #3f2b63;" text="Users" textFill="WHITE" />
+            <Button fx:id="b_s2" layoutX="93.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleButtonScene2" style="-fx-background-color: #3f2b63;" text="Screen2" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
-      <Pane layoutX="251.0" prefHeight="681.0" prefWidth="656.0" style="-fx-background-color: #416e21;">
+      <Pane layoutX="251.0" prefHeight="681.0" prefWidth="675.0" style="-fx-background-color: #416e21;" AnchorPane.rightAnchor="0.0">
          <children>
             <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="88.0" text="This is home" />
          </children>

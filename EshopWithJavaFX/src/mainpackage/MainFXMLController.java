@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,8 +46,7 @@ public class MainFXMLController implements Initializable {
     private TableColumn<Users, Integer> col_age;
     @FXML
     private TableColumn<Users, Date> col_dateofcreation;
-    @FXML
-    private ComboBox comboBox;
+
     
     ObservableList<Users> listM;
     

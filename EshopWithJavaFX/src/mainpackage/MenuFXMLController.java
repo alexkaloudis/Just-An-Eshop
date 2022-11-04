@@ -31,21 +31,21 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("menuFXML.fxml"));
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,900,680));
+        window.setScene(new Scene(root,930,680));
     }
      
     public void handleButtonScene1() throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("scene1FXML.fxml"));
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,900,680));
+        window.setScene(new Scene(root,930,680));
     }
     
      public void handleButtonScene2() throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("scene2FXML.fxml"));
         
         Stage window = (Stage) b_s2.getScene().getWindow();
-        window.setScene(new Scene(root,900,680));
+        window.setScene(new Scene(root,930,680));
     }     
      
     

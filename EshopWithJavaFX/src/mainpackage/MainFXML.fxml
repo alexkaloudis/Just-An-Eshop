@@ -13,7 +13,7 @@
             <Button layoutX="42.0" layoutY="289.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: yellow;" text="Update" textAlignment="JUSTIFY" />
             <Button layoutX="42.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: red;" text="Delete" textAlignment="JUSTIFY" />
          </children></AnchorPane>
-      <TableView fx:id="table_users" layoutX="200.0" prefHeight="520.0" prefWidth="672.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="table_users" layoutX="207.0" layoutY="78.0" prefHeight="411.0" prefWidth="671.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="78.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="48.799957275390625" text="Id" />
           <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
