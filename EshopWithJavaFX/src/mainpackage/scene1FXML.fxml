@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="661.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Scene1FXMLController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="680.0" prefWidth="906.0">
+         <children>
+            <AnchorPane layoutX="-10.0" layoutY="-10.0" prefHeight="691.0" prefWidth="262.0" style="-fx-background-color: #3f2b63;">
+               <children>
+                  <Button fx:id="b_s1" layoutX="100.0" layoutY="176.0" mnemonicParsing="false" onAction="#handleButtonScene1" text="Screen1" />
+                  <Button fx:id="b_s2" layoutX="100.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleButtonScene2" text="Screen2" />
+                  <Button fx:id="b_home" layoutX="100.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleButtonHome" text="Home" />
+               </children>
+            </AnchorPane>
+            <Pane layoutX="251.0" layoutY="-10.0" prefHeight="691.0" prefWidth="656.0" style="-fx-background-color: #1b827f;">
+               <children>
+                  <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="88.0" text="This is screen1" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -22,9 +22,9 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("menuFXML.fxml"));
             
-            Scene scene = new Scene(root, 300, 250);
+            Scene scene = new Scene(root, 900, 680);
             
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
