@@ -69,7 +69,6 @@ public class MainFXMLController implements Initializable {
         
         listM = JDBCPosrgreSQLConnector.getDataUsers();
         table_users.setItems(listM);
-        System.out.println(listM.get(0));
     }    
     
 }
