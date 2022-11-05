@@ -55,8 +55,6 @@ public class Scene1FXMLController implements Initializable {
     private TableColumn<Users, Integer> col_age;
     @FXML
     private TableColumn<Users, Date> col_dateofcreation;
-    @FXML
-    private ComboBox comboBox;
     
     @FXML
     Button b_home,b_s1,b_s2;
@@ -117,11 +115,7 @@ public class Scene1FXMLController implements Initializable {
     }
     
     
-        @FXML
-    void handleAddB(ActionEvent event) {
-        
 
-    }
     
 
     
