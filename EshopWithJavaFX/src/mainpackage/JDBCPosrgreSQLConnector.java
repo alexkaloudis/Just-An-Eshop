@@ -5,13 +5,13 @@
 package mainpackage;
 
 
+import mainpackage.Models.Users;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
 import java.sql.Connection;
 import javafx.collections.ObservableList;
 import java.sql.ResultSet;
-import javafx.fxml.FXML;
 
 import javax.swing.JOptionPane;
 
@@ -20,9 +20,9 @@ public class JDBCPosrgreSQLConnector {
     Connection con = null;
     public static Connection ConnectDb(){
         try{
-            String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
+            String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=310331";
             String username = "postgres";
-            String password = "1234";
+            String password = "310331";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
            JOptionPane.showMessageDialog(null,"Connection Established");

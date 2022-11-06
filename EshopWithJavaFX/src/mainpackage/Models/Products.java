@@ -2,29 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mainpackage;
+package mainpackage.Models;
 
+import java.security.Timestamp;
 import java.util.Date;
-import javafx.beans.value.ObservableValue;
 
 /**
  *
- * @author Mike
+ * @author kalou
  */
 public class Products {
     private int id;
     private String name,description;
-    private double price;
-    private Date Dateofcreation;
-    
-    public Products(){};
+    private float price;
+    private Timestamp dateOfCreation;
 
-    public Products(int id, String name, String description, double price, Date Dateofcreation) {
+    public Products(int id, String name, String description, float price, Timestamp dateOfCreation) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.Dateofcreation = Dateofcreation;
+        this.dateOfCreation = dateOfCreation;
     }
 
     public int getId() {
@@ -39,12 +37,12 @@ public class Products {
         return description;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public Date getDateofcreation() {
-        return Dateofcreation;
+    public Timestamp getDateOfCreation() {
+        return dateOfCreation;
     }
 
     public void setId(int id) {
@@ -59,12 +57,13 @@ public class Products {
         this.description = description;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public void setDateofcreation(Date Dateofcreation) {
-        this.Dateofcreation = Dateofcreation;
+    public void setDateOfCreation(Timestamp dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
     }
+    
     
 }
