@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import mainpackage.JDBCPosrgreSQLConnector;
 
 /**
  * FXML Controller class
@@ -54,8 +55,8 @@ public class MainFXMLController implements Initializable {
     Connection con = null;
     ResultSet set = null;
     PreparedStatement ps = null;
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void showUsers(){
+        listM = JDBCPosrgreSQLConnector.getDataUsers();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
         col_id.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Id"));
         col_username.setCellValueFactory(new PropertyValueFactory<Users,String>("Username"));
@@ -66,6 +67,11 @@ public class MainFXMLController implements Initializable {
         col_lastname.setCellValueFactory(new PropertyValueFactory<Users,String>("Lastname"));
         col_age.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Age"));
         col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Users,Date>("dateofcreation"));
+        table_users.setItems(listM);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        showUsers();
     }    
     
 }
