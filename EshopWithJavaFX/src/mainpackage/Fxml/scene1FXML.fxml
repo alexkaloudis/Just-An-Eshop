@@ -29,12 +29,12 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="b_remove" layoutX="19.0" layoutY="140.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="REMOVE" textFill="WHITE">
+                        <Button fx:id="b_remove" layoutX="19.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="REMOVE" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="b_update" layoutX="19.0" layoutY="96.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="UPDATE" textFill="WHITE">
+                        <Button fx:id="b_update" layoutX="19.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="UPDATE" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -90,7 +90,7 @@
                      </children>
                   </Pane>
                </children></Pane>
-            <TableView fx:id="table_users" layoutX="251.0" layoutY="-10.0" prefHeight="428.0" prefWidth="681.0">
+            <TableView fx:id="table_users" layoutX="251.0" layoutY="-10.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="681.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="48.799957275390625" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
