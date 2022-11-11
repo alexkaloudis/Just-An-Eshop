@@ -90,7 +90,7 @@
                      </children>
                   </Pane>
                </children></Pane>
-            <TableView fx:id="table_users" layoutX="251.0" layoutY="-10.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="681.0">
+            <TableView fx:id="table_users" layoutX="251.0" layoutY="-10.0" prefHeight="428.0" prefWidth="681.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="48.799957275390625" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
