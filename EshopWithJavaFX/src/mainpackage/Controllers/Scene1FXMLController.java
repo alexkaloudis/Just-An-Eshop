@@ -7,6 +7,7 @@ package mainpackage.Controllers;
 import java.sql.SQLException;
 import com.sun.javafx.logging.PlatformLogger.Level;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import mainpackage.Models.Users;
 import java.net.URL;
@@ -122,6 +123,7 @@ public class Scene1FXMLController implements Initializable {
         showUsers();
     }
     
+    
     public void executeQuery(String query){
         con = JDBCPosrgreSQLConnector.ConnectDb(); 
         try{
@@ -132,20 +134,47 @@ public class Scene1FXMLController implements Initializable {
         }
     }
     
+        @FXML
+    public void handleMouseAction(MouseEvent event) {
+        Users user = table_users.getSelectionModel().getSelectedItem();
+        tf_username.setText(user.getUsername());
+        tf_password.setText(user.getPassword());
+        tf_email.setText(user.getEmail());
+        tf_phonenumber.setText(user.getPhonenumber());
+        tf_fName.setText(user.getFirstname());
+        tf_lName.setText(user.getLastname());
+        tf_age.setText(""+user.getAge());   
+    } 
+   
+    
         @Override
     public void initialize(URL url, ResourceBundle rb) {
       showUsers();
     }
     
     
-    public void handleUpdateButton() throws Exception{
+    public void handleUpdateButton(){
+        String query = "UPDATE users SET username = "+tf_username.getText()
+                +"', password = '"+tf_password.getText()
+                +"', email= '"+tf_email.getText()
+                +"', phonenumber= '"+tf_phonenumber.getText()
+                +"', fname= '"+tf_fName.getText()
+                +"', lname= '"+tf_lName.getText()
+                +"', age= '"+tf_age.getText()+"";
+
+        executeQuery(query);
+        showUsers();
         
     }
-    public void handleDeleteButton() throws Exception{
-        
+    public void handleDeleteButton(){
+        String query = "DELETE FROM users WHERE username =" +tf_username.getText()+"";
+
+        executeQuery(query);
+        showUsers();        
     }
 
     
+    @FXML
      public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -154,6 +183,7 @@ public class Scene1FXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
      
+    @FXML
     public void handleButtonScene1() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -161,6 +191,7 @@ public class Scene1FXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
+    @FXML
      public void handleButtonScene2() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene2FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -169,6 +200,7 @@ public class Scene1FXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
      
+    @FXML
       public void handleCreateButton() throws Exception{
         System.out.println("Button clicked");
 
