@@ -22,9 +22,13 @@ public class Products {
     public Products(int id, String name, String description, double price, Date Dateofcreation) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.price = price;
+<<<<<<< Updated upstream:EshopWithJavaFX/src/mainpackage/Products.java
         this.Dateofcreation = Dateofcreation;
+=======
+        this.dateOfCreation = dateOfCreation;
+        this.description = description;              
+>>>>>>> Stashed changes:EshopWithJavaFX/src/mainpackage/Models/Products.java
     }
 
     public int getId() {
