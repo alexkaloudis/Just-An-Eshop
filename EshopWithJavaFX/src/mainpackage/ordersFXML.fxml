@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Fxml.OrdersFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="713.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Fxml.OrdersFXMLController">
    <children>
-      <Pane layoutX="281.0" prefHeight="720.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
+      <Pane layoutX="281.0" prefHeight="730.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
          <children>
             <Button fx:id="b_add" layoutX="44.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
                <font>

@@ -137,7 +137,9 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new UserAddress(Integer.parseInteger(rs.getString("User ID")),rs.getString("Country"), rs.getString("Region"), rs.getString("City"),rs.getString("Street"),Integer.parseInteger(rs.getString("Number"),rs.getString("Postal Code")));
+                    list.add(new UserAddress(Integer.parseInteger(rs.getString("User ID")),rs.getString("Country"), 
+                            rs.getString("Region"), rs.getString("City"),rs.getString("Street"),
+                            Integer.parseInteger(rs.getString("Number")),rs.getString("Postal Code")));
                                        
                 }
             }catch(Exception e){

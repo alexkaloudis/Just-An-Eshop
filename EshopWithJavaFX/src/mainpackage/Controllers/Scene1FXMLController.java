@@ -9,7 +9,7 @@ import com.sun.javafx.logging.PlatformLogger.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import mainpackage.Models.Users;
+import mainpackage.Users;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

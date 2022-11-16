@@ -4,11 +4,9 @@
  */
 package mainpackage;
 
-<<<<<<< Updated upstream:EshopWithJavaFX/src/mainpackage/MenuFXMLController.java
-=======
 import java.awt.event.ActionEvent;
 import java.io.File;
->>>>>>> Stashed changes:EshopWithJavaFX/src/mainpackage/Controllers/MenuFXMLController.java
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,6 +17,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import javafx.fxml.FXML;
+
+import javafx.fxml.FXML;
+
+import javafx.scene.control.Button;
+
 /**
  * FXML Controller class
  *
@@ -26,8 +30,9 @@ import javafx.stage.Stage;
  */
 public class MenuFXMLController implements Initializable {
 
-    
        @FXML
+    private Button b_s2; 
+    @FXML
     private Button b_user_address;
     @FXML
     private Button b_Dsc;
@@ -65,29 +70,30 @@ public class MenuFXMLController implements Initializable {
     }
      
     public void handleButtonScene1() throws Exception{
-<<<<<<< Updated upstream:EshopWithJavaFX/src/mainpackage/MenuFXMLController.java
+
         Parent root = FXMLLoader.load(getClass().getResource("scene1FXML.fxml"));
-=======
+
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
->>>>>>> Stashed changes:EshopWithJavaFX/src/mainpackage/Controllers/MenuFXMLController.java
+        root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
     
-<<<<<<< Updated upstream:EshopWithJavaFX/src/mainpackage/MenuFXMLController.java
+
      public void handleButtonScene2() throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("scene2FXML.fxml"));
         
         Stage window = (Stage) b_s2.getScene().getWindow();
-=======
+        window.setScene(new Scene(root,930,680));
+     }
+
      public void handleButtonProducts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
->>>>>>> Stashed changes:EshopWithJavaFX/src/mainpackage/Controllers/MenuFXMLController.java
+
         window.setScene(new Scene(root,930,680));
     }
      

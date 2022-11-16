@@ -15,7 +15,7 @@ public class Products {
     private int id;
     private String name,description;
     private double price;
-    private Date Dateofcreation;
+    private Date dateofcreation;
     
     public Products(){};
 
@@ -23,12 +23,12 @@ public class Products {
         this.id = id;
         this.name = name;
         this.price = price;
-<<<<<<< Updated upstream:EshopWithJavaFX/src/mainpackage/Products.java
-        this.Dateofcreation = Dateofcreation;
-=======
-        this.dateOfCreation = dateOfCreation;
+
+        this.dateofcreation = Dateofcreation;
+
+        this.dateofcreation = dateofcreation;
         this.description = description;              
->>>>>>> Stashed changes:EshopWithJavaFX/src/mainpackage/Models/Products.java
+
     }
 
     public int getId() {
@@ -48,7 +48,7 @@ public class Products {
     }
 
     public Date getDateofcreation() {
-        return Dateofcreation;
+        return dateofcreation;
     }
 
     public void setId(int id) {
@@ -68,7 +68,7 @@ public class Products {
     }
 
     public void setDateofcreation(Date Dateofcreation) {
-        this.Dateofcreation = Dateofcreation;
+        this.dateofcreation = Dateofcreation;
     }
     
 }
