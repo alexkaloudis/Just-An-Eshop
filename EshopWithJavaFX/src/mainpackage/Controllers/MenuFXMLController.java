@@ -30,7 +30,7 @@ import javafx.scene.control.Button;
  */
 public class MenuFXMLController implements Initializable {
 
-       @FXML
+    @FXML
     private Button b_s2; 
     @FXML
     private Button b_user_address;
@@ -98,7 +98,7 @@ public class MenuFXMLController implements Initializable {
     }
      
     @FXML
-    void handleButtonDiscounts() throws Exception{
+   public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -107,7 +107,7 @@ public class MenuFXMLController implements Initializable {
     }
     
         @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -116,7 +116,7 @@ public class MenuFXMLController implements Initializable {
     }
     
          @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
+   public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -125,7 +125,7 @@ public class MenuFXMLController implements Initializable {
     } 
 
     @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+   public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         

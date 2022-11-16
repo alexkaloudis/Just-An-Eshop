@@ -203,7 +203,7 @@ public class UserAddressFXMLController implements Initializable {
     }
      
     @FXML
-    void handleButtonDiscounts() throws Exception{
+    public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -212,7 +212,7 @@ public class UserAddressFXMLController implements Initializable {
     }
     
         @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    public void handleButtonOrders(ActionEvent event)throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -221,7 +221,7 @@ public class UserAddressFXMLController implements Initializable {
     }
     
     @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
+    public void handleButtonOrders_prod(ActionEvent event)throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersProductsL.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -230,7 +230,7 @@ public class UserAddressFXMLController implements Initializable {
     }
     
     @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+    public void handleButtonUserAddress(ActionEvent event)throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -242,7 +242,7 @@ public class UserAddressFXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        showUserAddress();
     }    
     
 }
