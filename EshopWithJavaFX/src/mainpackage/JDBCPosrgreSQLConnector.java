@@ -12,7 +12,7 @@ import java.sql.Connection;
 import javafx.collections.ObservableList;
 import java.sql.ResultSet;
 import javafx.fxml.FXML;
-
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import mainpackage.Models.Discounts;
 import mainpackage.Models.Orders;
@@ -47,7 +47,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Users(Integer.parseInt(rs.getString("Id")),rs.getString("Username"),rs.getString("Password"),rs.getString("Email"),rs.getString("Phonenumber"),rs.getString("fname"),rs.getString("lname"),rs.getInt("Age"),rs.getTimestamp("dateofcreation")));
+                    list.add(new Users(rs.getInt("Id"),rs.getString("Username"),rs.getString("Password"),rs.getString("Email"),rs.getString("Phonenumber"),rs.getString("fname"),rs.getString("lname"),rs.getInt("Age"),rs.getTimestamp("dateofcreation")));
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -67,7 +67,7 @@ public class JDBCPosrgreSQLConnector {
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
                     list.add(new Products(rs.getInt("id"),
                             rs.getString("name"),
-                            Float.parseFloat(rs.getString("price")),
+                            rs.getFloat("price"),
                             rs.getString("description"),
                             rs.getTimestamp("dateofcreation")));                   
                 }
@@ -87,7 +87,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Discounts(Integer.parseInt(rs.getString("Id")),Integer.parseInt(rs.getString("Product Id")),Float.parseFloat(rs.getString("value")),rs.getTimestamp("dateofcreation"),rs.getString("Description")));                   
+                    list.add(new Discounts(rs.getInt("Id"),Integer.parseInt(rs.getString("Product Id")),rs.getFloat("value"),rs.getTimestamp("dateofcreation"),rs.getString("Description")));                   
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
