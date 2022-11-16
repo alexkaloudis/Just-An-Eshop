@@ -154,20 +154,20 @@ public class Scene1FXMLController implements Initializable {
     
     
     public void handleUpdateButton(){
-        String query = "UPDATE users SET username = "+tf_username.getText()
+        String query = "UPDATE users SET username = '"+tf_username.getText()
                 +"', password = '"+tf_password.getText()
                 +"', email= '"+tf_email.getText()
                 +"', phonenumber= '"+tf_phonenumber.getText()
                 +"', fname= '"+tf_fName.getText()
                 +"', lname= '"+tf_lName.getText()
-                +"', age= '"+tf_age.getText()+"";
+                +"', age= "+tf_age.getText()+" where age = "+tf_age.getText();
 
         executeQuery(query);
         showUsers();
         
     }
     public void handleDeleteButton(){
-        String query = "DELETE FROM users WHERE username =" +tf_username.getText()+"";
+        String query = "DELETE FROM users WHERE username ='" +tf_username.getText()+"'";
 
         executeQuery(query);
         showUsers();        
