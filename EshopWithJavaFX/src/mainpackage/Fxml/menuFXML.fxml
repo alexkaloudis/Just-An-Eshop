@@ -23,7 +23,7 @@
       </AnchorPane>
       <Pane layoutX="251.0" prefHeight="681.0" prefWidth="675.0" style="-fx-background-color: #416e21;" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="88.0" text="This is home" />
+            <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="286.0" text="This is home yoooo" />
          </children>
       </Pane>
    </children>
