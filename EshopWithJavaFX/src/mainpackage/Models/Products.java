@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mainpackage;
+package mainpackage.Models;
 
 import java.util.Date;
 import javafx.beans.value.ObservableValue;
@@ -14,17 +14,17 @@ import javafx.beans.value.ObservableValue;
 public class Products {
     private int id;
     private String name,description;
-    private double price;
+    private float price;
     private Date dateofcreation;
     
     public Products(){};
 
-    public Products(int id, String name, String description, double price, Date Dateofcreation) {
+    public Products(int id, String name, String description, float price, Date Dateofcreation) {
         this.id = id;
         this.name = name;
         this.price = price;
 
-        this.dateofcreation = Dateofcreation;
+       // this.dateofcreation = Dateofcreation;
 
         this.dateofcreation = dateofcreation;
         this.description = description;              
@@ -63,7 +63,7 @@ public class Products {
         this.description = description;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

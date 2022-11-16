@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
+import mainpackage.JDBCPosrgreSQLConnector;
 
 import mainpackage.Models.Orders;
 import mainpackage.Models.Products;
@@ -114,7 +115,7 @@ public class OrdersFXMLController implements Initializable {
         col_dateoforder.setCellValueFactory(new PropertyValueFactory<Orders,Date>("orderdate"));
         col_fname.setCellValueFactory(new PropertyValueFactory<Orders,String>("Frist Name"));
         col_lName.setCellValueFactory(new PropertyValueFactory<Orders,String>("Last Name"));
-        tf_comment.setCellValueFactory(new PropertyValueFactory<Orders,String>("Comments"));
+        col_comments.setCellValueFactory(new PropertyValueFactory<Orders,String>("Comments"));
         
         table_orders.setItems(listM);
     }

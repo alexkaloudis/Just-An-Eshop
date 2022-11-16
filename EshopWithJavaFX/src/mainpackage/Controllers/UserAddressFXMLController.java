@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
+import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Products;
 import mainpackage.Models.UserAddress;
 

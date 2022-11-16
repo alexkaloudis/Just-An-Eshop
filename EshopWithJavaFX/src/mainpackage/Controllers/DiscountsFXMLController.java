@@ -25,7 +25,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
-import mainpackage.Models.Products;
+import mainpackage.JDBCPosrgreSQLConnector;
+import mainpackage.Models.Discounts;
 
 
 /**
@@ -33,17 +34,18 @@ import mainpackage.Models.Products;
  *
  * @author Mike
  */
-public class ProductsFXMLController implements Initializable {
- 
-           @FXML
-    private Button b_user_address;
+public class DiscountsFXMLController implements Initializable {
+    
+     
     @FXML
     private Button b_orders_products;
+    
     @FXML
     private Button b_orders;
+    
     @FXML
     private Button b_Dsc;
-    
+
     @FXML
     private Button b_Pr;
 
@@ -63,22 +65,22 @@ public class ProductsFXMLController implements Initializable {
     private Button b_update;
 
     @FXML
-    private TableColumn<Products, Date> col_dateofcreation;
+    private TableColumn<Discounts, Integer> col_PR_ID;
 
     @FXML
-    private TableColumn<Products, String> col_description;
+    private TableColumn<Discounts, Date> col_dateofcreation;
 
     @FXML
-    private TableColumn<Products, String> col_id;
+    private TableColumn<Discounts, String> col_description;
 
     @FXML
-    private TableColumn<Products, String> col_name;
+    private TableColumn<Discounts, Integer> col_id;
 
     @FXML
-    private TableColumn<Products, Float> col_price;
+    private TableColumn<Discounts, Float> col_value;
 
     @FXML
-    private TableView<Products> table_products;
+    private TableView<Discounts> table_discounts;
 
     @FXML
     private TextField tf_description;
@@ -90,28 +92,31 @@ public class ProductsFXMLController implements Initializable {
     private TextField tf_name;
 
     @FXML
-    private TextField tf_price;
+    private TextField tf_value;
     
-    ObservableList<Products> listM;
+    
+    ObservableList<Discounts> listM;
     
     int index = -1;
     
     Connection con = null;
     ResultSet set = null;
-    PreparedStatement ps=null;
+    PreparedStatement ps=null;    
     
     
-        public void showProducts(){
-        listM = JDBCPosrgreSQLConnector.getDataProducts();
-        //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
-        col_id.setCellValueFactory(new PropertyValueFactory<Products,Integer>("Id"));
-        col_name.setCellValueFactory(new PropertyValueFactory<Products,String>("Name"));
-        col_price.setCellValueFactory(new PropertyValueFactory<Products,Float>("Price"));
-        col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Products,Date>("dateofcreation"));
-        col_description.setCellValueFactory(new PropertyValueFactory<Products,String>("Description"));
-        table_products.setItems(listM);
-    }
+        public void showDiscounts(){
+        listM = JDBCPosrgreSQLConnector.getDataDiscounts();
+        //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
+        col_id.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("Id"));
+        col_PR_ID.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("Product ID"));
+        col_value.setCellValueFactory(new PropertyValueFactory<Discounts,Float>("Value"));
+        col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Discounts,Date>("dateofcreation"));
+        col_description.setCellValueFactory(new PropertyValueFactory<Discounts,String>("Description"));
 
+        table_discounts.setItems(listM);
+    }
+    
+    
     public void executeQuery(String query){
         con = JDBCPosrgreSQLConnector.ConnectDb(); 
         try{
@@ -120,45 +125,27 @@ public class ProductsFXMLController implements Initializable {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }        
-    @FXML
-    void handleCreateButton(ActionEvent event) {
-        String query = "INSERT INTO products(name,price,email,description) VALUES ('" 
-                + tf_name.getText()
-                +"','"+tf_price.getText()
-                +"','"+tf_description.getText()+")";
-        executeQuery(query);
-        showProducts();        
-
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
-        String query = "DELETE FROM products WHERE name =" +tf_name.getText()+"";
-
-        executeQuery(query);
-        showProducts();
-    }
-    
-
-    @FXML
-    void handleUpdateButton(ActionEvent event) {
-        String query = "UPDATE users SET name = "+tf_name.getText()
-                +"', price = '"+tf_price.getText()
-                +"', description = '"+tf_description.getText()+"";
-
-        executeQuery(query);
-        showProducts();        
-    }
-    
-     public void handleButtonHome() throws Exception{
+    public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-     
+
+    @FXML
+    void handleButtonProducts()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_Pr.getScene().getWindow();
+        window.setScene(new Scene(root,930,680));
+    }
+
+    @FXML
     public void handleButtonScene1() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -166,15 +153,33 @@ public class ProductsFXMLController implements Initializable {
         Stage window = (Stage) b_s1.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-    
-     public void handleButtonProducts() throws Exception{
-        URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        
-        Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+
+    @FXML
+   public void handleCreateButton(ActionEvent event) {
+        String query = "INSERT INTO discounts(value,description) VALUES ('" 
+                + tf_value.getText()
+                +"','"+tf_description.getText()+")";
+        executeQuery(query);
+        showDiscounts();
     }
-     
+
+    @FXML
+    void handleDeleteButton(ActionEvent event) {
+        String query = "DELETE FROM discounts WHERE id =" +tf_id.getText()+"";
+
+        executeQuery(query);
+        showDiscounts();
+    }
+
+    @FXML
+    void handleUpdateButton(ActionEvent event) {
+        String query = "UPDATE discounts SET value = "+tf_name.getText()
+                +"', description = '"+tf_description.getText()+"";
+
+        executeQuery(query);
+        showDiscounts();
+    }
+    
     @FXML
     void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
@@ -191,7 +196,8 @@ public class ProductsFXMLController implements Initializable {
         
         Stage window = (Stage) b_orders.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
-    }
+    } 
+    
     
          @FXML
     void handleButtonOrders_prod(ActionEvent event)throws Exception {
@@ -201,19 +207,11 @@ public class ProductsFXMLController implements Initializable {
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-    
-        @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
-        URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        
-        Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    }
 
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showProducts();
+        // TODO
     }    
     
 }

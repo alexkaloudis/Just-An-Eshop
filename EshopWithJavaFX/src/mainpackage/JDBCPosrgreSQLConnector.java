@@ -65,7 +65,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Products( Integer.parseInt(rs.getString("Id")), rs.getString("Name"),Float.parseFloat(rs.getString("Price")),rs.getDate("orderdate"),rs.getString("Description")));                   
+                    list.add(new Products(Integer.parseInt(rs.getString("Id")), rs.getString("Name"), rs.getFloat("Price"), rs.getDate("Orderdate"),rs.getString("Description")));                   
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -83,7 +83,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Discounts( Integer.parseInt(rs.getString("Id")),Integer.parseInt(rs.getString("Product Id")),Float.parseFloat(rs.getString("value")),rs.getDate("dateofcreation"),rs.getString("Description")));                   
+                    list.add(new Discounts(Integer.parseInt(rs.getString("Id")),Integer.parseInt(rs.getString("Product Id")),Float.parseFloat(rs.getString("value")),rs.getDate("dateofcreation"),rs.getString("Description")));                   
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -100,7 +100,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Orders(UUID.parseUUID(rs.getString("Id")),rs.getDate("orderdate"), rs.getString("First Name"), rs.getString("Last Name"),rs.getString("Comments")));
+                    list.add(new Orders(UUID.parseUUID(rs.getString("Id")),rs.getString("orderdate"), rs.getString("First Name"), rs.getString("Last Name"),rs.getString("Comments")));
                                        
                 }
             }catch(Exception e){
@@ -119,7 +119,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new OrderProducts(Integer.parseInteger(rs.getString("ID")),UUID.parseUUID(rs.getString("Order Number")), Integer.parseInteger(rs.getString("Product ID")), Integer.parseInteger(rs.getString("Quantity")),Float.parseFloat(rs.getString("Order Value"))));
+                    list.add(new OrderProducts(Integer.parseInteger(rs.getString("Id")),UUID.parseUUID(rs.getString("Order Number")), Integer.parseInteger(rs.getString("Product ID")), Integer.parseInteger(rs.getString("Quantity")),Float.parseFloat(rs.getString("Order Value"))));
                                        
                 }
             }catch(Exception e){

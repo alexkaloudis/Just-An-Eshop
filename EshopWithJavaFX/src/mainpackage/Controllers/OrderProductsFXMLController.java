@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
+import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.OrderProducts;
 import mainpackage.Models.Products;
 
@@ -112,10 +113,10 @@ public class OrderProductsFXMLController implements Initializable {
         listM = JDBCPosrgreSQLConnector.getDataOrderProducts();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("ID"));
-        tf_order_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,UUID>("Order ID"));
-        tf_product_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("Product ID"));
-        tf_quantity.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("Quantity"));
-        tf_order_value.setCellValueFactory(new PropertyValueFactory<OrderProducts,Float>("Order Value"));
+        col_order_number.setCellValueFactory(new PropertyValueFactory<OrderProducts,UUID>("Order ID"));
+        col_prod_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("Product ID"));
+        col_quantity.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("Quantity"));
+        col_order_value.setCellValueFactory(new PropertyValueFactory<OrderProducts,Float>("Order Value"));
         table_order_products.setItems(listM);
     }
 
