@@ -19,7 +19,7 @@ public class OrderProducts {
     }
 
     
-    public OrderProducts(UUID ordeno, int id, int productid, int quantity, float ordevalue) {
+    public OrderProducts(int id,UUID ordeno,  int productid, int quantity, float ordevalue) {
         this.ordeno = ordeno;
         this.id = id;
         this.productid = productid;

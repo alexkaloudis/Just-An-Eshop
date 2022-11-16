@@ -9,7 +9,6 @@ import com.sun.javafx.logging.PlatformLogger.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import mainpackage.Users;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
+import mainpackage.Models.Users;
 
 /**
  * FXML Controller class

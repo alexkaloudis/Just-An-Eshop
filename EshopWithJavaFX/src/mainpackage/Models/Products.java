@@ -4,7 +4,8 @@
  */
 package mainpackage.Models;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import java.sql.Date;
 import javafx.beans.value.ObservableValue;
 
 /**
@@ -15,20 +16,16 @@ public class Products {
     private int id;
     private String name,description;
     private float price;
-    private Date dateofcreation;
+    private Timestamp dateofcreation;
     
     public Products(){};
 
-    public Products(int id, String name, String description, float price, Date Dateofcreation) {
+    public Products(int id, String name, float price, String description,Timestamp dateofcreation) {
         this.id = id;
         this.name = name;
         this.price = price;
-
-       // this.dateofcreation = Dateofcreation;
-
         this.dateofcreation = dateofcreation;
         this.description = description;              
-
     }
 
     public int getId() {
@@ -47,7 +44,7 @@ public class Products {
         return price;
     }
 
-    public Date getDateofcreation() {
+    public Timestamp getDateofcreation() {
         return dateofcreation;
     }
 
@@ -67,7 +64,7 @@ public class Products {
         this.price = price;
     }
 
-    public void setDateofcreation(Date Dateofcreation) {
+    public void setDateofcreation(Timestamp Dateofcreation) {
         this.dateofcreation = Dateofcreation;
     }
     

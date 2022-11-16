@@ -4,6 +4,7 @@
  */
 package mainpackage.Models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import javafx.beans.value.ObservableValue;
 
@@ -14,10 +15,10 @@ import javafx.beans.value.ObservableValue;
 public class Users {
     private int id,Age;
     private String Username,Password,Email,Phonenumber,Firstname,Lastname;
-    private Date Dateofcreation;
+    private Timestamp Dateofcreation;
     
     public Users(){};
-    public Users(int id, String Username, String Password, String Email, String Phonenumber, String Firstname, String Lastname, int Age,Date Dateofcreation) {
+    public Users(int id, String Username, String Password, String Email, String Phonenumber, String Firstname, String Lastname, int Age,Timestamp Dateofcreation) {
         this.id = id;
         this.Username = Username;
         this.Password = Password;
@@ -60,7 +61,7 @@ public class Users {
         this.Age = Age;
     }
 
-    public void setDateofcreation(Date Dateofcreation) {
+    public void setDateofcreation(Timestamp Dateofcreation) {
         this.Dateofcreation = Dateofcreation;
     }
 

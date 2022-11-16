@@ -4,7 +4,7 @@
  */
 package mainpackage.Models;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 /**

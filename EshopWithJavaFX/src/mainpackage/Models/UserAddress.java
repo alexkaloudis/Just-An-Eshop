@@ -16,7 +16,7 @@ public class UserAddress {
     public UserAddress() {
     }
 
-    public UserAddress(int userid, int number, String country, String region, String city, String street, String postalcode) {
+    public UserAddress(int userid, String country, String region, String city, String street, int number, String postalcode) {
         this.userid = userid;
         this.number = number;
         this.country = country;
