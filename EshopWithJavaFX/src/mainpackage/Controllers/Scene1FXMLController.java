@@ -139,7 +139,7 @@ public class Scene1FXMLController implements Initializable {
         }
     }
     
-        @FXML
+    @FXML
     public void handleMouseAction(MouseEvent event) {
         Users user = table_users.getSelectionModel().getSelectedItem();
         tf_username.setText(user.getUsername());
@@ -213,17 +213,17 @@ public class Scene1FXMLController implements Initializable {
             System.out.println("user inserted");            
     }
       
-           @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
-        URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
+    @FXML
+    public void handleButtonOrders_prod()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
 
-        @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         

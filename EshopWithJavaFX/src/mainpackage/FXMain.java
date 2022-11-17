@@ -4,7 +4,9 @@
  */
 package mainpackage;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -22,7 +24,8 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("menuFXML.fxml")); //"menuFXML.fxml"  "MainFXML.fxml"
+            URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
             
             Scene scene = new Scene(root, 900, 680);
             

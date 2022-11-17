@@ -4,13 +4,11 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import javafx.collections.ObservableList;
@@ -26,9 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
-import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.OrderProducts;
-import mainpackage.Models.Products;
 
 /**
  * FXML Controller class
@@ -39,33 +35,16 @@ public class OrderProductsFXMLController implements Initializable {
 
     
     @FXML
-    private Button b_user_address;    
-    @FXML
-    private Button b_Dsc;
-
-    @FXML
-    private Button b_Pr;
-
-    @FXML
-    private Button b_add;
-
-    @FXML
-    private Button b_home;
-
-    @FXML
-    private Button b_orders;
-
-    @FXML
-    private Button b_orders_products;
-
-    @FXML
-    private Button b_remove;
-
-    @FXML
-    private Button b_s1;
-
-    @FXML
-    private Button b_update;
+    private Button b_user_address,
+                   b_Dsc,
+                   b_Pr,
+                   b_add,
+                   b_home,
+                   b_orders,
+                   b_orders_products,
+                   b_remove,
+                   b_s1,
+                   b_update;
 
     @FXML
     private TableColumn<OrderProducts, Integer> col_id;
@@ -109,7 +88,7 @@ public class OrderProductsFXMLController implements Initializable {
     PreparedStatement ps=null;
     
     
-        public void showOrderProducts(){
+    public void showOrderProducts(){
         listM = JDBCPosrgreSQLConnector.getDataOrderProducts();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("ID"));
@@ -130,7 +109,7 @@ public class OrderProductsFXMLController implements Initializable {
         }
     }        
     @FXML
-    void handleCreateButton(ActionEvent event) {
+    public void handleCreateButton() {
         String query = "INSERT INTO orderproducts(orderno,productid,quantity,ordervalue) VALUES ('" 
                 + tf_order_id.getText()
                 +"','"+tf_product_id.getText()
@@ -142,7 +121,7 @@ public class OrderProductsFXMLController implements Initializable {
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
+    public void handleDeleteButton() {
         String query = "DELETE FROM orderproducts WHERE id =" +tf_id.getText()+"";
 
         executeQuery(query);
@@ -151,7 +130,7 @@ public class OrderProductsFXMLController implements Initializable {
     
 
     @FXML
-    void handleUpdateButton(ActionEvent event) {
+    public void handleUpdateButton() {
         String query = "UPDATE orderproducts SET orderno = "+tf_order_id.getText()
                 +"', productid = '"+tf_product_id.getText()
                 +"', quantity = '"+tf_quantity.getText()
@@ -161,7 +140,8 @@ public class OrderProductsFXMLController implements Initializable {
         showOrderProducts();        
     }
     
-     public void handleButtonHome() throws Exception{
+    @FXML
+    public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -169,6 +149,7 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
      
+    @FXML
     public void handleButtonScene1() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -177,7 +158,8 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-     public void handleButtonProducts() throws Exception{
+    @FXML
+    public void handleButtonProducts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -186,7 +168,7 @@ public class OrderProductsFXMLController implements Initializable {
     }
      
     @FXML
-    void handleButtonDiscounts() throws Exception{
+    public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -194,8 +176,8 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-        @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -203,16 +185,16 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-     @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
-        URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
+    @FXML
+    public void handleButtonOrders_prod()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-        @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         

@@ -36,7 +36,7 @@ import mainpackage.Models.Products;
  */
 public class ProductsFXMLController implements Initializable {
  
-           @FXML
+    @FXML
     private Button b_user_address;
     @FXML
     private Button b_orders_products;
@@ -123,7 +123,7 @@ public class ProductsFXMLController implements Initializable {
         }
     }        
     @FXML
-    void handleCreateButton(ActionEvent event) {
+    public void handleCreateButton() {
         String query = "INSERT INTO products(name,price,email,description) VALUES ('" 
                 + tf_name.getText()
                 +"','"+tf_price.getText()
@@ -134,7 +134,7 @@ public class ProductsFXMLController implements Initializable {
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
+    public void handleDeleteButton() {
         String query = "DELETE FROM products WHERE name =" +tf_name.getText()+"";
 
         executeQuery(query);
@@ -143,7 +143,7 @@ public class ProductsFXMLController implements Initializable {
     
 
     @FXML
-    void handleUpdateButton(ActionEvent event) {
+    public void handleUpdateButton() {
         String query = "UPDATE users SET name = "+tf_name.getText()
                 +"', price = '"+tf_price.getText()
                 +"', description = '"+tf_description.getText()+"";
@@ -177,7 +177,7 @@ public class ProductsFXMLController implements Initializable {
     }
      
     @FXML
-    void handleButtonDiscounts() throws Exception{
+    public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -185,8 +185,8 @@ public class ProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-        @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -194,17 +194,17 @@ public class ProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-         @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
-        URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
+    @FXML
+    public void handleButtonOrders_prod()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
     
-        @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         

@@ -4,13 +4,11 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,8 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
-import mainpackage.JDBCPosrgreSQLConnector;
-import mainpackage.Models.Products;
 import mainpackage.Models.UserAddress;
 
 /**
@@ -37,34 +33,16 @@ import mainpackage.Models.UserAddress;
 public class UserAddressFXMLController implements Initializable {
 
     @FXML
-    private Button b_Dsc;
-
-    @FXML
-    private Button b_Pr;
-
-    @FXML
-    private Button b_add;
-
-    @FXML
-    private Button b_home;
-
-    @FXML
-    private Button b_orders;
-
-    @FXML
-    private Button b_orders_products;
-
-    @FXML
-    private Button b_remove;
-
-    @FXML
-    private Button b_s1;
-
-    @FXML
-    private Button b_update;
-
-    @FXML
-    private Button b_user_address;
+    private Button b_Dsc,
+            b_Pr,
+            b_add,
+            b_home,
+            b_orders,
+            b_orders_products,
+            b_remove,
+            b_s1,
+            b_update,
+            b_user_address;
 
     @FXML
     private TableColumn<UserAddress, String> col_city;
@@ -120,7 +98,7 @@ public class UserAddressFXMLController implements Initializable {
     PreparedStatement ps=null;
     
     
-        public void showUserAddress(){
+    public void showUserAddress(){
         listM = JDBCPosrgreSQLConnector.getDataUserAddress();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("Id"));
@@ -143,7 +121,7 @@ public class UserAddressFXMLController implements Initializable {
         }
     }        
     @FXML
-    void handleCreateButton(ActionEvent event) {
+    public void handleCreateButton() {
         String query = "INSERT INTO useraddress(country,region,city,street,number,postalcode) VALUES ('" 
                 + tf_country.getText()
                 +"','"+tf_region.getText()
@@ -157,7 +135,7 @@ public class UserAddressFXMLController implements Initializable {
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
+    public void handleDeleteButton() {
         String query = "DELETE FROM products WHERE id =" +tf_id.getText()+"";
 
         executeQuery(query);
@@ -166,7 +144,7 @@ public class UserAddressFXMLController implements Initializable {
     
 
     @FXML
-    void handleUpdateButton(ActionEvent event) {
+    public void handleUpdateButton() {
         String query = "UPDATE users SET country = "+tf_country.getText()
                 +"', region = '"+tf_region.getText()
                 +"', city = '"+tf_city.getText()
@@ -178,14 +156,16 @@ public class UserAddressFXMLController implements Initializable {
         showUserAddress();        
     }
     
-     public void handleButtonHome() throws Exception{
+    @FXML
+    public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-     
+    
+    @FXML 
     public void handleButtonScene1() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -194,7 +174,8 @@ public class UserAddressFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-     public void handleButtonProducts() throws Exception{
+    @FXML
+    public void handleButtonProducts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -203,7 +184,7 @@ public class UserAddressFXMLController implements Initializable {
     }
      
     @FXML
-    void handleButtonDiscounts() throws Exception{
+    public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -211,8 +192,8 @@ public class UserAddressFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-        @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -221,8 +202,8 @@ public class UserAddressFXMLController implements Initializable {
     }
     
     @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
-        URL url = new File("src/mainpackage/Fxml/ordersProductsL.fxml").toURI().toURL();
+    public void handleButtonOrders_prod()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
@@ -230,15 +211,13 @@ public class UserAddressFXMLController implements Initializable {
     }
     
     @FXML
-    void handleButtonUserAddress(ActionEvent event)throws Exception {
+    public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
-    
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

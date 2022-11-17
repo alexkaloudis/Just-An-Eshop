@@ -38,31 +38,16 @@ public class DiscountsFXMLController implements Initializable {
     
      
     @FXML
-    private Button b_orders_products;
-    
-    @FXML
-    private Button b_orders;
-    
-    @FXML
-    private Button b_Dsc;
-
-    @FXML
-    private Button b_Pr;
-
-    @FXML
-    private Button b_add;
-
-    @FXML
-    private Button b_home;
-
-    @FXML
-    private Button b_remove;
-
-    @FXML
-    private Button b_s1;
-
-    @FXML
-    private Button b_update;
+    private Button b_orders_products,
+            b_orders,
+            b_Dsc,
+            b_Pr,
+            b_add,
+            b_home,
+            b_remove,
+            b_s1,
+            b_update,
+            b_user_address;
 
     @FXML
     private TableColumn<Discounts, Integer> col_PR_ID;
@@ -137,7 +122,7 @@ public class DiscountsFXMLController implements Initializable {
     }
 
     @FXML
-    void handleButtonProducts()throws Exception {
+    public void handleButtonProducts()throws Exception {
         URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -155,7 +140,7 @@ public class DiscountsFXMLController implements Initializable {
     }
 
     @FXML
-   public void handleCreateButton(ActionEvent event) {
+    public void handleCreateButton() {
         String query = "INSERT INTO discounts(value,description) VALUES ('" 
                 + tf_value.getText()
                 +"','"+tf_description.getText()+")";
@@ -164,7 +149,7 @@ public class DiscountsFXMLController implements Initializable {
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
+    public void handleDeleteButton() {
         String query = "DELETE FROM discounts WHERE id =" +tf_id.getText()+"";
 
         executeQuery(query);
@@ -172,7 +157,7 @@ public class DiscountsFXMLController implements Initializable {
     }
 
     @FXML
-    void handleUpdateButton(ActionEvent event) {
+    public void handleUpdateButton() {
         String query = "UPDATE discounts SET value = "+tf_name.getText()
                 +"', description = '"+tf_description.getText()+"";
 
@@ -181,7 +166,7 @@ public class DiscountsFXMLController implements Initializable {
     }
     
     @FXML
-    void handleButtonDiscounts() throws Exception{
+    public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -189,8 +174,8 @@ public class DiscountsFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }
     
-        @FXML
-    void handleButtonOrders(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
@@ -199,14 +184,22 @@ public class DiscountsFXMLController implements Initializable {
     } 
     
     
-         @FXML
-    void handleButtonOrders_prod(ActionEvent event)throws Exception {
+    @FXML
+    public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,930,680));
     }
+    @FXML
+    public void handleButtonUserAddress()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_user_address.getScene().getWindow();
+        window.setScene(new Scene(root,930,680));
+    } 
 
     
     @Override
