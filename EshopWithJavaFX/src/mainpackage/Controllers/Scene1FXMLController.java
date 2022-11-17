@@ -31,9 +31,31 @@ import mainpackage.JDBCPosrgreSQLConnector;
 public class Scene1FXMLController implements Initializable {
 
     @FXML
-    private Button b_user_address;    
+    private Button b_user_address;
     @FXML
     private Button b_orders_products;
+    @FXML
+    private Button b_orders;
+    @FXML
+    private Button b_Dsc;
+    
+    @FXML
+    private Button b_Pr;
+
+    @FXML
+    private Button b_add;
+
+    @FXML
+    private Button b_home;
+
+    @FXML
+    private Button b_remove;
+
+    @FXML
+    private Button b_s1;
+
+    @FXML
+    private Button b_update;
     @FXML
     private TableView<Users> table_users;
     @FXML
@@ -54,14 +76,7 @@ public class Scene1FXMLController implements Initializable {
     private TableColumn<Users, Integer> col_age;
     @FXML
     private TableColumn<Users, Date> col_dateofcreation;
-    
-    @FXML
-    Button b_home,b_s1,b_s2;
-    
-    @FXML
-    Button b_add,b_remove, b_update; 
-    
-    
+           
     @FXML
     private TextField tf_age;
 
@@ -109,13 +124,14 @@ public class Scene1FXMLController implements Initializable {
         table_users.setItems(listM);
     }
     public void insertUser(){
-        String query = "INSERT INTO users(username,password,email,phonenumber,fname,lname,age) VALUES ('" + tf_username.getText()
+        String query = "INSERT INTO users(username,password,email,phonenumber,fname,lname,age) VALUES ('" 
+                + tf_username.getText()
                 +"','"+tf_password.getText()
                 +"','"+tf_email.getText()
                 +"','"+tf_phonenumber.getText()
                 +"','"+tf_fName.getText()
                 +"','"+tf_lName.getText()
-                +"',"+tf_age.getText()+")";
+                +"','"+tf_age.getText()+"')";
         executeQuery(query);
         showUsers();
     }
@@ -132,7 +148,7 @@ public class Scene1FXMLController implements Initializable {
     }
     
 
-    @FXML
+  /*  @FXML
     public void handleMouseAction(MouseEvent event) {
         Users user = table_users.getSelectionModel().getSelectedItem();
         tf_username.setText(user.getUsername());
@@ -142,7 +158,7 @@ public class Scene1FXMLController implements Initializable {
         tf_fName.setText(user.getFirstname());
         tf_lName.setText(user.getLastname());
         tf_age.setText(""+user.getAge());   
-    } 
+    } */
    
     
         @Override
@@ -168,58 +184,74 @@ public class Scene1FXMLController implements Initializable {
         executeQuery(query);
         showUsers();        
     }
-
     
-    @FXML
-     public void handleButtonHome() throws Exception{
-        URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        
-        Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    }
-     
-    @FXML
-    public void handleButtonScene1() throws Exception{
-        URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    }
-    
-    @FXML
-     public void handleButtonScene2() throws Exception{
-        URL url = new File("src/mainpackage/Fxml/scene2FXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        
-        Stage window = (Stage) b_s2.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    }
-     
-    @FXML
+        @FXML
       public void handleCreateButton() throws Exception{
         System.out.println("Button clicked");
 
             insertUser();
             System.out.println("user inserted");            
     }
-      
+
+    
+public void handleButtonHome() throws Exception{
+        URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_home.getScene().getWindow();
+        window.setScene(new Scene(root,930,730));
+    }
+     
+    public void handleButtonScene1() throws Exception{
+        URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_s1.getScene().getWindow();
+        window.setScene(new Scene(root,930,730));
+    }
+    
+     public void handleButtonProducts() throws Exception{
+        URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_Pr.getScene().getWindow();
+        window.setScene(new Scene(root,930,730));
+    }
+     
+    @FXML
+    public void handleButtonDiscounts() throws Exception{
+        URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_Dsc.getScene().getWindow();
+        window.setScene(new Scene(root,930,730));
+    }
+    
+    @FXML
+    public void handleButtonOrders()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_orders.getScene().getWindow();
+        window.setScene(new Scene(root,930,730));
+    }
+    
     @FXML
     public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
-
+    
     @FXML
     public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     } 
 
     

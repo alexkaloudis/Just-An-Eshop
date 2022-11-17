@@ -54,7 +54,7 @@
             <TextField fx:id="tf_comment" layoutX="427.0" layoutY="572.0" />
          </children>
       </Pane>
-      <TableView fx:id="table_orders" layoutX="281.0" layoutY="1.0" prefHeight="460.0" prefWidth="698.0">
+      <TableView fx:id="table_orders" layoutX="290.0" layoutY="-1.0" prefHeight="462.0" prefWidth="689.0">
          <columns>
             <TableColumn fx:id="col_uuid" prefWidth="106.0" text="Order ID" />
             <TableColumn fx:id="col_dateoforder" prefWidth="156.0" text="Order Date" />

@@ -96,7 +96,7 @@ public class DiscountsFXMLController implements Initializable {
         col_PR_ID.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("Product ID"));
         col_value.setCellValueFactory(new PropertyValueFactory<Discounts,Float>("Value"));
         col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Discounts,Date>("dateofcreation"));
-        col_description.setCellValueFactory(new PropertyValueFactory<Discounts,String>("Description"));
+        col_description.setCellValueFactory(new PropertyValueFactory<Discounts,String>("description"));
 
         table_discounts.setItems(listM);
     }
@@ -118,7 +118,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
 
     @FXML
@@ -127,7 +127,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
 
     @FXML
@@ -136,14 +136,14 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
 
     @FXML
     public void handleCreateButton() {
         String query = "INSERT INTO discounts(value,description) VALUES ('" 
                 + tf_value.getText()
-                +"','"+tf_description.getText()+")";
+                +"','"+tf_description.getText()+"')";
         executeQuery(query);
         showDiscounts();
     }
@@ -163,34 +163,30 @@ public class DiscountsFXMLController implements Initializable {
 
         executeQuery(query);
         showDiscounts();
-    }
-    
+    }   
     @FXML
     public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    }
-    
+        window.setScene(new Scene(root,930,730));
+    }   
     @FXML
     public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
-    } 
-    
-    
+        window.setScene(new Scene(root,930,730));
+    }         
     @FXML
     public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
     @FXML
     public void handleButtonUserAddress()throws Exception {
@@ -198,7 +194,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     } 
 
     

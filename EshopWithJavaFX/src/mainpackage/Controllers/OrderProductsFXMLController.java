@@ -146,7 +146,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
      
     @FXML
@@ -155,7 +155,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
     
     @FXML
@@ -164,7 +164,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
      
     @FXML
@@ -173,7 +173,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
     
     @FXML
@@ -182,7 +182,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
     
     @FXML
@@ -191,7 +191,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
     @FXML
     public void handleButtonUserAddress()throws Exception {
@@ -199,7 +199,7 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,680));
+        window.setScene(new Scene(root,930,730));
     }
 
     

@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.ProductsFXMLController">
    <children>
-      <Pane layoutX="261.0" prefHeight="700.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
+      <Pane layoutX="289.0" prefHeight="730.0" prefWidth="670.0" style="-fx-background-color: #1b827f;">
          <children>
             <Button fx:id="b_add" layoutX="44.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
                <font>

@@ -25,12 +25,12 @@ public class JDBCPosrgreSQLConnector {
     Connection con = null;
     public static Connection ConnectDb(){
         try{
-            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
+            String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
             String username = "postgres";
-            String password = "310331";
+            String password = "1234";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
-           JOptionPane.showMessageDialog(null,"Connection Established");
+        //   JOptionPane.showMessageDialog(null,"Connection Established");
            return con;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Connection Failed");
@@ -93,7 +93,11 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Discounts(rs.getInt("Id"),Integer.parseInt(rs.getString("Product Id")),rs.getFloat("value"),rs.getTimestamp("dateofcreation"),rs.getString("Description")));                   
+                    list.add(new Discounts(rs.getInt("ID"),
+                            rs.getInt("productid"),
+                            rs.getFloat("Value"),
+                            rs.getTimestamp("dateofcreation"),
+                            rs.getString("Description")));                   
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -110,7 +114,11 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Orders(UUID.fromString(rs.getString("Id")),rs.getTimestamp("orderdate"), rs.getString("First Name"), rs.getString("Last Name"),rs.getString("Comments")));
+                    list.add(new Orders(UUID.fromString(rs.getString("OrderNo")),
+                            rs.getTimestamp("orderdate"), 
+                            rs.getString("fname"),
+                            rs.getString("lname"),
+                            rs.getString("comments")));
                                        
                 }
             }catch(Exception e){
@@ -131,8 +139,9 @@ public class JDBCPosrgreSQLConnector {
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
                     list.add(new OrderProducts(rs.getInt("Id"),
                             UUID.fromString(rs.getString("orderno")),
-                            Integer.parseInt(rs.getString("Product ID")), Integer.parseInt(rs.getString("Quantity")),Float.parseFloat(rs.getString("Order Value"))));
-                                       
+                            Integer.parseInt(rs.getString("Product ID")),
+                            Integer.parseInt(rs.getString("Quantity")),
+                            Float.parseFloat(rs.getString("Order Value"))));                                      
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
