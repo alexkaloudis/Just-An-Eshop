@@ -8,6 +8,7 @@ import java.util.UUID;
 
 /**
  *
+<<<<<<< HEAD
  * @author kalou
  */
 public class OrderProducts {
@@ -15,7 +16,7 @@ public class OrderProducts {
     private UUID orderno;
     private float ordervalue;
 
-    public OrderProducts(int id, int productid, int quantity, UUID orderno, float ordervalue) {
+    public OrderProducts(int id,UUID orderno, int productid, int quantity, float ordervalue) {
         this.id = id;
         this.productid = productid;
         this.quantity = quantity;
@@ -42,7 +43,6 @@ public class OrderProducts {
     public void setOrdervalue(float ordervalue) {
         this.ordervalue = ordervalue;
     }
-
     public int getId() {
         return id;
     }
@@ -62,5 +62,4 @@ public class OrderProducts {
     public float getOrdervalue() {
         return ordervalue;
     }
-    
 }

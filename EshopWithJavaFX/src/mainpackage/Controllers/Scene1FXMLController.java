@@ -4,9 +4,6 @@
  */
 package mainpackage.Controllers;
 
-import java.sql.SQLException;
-import com.sun.javafx.logging.PlatformLogger.Level;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import mainpackage.Models.Users;
@@ -30,13 +27,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
 
-/**
- * FXML Controller class
- *
- * @author Mike
- */
+
 public class Scene1FXMLController implements Initializable {
-    
+
+    @FXML
+    private Button b_user_address;    
+    @FXML
+    private Button b_orders_products;
     @FXML
     private TableView<Users> table_users;
     @FXML
@@ -134,7 +131,8 @@ public class Scene1FXMLController implements Initializable {
         }
     }
     
-        @FXML
+
+    @FXML
     public void handleMouseAction(MouseEvent event) {
         Users user = table_users.getSelectionModel().getSelectedItem();
         tf_username.setText(user.getUsername());
@@ -161,14 +159,12 @@ public class Scene1FXMLController implements Initializable {
                 +"', fname= '"+tf_fName.getText()
                 +"', lname= '"+tf_lName.getText()
                 +"', age= "+tf_age.getText()+" where age = "+tf_age.getText();
-
         executeQuery(query);
         showUsers();
         
     }
     public void handleDeleteButton(){
         String query = "DELETE FROM users WHERE username ='" +tf_username.getText()+"'";
-
         executeQuery(query);
         showUsers();        
     }
@@ -205,54 +201,26 @@ public class Scene1FXMLController implements Initializable {
         System.out.println("Button clicked");
 
             insertUser();
-            System.out.println("user inserted");
-//            String userName,password,eMail,phonenumber,fName,lName,age1,doc1;
-//            int age;
-//            Date doc;
-//         //   java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//         //   java.time.LocalDate textFieldAsDate = java.time.LocalDate.parse(tf_doc, formatter);
-//            userName = tf_username.getText();
-//            password = tf_password.getText();
-//            eMail = tf_email.getText();
-//            phonenumber = tf_phonenumber.getText();
-//            fName = tf_fName.getText();
-//            lName = tf_lName.getText();
-//       //     age = Integer.parseInt(tf_age.getText()); //kanw parse 
-//            age1 = tf_age.getText();
-//           // doc = Date.format(tf_doc.getText());
-//           doc1=tf_doc.getText();
-    //    try
-    //    {
-//            ps = con.prepareStatement("insert into Users(Username,Password,Email,Phonenumber,Firstname,Lastname,Age,Dateofcreation)values(?,?,?,?,?,?,?,?)");
-//            ps.setString(1, userName);
-//            ps.setString(2, password);
-//            ps.setString(3, eMail);
-//            ps.setString(4, phonenumber);
-//            ps.setString(5, fName);
-//            ps.setString(6, lName);
-        //    ps.setInt(7, age);
-//            ps.setString(7, age1);
-//        //    ps.setDate(8, (java.sql.Date) doc);
-//            ps.setString(8,  doc1);
-//            ps.executeUpdate();
-          
-            
-//            tf_username.setText("");
-//            tf_password.setText("");
-//            tf_email.setText("");
-//            tf_phonenumber.setText("");
-//            tf_fName.setText("");
-//            tf_lName.setText("");
-//            tf_age.setText("");
-//            tf_doc.setText("");
-//            tf_username.requestFocus();
-      //  }
-    //    catch (SQLException ex)
-      //  {
-       //     Logger.getLogger(JDBCPosrgreSQLConnector.class.getName()).log(Level.SEVERE, null, ex);
-       // }  
+            System.out.println("user inserted");            
     }
-     
+      
+    @FXML
+    public void handleButtonOrders_prod()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_orders_products.getScene().getWindow();
+        window.setScene(new Scene(root,930,680));
+    }
+
+    @FXML
+    public void handleButtonUserAddress()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_user_address.getScene().getWindow();
+        window.setScene(new Scene(root,930,680));
+    } 
 
     
 }

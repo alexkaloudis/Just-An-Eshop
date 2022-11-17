@@ -5,15 +5,20 @@
 package mainpackage;
 
 
-import mainpackage.Models.Users;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
 import java.sql.Connection;
 import javafx.collections.ObservableList;
 import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
+import mainpackage.Models.Discounts;
+import mainpackage.Models.Orders;
+import mainpackage.Models.Products;
+import mainpackage.Models.OrderProducts;
+import mainpackage.Models.UserAddress;
+import java.util.UUID;
+import mainpackage.Models.Users;
 
 
 public class JDBCPosrgreSQLConnector {
@@ -40,7 +45,15 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Users(Integer.parseInt(rs.getString("Id")),rs.getString("Username"),rs.getString("Password"),rs.getString("Email"),rs.getString("Phonenumber"),rs.getString("fname"),rs.getString("lname"),rs.getInt("Age"),rs.getDate("dateofcreation")));
+                    list.add(new Users(rs.getInt("Id"),
+                            rs.getString("Username"),
+                            rs.getString("Password"),
+                            rs.getString("Email"),
+                            rs.getString("Phonenumber"),
+                            rs.getString("fname"),
+                            rs.getString("lname"),
+                            rs.getInt("Age"),
+                            rs.getTimestamp("dateofcreation")));
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -48,7 +61,110 @@ public class JDBCPosrgreSQLConnector {
             
             return list;
     }
-//        String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=310331";
+    
+    
+    public static ObservableList<Products> getDataProducts(){
+            Connection con = ConnectDb();
+            ObservableList<Products> list = FXCollections.observableArrayList();
+            try{
+                PreparedStatement ps = con.prepareStatement("Select * from products");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new Products(rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getFloat("price"),
+                            rs.getString("description"),
+                            rs.getTimestamp("dateofcreation")));                   
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }
+            
+            return list;
+    }
+    
+    
+    public static ObservableList<Discounts> getDataDiscounts(){
+            Connection con = ConnectDb();
+            ObservableList<Discounts> list = FXCollections.observableArrayList();
+            try{
+                PreparedStatement ps = con.prepareStatement("Select * from discounts");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new Discounts(rs.getInt("Id"),Integer.parseInt(rs.getString("Product Id")),rs.getFloat("value"),rs.getTimestamp("dateofcreation"),rs.getString("Description")));                   
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }
+            
+            return list;
+    }
+        
+    public static ObservableList<Orders> getDataOrders(){
+            Connection con = ConnectDb();
+            ObservableList<Orders> list = FXCollections.observableArrayList();
+            try{
+                PreparedStatement ps = con.prepareStatement("Select * from orders");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new Orders(UUID.fromString(rs.getString("Id")),rs.getTimestamp("orderdate"), rs.getString("First Name"), rs.getString("Last Name"),rs.getString("Comments")));
+                                       
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }
+            
+            return list;
+    } 
+    
+    
+    public static ObservableList<OrderProducts> getDataOrderProducts(){
+            Connection con = ConnectDb();
+            ObservableList<OrderProducts> list = FXCollections.observableArrayList();
+            try{
+                PreparedStatement ps = con.prepareStatement("Select * from orderproducts");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new OrderProducts(rs.getInt("Id"),
+                            UUID.fromString(rs.getString("orderno")),
+                            Integer.parseInt(rs.getString("Product ID")), Integer.parseInt(rs.getString("Quantity")),Float.parseFloat(rs.getString("Order Value"))));
+                                       
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }
+            
+            return list;
+    } 
+        
+    public static ObservableList<UserAddress> getDataUserAddress(){
+            Connection con = ConnectDb();
+            ObservableList<UserAddress> list = FXCollections.observableArrayList();
+            try{
+                PreparedStatement ps = con.prepareStatement("Select * from useraddress");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new UserAddress(Integer.parseInt(rs.getString("User ID")),
+                            rs.getString("Country"), 
+                            rs.getString("Region"), rs.getString("City"),rs.getString("Street"),
+                            Integer.parseInt(rs.getString("Number")),
+                            rs.getString("Postal Code")));                         
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }
+            
+            return list;
+    }    
+    
+    
+    
+//        String jdbcURL = "jdbc:postgresql: DB_for_eshop Just-An-Eshop-DB?user=postgres&password=310331";
 //        String username = "postgres";
 //        Statement stmt = null;
 //        String password = "310331"; 

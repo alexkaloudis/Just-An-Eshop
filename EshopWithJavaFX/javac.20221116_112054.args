@@ -1,0 +1,31 @@
+-d
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\build\\classes
+-classpath
+"C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\build\\classes;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx-swt.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.base.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.controls.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.fxml.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.graphics.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.media.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.swing.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.web.jar;C:\\Program Files\\NetBeans-15\\netbeans\\ide\\modules\\ext\\postgresql-42.5.0.jar"
+-sourcepath
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\build\\empty
+-target
+19
+-encoding
+UTF-8
+-g
+-processorpath
+"C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx-swt.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.base.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.controls.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.fxml.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.graphics.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.media.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.swing.jar;C:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.web.jar;C:\\Program Files\\NetBeans-15\\netbeans\\ide\\modules\\ext\\postgresql-42.5.0.jar;C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\build\\empty"
+-s
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\build\\generated-sources\\ap-source-output
+-source
+19
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\OrderProductsFXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\OrdersFXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\ProductsFXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\Scene1FXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\Scene2FXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\Scene3FXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Controllers\\UserAddressFXMLController.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\FXMain.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\JDBCPosrgreSQLConnector.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Models\\OrderProducts.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Models\\Orders.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Models\\Products.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Models\\UserAddress.java
+C:\\Users\\Mike\\Documents\\GitHub\\Just-An-Eshop\\EshopWithJavaFX\\src\\mainpackage\\Models\\Users.java

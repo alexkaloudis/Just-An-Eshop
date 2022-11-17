@@ -4,17 +4,14 @@
  */
 package mainpackage.Models;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.UUID;
 
-/**
- *
- * @author kalou
- */
 public class Orders {
    private UUID orderno;
    private Timestamp orderdate;
    private String fname,lname,comments;
+
 
     public Orders(UUID orderno, Timestamp orderdate, String fname, String lname, String comments) {
         this.orderno = orderno;
@@ -63,6 +60,4 @@ public class Orders {
     public void setComments(String comments) {
         this.comments = comments;
     }
-   
-   
 }

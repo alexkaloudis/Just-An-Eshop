@@ -4,12 +4,9 @@
  */
 package mainpackage.Models;
 
-import java.security.Timestamp;
 
-/**
- *
- * @author kalou
- */
+import java.sql.Timestamp;
+
 public class Discounts {
     private int id,productid;
     private float value;
@@ -62,7 +59,5 @@ public class Discounts {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-    
-    
+    }   
 }

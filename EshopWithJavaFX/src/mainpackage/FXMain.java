@@ -4,7 +4,9 @@
  */
 package mainpackage;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -13,16 +15,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author kalou
- */
 public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Fxml/menuFXML.fxml")); //"menuFXML.fxml"  "MainFXML.fxml"
+            URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
             
             Scene scene = new Scene(root, 900, 680);
             
@@ -34,9 +33,6 @@ public class FXMain extends Application {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }

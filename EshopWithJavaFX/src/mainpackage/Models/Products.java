@@ -4,25 +4,22 @@
  */
 package mainpackage.Models;
 
-import java.security.Timestamp;
-import java.util.Date;
+import java.sql.Timestamp;
 
-/**
- *
- * @author kalou
- */
 public class Products {
     private int id;
     private String name,description;
     private float price;
-    private Timestamp dateOfCreation;
+    private Timestamp dateofcreation;
+    
+    public Products(){};
 
-    public Products(int id, String name, String description, float price, Timestamp dateOfCreation) {
+    public Products(int id, String name, float price, String description,Timestamp dateofcreation) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.price = price;
-        this.dateOfCreation = dateOfCreation;
+        this.dateofcreation = dateofcreation;
+        this.description = description;              
     }
 
     public int getId() {
@@ -41,8 +38,9 @@ public class Products {
         return price;
     }
 
-    public Timestamp getDateOfCreation() {
-        return dateOfCreation;
+
+    public Timestamp getDateofcreation() {
+        return dateofcreation;
     }
 
     public void setId(int id) {
@@ -60,9 +58,9 @@ public class Products {
     public void setPrice(float price) {
         this.price = price;
     }
-
-    public void setDateOfCreation(Timestamp dateOfCreation) {
-        this.dateOfCreation = dateOfCreation;
+    
+    public void setDateofcreation(Timestamp Dateofcreation) {
+        this.dateofcreation = Dateofcreation;
     }
     
     

@@ -8,23 +8,53 @@
 
 <AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
    <children>
-      <AnchorPane prefHeight="681.0" prefWidth="252.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane prefHeight="730.0" prefWidth="925.0" style="-fx-background-color: #3f2b63;">
          <children>
-            <Button fx:id="b_home" layoutX="68.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleButtonHome" prefHeight="44.0" prefWidth="119.0" style="-fx-background-color: #3f2b63;" text="Home" textFill="WHITE">
+            <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>
                   <Font size="20.0" />
-               </font></Button>
-            <Button fx:id="b_s1" layoutX="89.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleButtonScene1" style="-fx-background-color: #3f2b63;" text="Users" textFill="WHITE" />
-            <Button fx:id="b_s2" layoutX="93.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleButtonScene2" style="-fx-background-color: #3f2b63;" text="Screen2" textFill="WHITE">
+               </font>
+            </Button>
+            <Button fx:id="b_s1" layoutX="87.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleButtonScene1" style="-fx-background-color: #3f2b63;" text="Users" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
-               </font></Button>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="b_Pr" layoutX="75.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleButtonProducts" style="-fx-background-color: #3f2b63;" text="Products" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="b_home" layoutX="51.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleButtonHome" prefHeight="51.0" prefWidth="149.0" style="-fx-background-color: #3f2b63;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="b_Dsc" layoutX="72.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleButtonDiscounts" style="-fx-background-color: #3f2b63;" text="Discounts" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="b_orders_products" layoutX="47.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleButtonOrders_prod" style="-fx-background-color: #3f2b63;" text="Orders Products" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="b_user_address" layoutX="54.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleButtonUserAddress" style="-fx-background-color: #3f2b63;" text="User Address" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Pane prefHeight="730.0" prefWidth="636.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label layoutX="52.0" layoutY="79.0" prefHeight="89.0" prefWidth="524.0" text="This is home yoo." textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="57.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
-      <Pane layoutX="251.0" prefHeight="681.0" prefWidth="675.0" style="-fx-background-color: #416e21;" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="88.0" text="This is home" />
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

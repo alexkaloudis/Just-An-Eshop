@@ -4,15 +4,12 @@
  */
 package mainpackage.Models;
 
-/**
- *
- * @author kalou
- */
+
 public class UserAddress {
     private int userid,number;
     private String country,region,city,street,postalcode;
 
-    public UserAddress(int userid, int number, String country, String region, String city, String street, String postalcode) {
+    public UserAddress(int userid, String country, String region, String city, String street, int number, String postalcode) {
         this.userid = userid;
         this.number = number;
         this.country = country;
@@ -77,5 +74,4 @@ public class UserAddress {
     public String getPostalcode() {
         return postalcode;
     }
-    
 }
