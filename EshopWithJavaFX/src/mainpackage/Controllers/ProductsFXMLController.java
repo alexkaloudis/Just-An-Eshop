@@ -4,7 +4,6 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,7 +23,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Products;
 

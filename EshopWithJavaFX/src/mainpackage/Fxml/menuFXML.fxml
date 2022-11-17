@@ -8,12 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
    <children>
-      <Pane layoutX="251.0" prefHeight="681.0" prefWidth="675.0" style="-fx-background-color: #416e21;" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label layoutX="266.0" layoutY="66.0" prefHeight="89.0" prefWidth="88.0" text="This is home" />
-         </children>
-      </Pane>
-      <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane prefHeight="730.0" prefWidth="925.0" style="-fx-background-color: #3f2b63;">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>
@@ -50,6 +45,15 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Pane prefHeight="730.0" prefWidth="636.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label layoutX="52.0" layoutY="79.0" prefHeight="89.0" prefWidth="524.0" text="This is home yoo." textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="57.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

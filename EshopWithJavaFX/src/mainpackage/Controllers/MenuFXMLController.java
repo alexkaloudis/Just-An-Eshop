@@ -4,9 +4,7 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
@@ -112,7 +110,7 @@ public class MenuFXMLController implements Initializable {
     
     @FXML
     public void handleButtonOrders_prod()throws Exception {
-        URL url = new File("src/mainpackage/Fxml/orderProoductsFXML.fxml").toURI().toURL();
+        URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
@@ -128,7 +126,6 @@ public class MenuFXMLController implements Initializable {
         window.setScene(new Scene(root,930,680));
     }    
      
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
