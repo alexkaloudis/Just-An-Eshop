@@ -133,7 +133,7 @@ public class ProductsFXMLController implements Initializable {
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM products WHERE name =" +tf_name.getText()+"";
+        String query = "DELETE FROM products WHERE orderno =" +tf_id.getText()+"";
 
         executeQuery(query);
         showProducts();
@@ -155,7 +155,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
      
     public void handleButtonScene1() throws Exception{
@@ -163,7 +163,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
      public void handleButtonProducts() throws Exception{
@@ -171,7 +171,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
      
     @FXML
@@ -180,7 +180,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -189,7 +189,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -198,7 +198,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -207,7 +207,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
 
     @Override

@@ -39,7 +39,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_name" layoutX="213.0" layoutY="572.0" />
+            <TextField fx:id="tf_PR_id" layoutX="213.0" layoutY="572.0" />
             <Label layoutX="486.0" layoutY="476.0" text="Value" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />

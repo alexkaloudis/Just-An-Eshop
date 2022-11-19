@@ -56,7 +56,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
             
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     @FXML
     public void handleButtonScene1() throws Exception{
@@ -64,7 +64,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -73,7 +73,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s2.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
      }
      
      @FXML
@@ -82,7 +82,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
      
     @FXML
@@ -91,7 +91,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -100,7 +100,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -109,7 +109,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     } 
 
     @FXML
@@ -118,7 +118,7 @@ public class MenuFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }    
      
     @Override

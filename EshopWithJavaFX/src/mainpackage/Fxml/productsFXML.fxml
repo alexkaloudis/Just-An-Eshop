@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.ProductsFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.ProductsFXMLController">
    <children>
-      <Pane layoutX="289.0" prefHeight="730.0" prefWidth="670.0" style="-fx-background-color: #1b827f;">
+      <Pane layoutX="289.0" prefHeight="730.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
          <children>
             <Button fx:id="b_add" layoutX="44.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
                <font>
@@ -52,20 +52,20 @@
                </font>
             </Label>
             <TextField fx:id="tf_description" layoutX="427.0" layoutY="572.0" />
+            <TableView fx:id="table_products" prefHeight="442.0" prefWidth="698.0">
+               <columns>
+                  <TableColumn fx:id="col_id" prefWidth="106.0" text="ID" />
+                  <TableColumn fx:id="col_name" minWidth="0.0" prefWidth="152.0" text="Name" />
+                  <TableColumn fx:id="col_price" prefWidth="78.0" text="Price" />
+                  <TableColumn fx:id="col_dateofcreation" prefWidth="156.0" text="Date of Creation" />
+                  <TableColumn fx:id="col_description" prefWidth="141.0" text="Description" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
          </children>
       </Pane>
-      <TableView fx:id="table_products" layoutX="261.0" layoutY="-1.0" prefHeight="442.0" prefWidth="698.0">
-         <columns>
-            <TableColumn fx:id="col_id" prefWidth="106.0" text="ID" />
-            <TableColumn fx:id="col_name" minWidth="0.0" prefWidth="152.0" text="Name" />
-            <TableColumn fx:id="col_price" prefWidth="78.0" text="Price" />
-            <TableColumn fx:id="col_dateofcreation" prefWidth="156.0" text="Date of Creation" />
-            <TableColumn fx:id="col_description" prefWidth="141.0" text="Description" />
-         </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
       <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">

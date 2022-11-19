@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="691.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.Scene1FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="730.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.Scene1FXMLController">
    <children>
-      <Pane prefHeight="730.0" prefWidth="654.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="-6.0">
+      <Pane layoutX="290.0" prefHeight="730.0" prefWidth="705.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
          <children>
             <Button fx:id="b_add" layoutX="47.0" layoutY="474.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
                <font>
@@ -28,55 +28,49 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="239.0" layoutY="455.0" prefHeight="17.0" prefWidth="75.0" text="User Name" textFill="WHITE">
+            <Label layoutX="237.0" layoutY="511.0" prefHeight="17.0" prefWidth="75.0" text="User Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_username" layoutX="200.0" layoutY="483.0" />
-            <Label layoutX="242.0" layoutY="513.0" text="Password" textFill="WHITE">
+            <TextField fx:id="tf_username" layoutX="202.0" layoutY="534.0" />
+            <Label layoutX="245.0" layoutY="563.0" text="Password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_password" layoutX="200.0" layoutY="538.0" />
-            <Label layoutX="254.0" layoutY="563.0" text="Email" textFill="WHITE">
+            <TextField fx:id="tf_password" layoutX="202.0" layoutY="582.0" />
+            <Label layoutX="257.0" layoutY="613.0" text="Email" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_email" layoutX="200.0" layoutY="583.0" />
-            <Label layoutX="229.0" layoutY="618.0" text="Phonenumber" textFill="WHITE">
+            <TextField fx:id="tf_email" layoutX="202.0" layoutY="635.0" />
+            <Label layoutX="483.0" layoutY="458.0" text="Phonenumber" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_phonenumber" layoutX="200.0" layoutY="644.0" />
-            <Label layoutX="490.0" layoutY="458.0" text="First Name" textFill="WHITE">
+            <TextField fx:id="tf_phonenumber" layoutX="451.0" layoutY="481.0" />
+            <Label layoutX="490.0" layoutY="511.0" text="First Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_fName" layoutX="451.0" layoutY="483.0" />
-            <Label layoutX="494.0" layoutY="512.0" text="Last Name" textFill="WHITE">
+            <TextField fx:id="tf_fName" layoutX="451.0" layoutY="534.0" />
+            <Label layoutX="494.0" layoutY="563.0" text="Last Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_lName" layoutX="451.0" layoutY="538.0" />
-            <Label layoutX="513.0" layoutY="565.0" text="Age" textFill="WHITE">
+            <TextField fx:id="tf_lName" layoutX="449.0" layoutY="582.0" />
+            <Label layoutX="511.0" layoutY="613.0" text="Age" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_age" layoutX="451.0" layoutY="583.0" />
-            <Label layoutX="471.0" layoutY="617.0" text="Date of Creation" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_doc" layoutX="451.0" layoutY="644.0" />
-            <TableView fx:id="table_users" layoutX="1.0" prefHeight="428.0" prefWidth="654.0">
+            <TextField fx:id="tf_age" layoutX="449.0" layoutY="635.0" />
+            <TableView fx:id="table_users" layoutX="1.0" prefHeight="428.0" prefWidth="705.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="48.799957275390625" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
@@ -89,6 +83,12 @@
                   <TableColumn fx:id="col_dateofcreation" prefWidth="103.39996337890625" text="Date of Creation" />
                </columns>
             </TableView>
+            <Label layoutX="266.0" layoutY="458.0" text="ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_id" layoutX="202.0" layoutY="481.0" />
          </children>
       </Pane>
       <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">

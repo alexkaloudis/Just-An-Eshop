@@ -23,7 +23,7 @@ public class FXMain extends Application {
             URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             
-            Scene scene = new Scene(root, 900, 680);
+            Scene scene = new Scene(root, 988, 730);
             
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);

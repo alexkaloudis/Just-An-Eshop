@@ -85,6 +85,9 @@ public class Scene1FXMLController implements Initializable {
 
     @FXML
     private TextField tf_email;
+    
+    @FXML    
+    private TextField tf_id;
 
     @FXML
     private TextField tf_fName;
@@ -145,12 +148,13 @@ public class Scene1FXMLController implements Initializable {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
+    } 
     
-
+ // den leitourgei gia kapoion logo   
   /*  @FXML
     public void handleMouseAction(MouseEvent event) {
         Users user = table_users.getSelectionModel().getSelectedItem();
+        tf_id.setText(""+user.getId());
         tf_username.setText(user.getUsername());
         tf_password.setText(user.getPassword());
         tf_email.setText(user.getEmail());
@@ -180,7 +184,7 @@ public class Scene1FXMLController implements Initializable {
         
     }
     public void handleDeleteButton(){
-        String query = "DELETE FROM users WHERE username ='" +tf_username.getText()+"'";
+        String query = "DELETE FROM users WHERE id ='" +tf_id.getText()+"'";
         executeQuery(query);
         showUsers();        
     }
@@ -199,7 +203,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
      
     public void handleButtonScene1() throws Exception{
@@ -207,7 +211,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
      public void handleButtonProducts() throws Exception{
@@ -215,7 +219,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
      
     @FXML
@@ -224,7 +228,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -233,7 +237,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -242,7 +246,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     
     @FXML
@@ -251,7 +255,7 @@ public void handleButtonHome() throws Exception{
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     } 
 
     

@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
    <children>
-      <AnchorPane prefHeight="730.0" prefWidth="925.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane prefHeight="730.0" prefWidth="335.0" style="-fx-background-color: #3f2b63;">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>
@@ -45,7 +45,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Pane prefHeight="730.0" prefWidth="636.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
+            <Pane layoutX="331.0" prefHeight="730.0" prefWidth="716.0" style="-fx-background-color: #1b827f;">
                <children>
                   <Label layoutX="52.0" layoutY="79.0" prefHeight="89.0" prefWidth="524.0" text="This is home yoo." textFill="WHITE">
                      <font>

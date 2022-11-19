@@ -74,10 +74,10 @@ public class DiscountsFXMLController implements Initializable {
     private TextField tf_id;
 
     @FXML
-    private TextField tf_name;
-
-    @FXML
     private TextField tf_value;
+    
+    @FXML
+    private TextField tf_PR_ID;
     
     
     ObservableList<Discounts> listM;
@@ -118,7 +118,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_home.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
 
     @FXML
@@ -127,7 +127,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Pr.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
 
     @FXML
@@ -136,13 +136,15 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_s1.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
 
     @FXML
     public void handleCreateButton() {
-        String query = "INSERT INTO discounts(value,description) VALUES ('" 
-                + tf_value.getText()
+        
+        String query = "INSERT INTO discounts(productid,value,description) VALUES ('" 
+                +tf_PR_ID.getText()
+                +"','"+ tf_value.getText()
                 +"','"+tf_description.getText()+"')";
         executeQuery(query);
         showDiscounts();
@@ -158,7 +160,7 @@ public class DiscountsFXMLController implements Initializable {
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE discounts SET value = "+tf_name.getText()
+        String query = "UPDATE discounts SET value = "+tf_PR_ID.getText()
                 +"', description = '"+tf_description.getText()+"";
 
         executeQuery(query);
@@ -170,7 +172,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }   
     @FXML
     public void handleButtonOrders()throws Exception {
@@ -178,7 +180,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }         
     @FXML
     public void handleButtonOrders_prod()throws Exception {
@@ -186,7 +188,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_orders_products.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     }
     @FXML
     public void handleButtonUserAddress()throws Exception {
@@ -194,7 +196,7 @@ public class DiscountsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,930,730));
+        window.setScene(new Scene(root,988,730));
     } 
 
     

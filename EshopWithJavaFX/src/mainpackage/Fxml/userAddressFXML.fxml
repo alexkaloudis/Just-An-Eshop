@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.UserAddressFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.UserAddressFXMLController">
    <children>
       <AnchorPane prefHeight="730.0" prefWidth="299.0" style="-fx-background-color: #3f2b63;">
          <children>
@@ -50,7 +50,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Pane layoutX="281.0" prefHeight="730.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
+      <Pane layoutX="279.0" prefHeight="730.0" prefWidth="718.0" style="-fx-background-color: #1b827f;">
          <children>
             <Button fx:id="b_add" layoutX="44.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
                <font>
@@ -111,7 +111,7 @@
             <TextField fx:id="tf_postal_code" layoutX="429.0" layoutY="672.0" />
          </children>
       </Pane>
-      <TableView fx:id="table_user_address" layoutX="281.0" layoutY="-1.0" prefHeight="462.0" prefWidth="698.0">
+      <TableView fx:id="table_user_address" layoutX="281.0" layoutY="-1.0" prefHeight="462.0" prefWidth="718.0">
          <columns>
             <TableColumn fx:id="col_id" prefWidth="106.0" text="ID" />
             <TableColumn fx:id="col_country" minWidth="0.0" prefWidth="152.0" text="Country" />
