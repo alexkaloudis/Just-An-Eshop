@@ -24,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.UserAddress;
+import mainpackage.Models.Users;
 
 /**
  * FXML Controller class
@@ -101,13 +102,13 @@ public class UserAddressFXMLController implements Initializable {
     public void showUserAddress(){
         listM = JDBCPosrgreSQLConnector.getDataUserAddress();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
-        col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("Id"));
-        col_country.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("Name"));
-        col_region.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("Price"));
-        col_city.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("dateofcreation"));
-        col_street.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("Description"));
-        col_number.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("Description"));
-        col_postalCode.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("Description"));
+        col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("userid"));
+        col_country.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("country"));
+        col_region.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("region"));
+        col_city.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("city"));
+        col_street.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("street"));
+        col_number.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("number"));
+        col_postalCode.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("postalcode"));
         table_user_address.setItems(listM);
     }
 
@@ -122,13 +123,14 @@ public class UserAddressFXMLController implements Initializable {
     }        
     @FXML
     public void handleCreateButton() {
-        String query = "INSERT INTO useraddress(country,region,city,street,number,postalcode) VALUES ('" 
-                + tf_country.getText()
+        String query = "INSERT INTO useraddress(userid,country,region,city,street,number,postalcode) VALUES (" 
+                +tf_id.getText()
+                +",'" +tf_country.getText()
                 +"','"+tf_region.getText()
                 +"','"+tf_city.getText()
                 +"','"+tf_street.getText()
-                +"','"+tf_number.getText()
-                +"','"+tf_postal_code.getText()+"')";
+                +"',"+tf_number.getText()
+                +",'"+tf_postal_code.getText()+"')";
         executeQuery(query);
         showUserAddress();        
 

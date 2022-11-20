@@ -5,6 +5,7 @@
 package mainpackage;
 
 
+import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
@@ -26,8 +27,10 @@ public class JDBCPosrgreSQLConnector {
     public static Connection ConnectDb(){
         try{
             String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
+//            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
             String username = "postgres";
             String password = "1234";
+//            String password = "310331";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
         //   JOptionPane.showMessageDialog(null,"Connection Established");
@@ -61,6 +64,20 @@ public class JDBCPosrgreSQLConnector {
             
             return list;
     }
+    public static int getProductId(String prodname) {
+        String SQL = "SELECT id FROM products where name = '"+prodname+"'";
+        int prodid=0;
+        try ( Connection con = ConnectDb();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+            rs.next();
+            prodid = rs.getInt(1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return prodid;
+    }
     
     
     public static ObservableList<Products> getDataProducts(){
@@ -93,11 +110,11 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Discounts(rs.getInt("ID"),
+                    list.add(new Discounts(rs.getInt("id"),
                             rs.getInt("productid"),
-                            rs.getFloat("Value"),
+                            rs.getFloat("value"),
                             rs.getTimestamp("dateofcreation"),
-                            rs.getString("Description")));                   
+                            rs.getString("description")));                   
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -114,7 +131,7 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Orders(UUID.fromString(rs.getString("OrderNo")),
+                    list.add(new Orders(UUID.fromString(rs.getString("orderno")),
                             rs.getTimestamp("orderdate"), 
                             rs.getString("fname"),
                             rs.getString("lname"),
@@ -139,9 +156,9 @@ public class JDBCPosrgreSQLConnector {
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
                     list.add(new OrderProducts(rs.getInt("Id"),
                             UUID.fromString(rs.getString("orderno")),
-                            Integer.parseInt(rs.getString("Product ID")),
-                            Integer.parseInt(rs.getString("Quantity")),
-                            Float.parseFloat(rs.getString("Order Value"))));                                      
+                            Integer.parseInt(rs.getString("productid")),
+                            Integer.parseInt(rs.getString("quantity")),
+                            Float.parseFloat(rs.getString("ordervalue"))));                                      
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
@@ -158,11 +175,11 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new UserAddress(Integer.parseInt(rs.getString("User ID")),
-                            rs.getString("Country"), 
-                            rs.getString("Region"), rs.getString("City"),rs.getString("Street"),
-                            Integer.parseInt(rs.getString("Number")),
-                            rs.getString("Postal Code")));                         
+                    list.add(new UserAddress(Integer.parseInt(rs.getString("userid")),
+                            rs.getString("country"), 
+                            rs.getString("region"), rs.getString("city"),rs.getString("street"),
+                            Integer.parseInt(rs.getString("number")),
+                            rs.getString("postalcode")));                         
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());

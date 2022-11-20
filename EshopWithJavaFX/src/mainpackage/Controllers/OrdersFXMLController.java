@@ -6,6 +6,7 @@ package mainpackage.Controllers;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,11 +29,6 @@ import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Orders;
 
 
-/**
- * FXML Controller class
- *
- * @author Mike
- */
 public class OrdersFXMLController implements Initializable {
 
    @FXML
@@ -87,7 +83,7 @@ public class OrdersFXMLController implements Initializable {
     
     
     
-        public void showOrders(){
+    public void showOrders(){
         listM = JDBCPosrgreSQLConnector.getDataOrders();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_uuid.setCellValueFactory(new PropertyValueFactory<Orders,UUID>("orderno"));
@@ -204,6 +200,15 @@ public class OrdersFXMLController implements Initializable {
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
+    }
+    
+    @FXML
+    public void handleMouseAction() {
+        Orders order = table_orders.getSelectionModel().getSelectedItem();
+        tf_id.setText(String.valueOf(order.getOrderno()));
+        tf_fName.setText(order.getFname());
+        tf_lName.setText(order.getLname());
+        tf_comment.setText(order.getComments());   
     }
 
     

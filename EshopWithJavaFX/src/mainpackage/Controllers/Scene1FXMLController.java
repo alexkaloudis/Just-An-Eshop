@@ -4,7 +4,6 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import mainpackage.Models.Users;
 import java.net.URL;
@@ -150,9 +149,9 @@ public class Scene1FXMLController implements Initializable {
         }
     } 
     
- // den leitourgei gia kapoion logo   
-  /*  @FXML
-    public void handleMouseAction(MouseEvent event) {
+    //leitoyrgei gia kapoio logo   
+    @FXML
+    public void handleMouseAction() {
         Users user = table_users.getSelectionModel().getSelectedItem();
         tf_id.setText(""+user.getId());
         tf_username.setText(user.getUsername());
@@ -162,7 +161,7 @@ public class Scene1FXMLController implements Initializable {
         tf_fName.setText(user.getFirstname());
         tf_lName.setText(user.getLastname());
         tf_age.setText(""+user.getAge());   
-    } */
+    } 
    
     
         @Override

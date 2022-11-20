@@ -70,7 +70,7 @@
                </font>
             </Label>
             <TextField fx:id="tf_age" layoutX="449.0" layoutY="635.0" />
-            <TableView fx:id="table_users" layoutX="1.0" prefHeight="428.0" prefWidth="705.0">
+            <TableView fx:id="table_users" layoutX="1.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="705.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="48.799957275390625" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
@@ -91,7 +91,7 @@
             <TextField fx:id="tf_id" layoutX="202.0" layoutY="481.0" />
          </children>
       </Pane>
-      <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane onMouseClicked="#handleMouseAction" prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>

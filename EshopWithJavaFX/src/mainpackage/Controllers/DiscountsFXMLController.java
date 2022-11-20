@@ -4,7 +4,6 @@
  */
 package mainpackage.Controllers;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -19,14 +18,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
-import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Discounts;
+import mainpackage.Models.Products;
 
 
 /**
@@ -79,8 +79,12 @@ public class DiscountsFXMLController implements Initializable {
     @FXML
     private TextField tf_PR_ID;
     
+    @FXML
+    private ChoiceBox prod_names;
+    
     
     ObservableList<Discounts> listM;
+    ObservableList<Products> listPr;
     
     int index = -1;
     
@@ -93,7 +97,7 @@ public class DiscountsFXMLController implements Initializable {
         listM = JDBCPosrgreSQLConnector.getDataDiscounts();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
         col_id.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("Id"));
-        col_PR_ID.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("Product ID"));
+        col_PR_ID.setCellValueFactory(new PropertyValueFactory<Discounts,Integer>("productid"));
         col_value.setCellValueFactory(new PropertyValueFactory<Discounts,Float>("Value"));
         col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Discounts,Date>("dateofcreation"));
         col_description.setCellValueFactory(new PropertyValueFactory<Discounts,String>("description"));
@@ -142,8 +146,9 @@ public class DiscountsFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         
+        int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(prod_names.getSelectionModel().getSelectedItem().toString());
         String query = "INSERT INTO discounts(productid,value,description) VALUES ('" 
-                +tf_PR_ID.getText()
+                +getIdFromProdName
                 +"','"+ tf_value.getText()
                 +"','"+tf_description.getText()+"')";
         executeQuery(query);
@@ -197,12 +202,21 @@ public class DiscountsFXMLController implements Initializable {
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
-    } 
+    }
+    
+    @FXML
+    public void handleProductNames(){
+        
+    }
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        showDiscounts();
+        listPr = JDBCPosrgreSQLConnector.getDataProducts();
+        for(Products pr : listPr){
+            prod_names.getItems().add(pr.getName());
+        }
     }    
     
 }
