@@ -6,10 +6,11 @@ package mainpackage.Models;
 
 
 public class UserAddress {
-    private int userid,number;
+    private int id,userid,number;
     private String country,region,city,street,postalcode;
 
-    public UserAddress(int userid, String country, String region, String city, String street, int number, String postalcode) {
+    public UserAddress(int id,int userid, String country, String region, String city, String street, int number, String postalcode) {
+        this.id = id;
         this.userid = userid;
         this.number = number;
         this.country = country;
@@ -17,6 +18,14 @@ public class UserAddress {
         this.city = city;
         this.street = street;
         this.postalcode = postalcode;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setUserid(int userid) {

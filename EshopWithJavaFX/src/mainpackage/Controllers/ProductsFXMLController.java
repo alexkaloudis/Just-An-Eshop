@@ -17,9 +17,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -80,10 +83,7 @@ public class ProductsFXMLController implements Initializable {
     private TableView<Products> table_products;
 
     @FXML
-    private TextField tf_description;
-
-    @FXML
-    private TextField tf_id;
+    private TextArea ta_description;
 
     @FXML
     private TextField tf_name;
@@ -122,32 +122,64 @@ public class ProductsFXMLController implements Initializable {
     }        
     @FXML
     public void handleCreateButton() {
-        String query = "INSERT INTO products(name,price,description) VALUES ('" 
+        Alert a = new Alert(AlertType.NONE);
+        try{ 
+            if(tf_name.getText() != "" && tf_price.getText() != "" && ta_description.getText() != ""){
+                String query = "INSERT INTO products(name,price,description) VALUES ('" 
                 + tf_name.getText()
-                +"','"+tf_price.getText()
-                +"','"+tf_description.getText()+"')";
-        executeQuery(query);
-        showProducts();        
-
+                +"',"+tf_price.getText()
+                +",'"+ta_description.getText()+"')";
+                executeQuery(query);
+                showProducts();
+            }else{
+                throw new Exception();
+            }
+                   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("all fields are required");
+            a.show();
+        }
+             
     }
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM products WHERE orderno =" +tf_id.getText()+"";
-
-        executeQuery(query);
-        showProducts();
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
+            if(selectedIndexId != 0){
+                String query = "DELETE FROM products WHERE id = " +selectedIndexId;
+                executeQuery(query);
+                showProducts();
+            }    
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        } 
+        
     }
     
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE users SET name = '"+tf_name.getText()
-                +"', price = '"+tf_price.getText()
-                +"', description = '"+tf_description.getText()+"'";
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
+            if(selectedIndexId != 0){
+                String query = "UPDATE products SET name = '"+tf_name.getText()
+                    +"', price = "+tf_price.getText()
+                    +", description = '"+ta_description.getText()+"' where id = "+selectedIndexId;
 
-        executeQuery(query);
-        showProducts();        
+                executeQuery(query);
+                showProducts();
+            }   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        }        
     }
     
      public void handleButtonHome() throws Exception{
@@ -209,10 +241,22 @@ public class ProductsFXMLController implements Initializable {
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
+    @FXML
+    public void handleMouseAction() {
+        Products pr = table_products.getSelectionModel().getSelectedItem();
+        b_update.setDisable(false);
+        b_remove.setDisable(false);
+        tf_name.setText(pr.getName());
+        tf_price.setText(String.valueOf(pr.getPrice()));
+        ta_description.setText(pr.getDescription());  
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showProducts();
+        ta_description.setWrapText(true);
+        b_update.setDisable(true);
+        b_remove.setDisable(true);
     }    
     
 }

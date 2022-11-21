@@ -6,7 +6,6 @@ package mainpackage.Controllers;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -163,20 +164,42 @@ public class OrdersFXMLController implements Initializable {
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM orders WHERE orderno =" +tf_id.getText()+"";
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
+            if(selectedIndexId != null){
+                String query = "DELETE FROM orders WHERE orderno ='" + selectedIndexId + "'";
 
         executeQuery(query);
-        showOrders();
+        showOrders(); 
+            }   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        }
+        
     }
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE orders SET fname = "+tf_fName.getText()
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
+            if(selectedIndexId != null){
+                String query = "UPDATE orders SET fname = '"+tf_fName.getText()
                 +"', lname = '"+tf_lName.getText()
-                +"', comment = '"+tf_comment.getText()+"";
-
-        executeQuery(query);
-        showOrders(); 
+                +"', comments = '"+tf_comment.getText()
+                +"' where orderno = '"+selectedIndexId+"'";
+                executeQuery(query);
+                showOrders(); 
+            }   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        }
+        
     }
     
     @Override

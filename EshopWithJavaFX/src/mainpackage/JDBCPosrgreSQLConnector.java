@@ -26,11 +26,11 @@ public class JDBCPosrgreSQLConnector {
     Connection con = null;
     public static Connection ConnectDb(){
         try{
-            String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
-//            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
+            //String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
+            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
             String username = "postgres";
-            String password = "1234";
-//            String password = "310331";
+            //String password = "1234";
+            String password = "310331";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
         //   JOptionPane.showMessageDialog(null,"Connection Established");
@@ -41,28 +41,28 @@ public class JDBCPosrgreSQLConnector {
         }
     }
     public static ObservableList<Users> getDataUsers(){
-            Connection con = ConnectDb();
-            ObservableList<Users> list = FXCollections.observableArrayList();
-            try{
-                PreparedStatement ps = con.prepareStatement("Select * from users");
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()){
-                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Users(rs.getInt("Id"),
-                            rs.getString("Username"),
-                            rs.getString("Password"),
-                            rs.getString("Email"),
-                            rs.getString("Phonenumber"),
-                            rs.getString("fname"),
-                            rs.getString("lname"),
-                            rs.getInt("Age"),
-                            rs.getTimestamp("dateofcreation")));
-                }
-            }catch(Exception e){
-                    System.out.println(e.getMessage());
+        Connection con = ConnectDb();
+        ObservableList<Users> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("Select * from users");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Users(rs.getInt("Id"),
+                        rs.getString("Username"),
+                        rs.getString("Password"),
+                        rs.getString("Email"),
+                        rs.getString("Phonenumber"),
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getInt("Age"),
+                        rs.getTimestamp("dateofcreation")));
             }
-            
-            return list;
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
     }
     public static int getProductId(String prodname) {
         String SQL = "SELECT id FROM products where name = '"+prodname+"'";
@@ -79,70 +79,98 @@ public class JDBCPosrgreSQLConnector {
         return prodid;
     }
     
+    public static String getProductNameFromProdId(int prodid) {
+        String SQL = "SELECT id FROM products where id = '"+prodid+"'";
+        String prodname="";
+        try ( Connection con = ConnectDb();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+            rs.next();
+            prodname = rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return prodname;
+    }
+    
+    public static int getUserIdFromUsername(String username) {
+        String SQL = "SELECT id FROM users where username = '"+username+"'";
+        int userid=0;
+        try ( Connection con = ConnectDb();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+            rs.next();
+            userid = rs.getInt(1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return userid;
+    }
     
     public static ObservableList<Products> getDataProducts(){
-            Connection con = ConnectDb();
-            ObservableList<Products> list = FXCollections.observableArrayList();
-            try{
-                PreparedStatement ps = con.prepareStatement("Select * from products");
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()){
-                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Products(rs.getInt("id"),
-                            rs.getString("name"),
-                            rs.getFloat("price"),
-                            rs.getString("description"),
-                            rs.getTimestamp("dateofcreation")));                   
-                }
-            }catch(Exception e){
-                    System.out.println(e.getMessage());
+        Connection con = ConnectDb();
+        ObservableList<Products> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("Select * from products");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Products(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getFloat("price"),
+                        rs.getString("description"),
+                        rs.getTimestamp("dateofcreation")));                   
             }
-            
-            return list;
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
     }
     
     
     public static ObservableList<Discounts> getDataDiscounts(){
-            Connection con = ConnectDb();
-            ObservableList<Discounts> list = FXCollections.observableArrayList();
-            try{
-                PreparedStatement ps = con.prepareStatement("Select * from discounts");
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()){
-                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Discounts(rs.getInt("id"),
-                            rs.getInt("productid"),
-                            rs.getFloat("value"),
-                            rs.getTimestamp("dateofcreation"),
-                            rs.getString("description")));                   
-                }
-            }catch(Exception e){
-                    System.out.println(e.getMessage());
+        Connection con = ConnectDb();
+        ObservableList<Discounts> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("Select * from discounts");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Discounts(rs.getInt("id"),
+                        rs.getInt("productid"),
+                        rs.getFloat("value"),
+                        rs.getTimestamp("dateofcreation"),
+                        rs.getString("description")));                   
             }
-            
-            return list;
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
     }
         
     public static ObservableList<Orders> getDataOrders(){
-            Connection con = ConnectDb();
-            ObservableList<Orders> list = FXCollections.observableArrayList();
-            try{
-                PreparedStatement ps = con.prepareStatement("Select * from orders");
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()){
-                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new Orders(UUID.fromString(rs.getString("orderno")),
-                            rs.getTimestamp("orderdate"), 
-                            rs.getString("fname"),
-                            rs.getString("lname"),
-                            rs.getString("comments")));
-                                       
-                }
-            }catch(Exception e){
-                    System.out.println(e.getMessage());
+        Connection con = ConnectDb();
+        ObservableList<Orders> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("Select * from orders");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Orders(UUID.fromString(rs.getString("orderno")),
+                        rs.getTimestamp("orderdate"), 
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getString("comments")));
+
             }
-            
-            return list;
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
     } 
     
     
@@ -175,7 +203,8 @@ public class JDBCPosrgreSQLConnector {
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                    list.add(new UserAddress(Integer.parseInt(rs.getString("userid")),
+                    list.add(new UserAddress(rs.getInt("id"),
+                            Integer.parseInt(rs.getString("userid")),
                             rs.getString("country"), 
                             rs.getString("region"), rs.getString("city"),rs.getString("street"),
                             Integer.parseInt(rs.getString("number")),
@@ -187,25 +216,4 @@ public class JDBCPosrgreSQLConnector {
             
             return list;
     }    
-    
-    
-    
-//        String jdbcURL = "jdbc:postgresql: DB_for_eshop Just-An-Eshop-DB?user=postgres&password=310331";
-//        String username = "postgres";
-//        Statement stmt = null;
-//        String password = "310331"; 
-//        try {
-//            Connection connection = DriverManager.getConnection(jdbcURL,username,password); 
-//            System.out.println("Connected to PostgreSQL server");
-//            stmt = connection.createStatement();
-//            String sql = "Create table Malakes "
-//                    + "(Id int PRIMARY KEY NOT NULL, "
-//                    + " NAME varchar(255) not null, "
-//                    + "Age int not null)";
-//            stmt.executeUpdate(sql);
-//            connection.close();
-//        } catch (Exception e) {
-//            System.out.println("Error Connecting to PostgreSQL server");
-//            e.printStackTrace();
-//        }
 }

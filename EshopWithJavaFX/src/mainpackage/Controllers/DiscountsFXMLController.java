@@ -17,6 +17,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -157,20 +159,39 @@ public class DiscountsFXMLController implements Initializable {
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM discounts WHERE id =" +tf_id.getText()+"";
-
-        executeQuery(query);
-        showDiscounts();
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            int selectedIndexId = table_discounts.getSelectionModel().getSelectedItem().getId();
+            if(selectedIndexId != 0){
+                String query = "DELETE FROM discounts WHERE id =" +selectedIndexId;
+                executeQuery(query);
+                showDiscounts();
+            }   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        }      
     }
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE discounts SET value = "+tf_PR_ID.getText()
-                +"', description = '"+tf_description.getText()+"";
-
-        executeQuery(query);
-        showDiscounts();
-    }   
+        Alert a = new Alert(AlertType.NONE);
+        try{     
+            int selectedIndexId = table_discounts.getSelectionModel().getSelectedItem().getId();
+            if(selectedIndexId != 0){
+                String query = "UPDATE discounts SET value = "+tf_value.getText()
+                +"', description = '"+tf_description.getText()+" where id = "+selectedIndexId;
+                executeQuery(query);
+                showDiscounts();
+            }   
+        }catch(Exception e){
+            a.setAlertType(AlertType.ERROR);
+            a.setContentText("no index is selected from the table");
+            a.show();
+        }
+    } 
+    
     @FXML
     public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
@@ -178,7 +199,8 @@ public class DiscountsFXMLController implements Initializable {
         
         Stage window = (Stage) b_Dsc.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
-    }   
+    }  
+    
     @FXML
     public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
@@ -186,7 +208,8 @@ public class DiscountsFXMLController implements Initializable {
         
         Stage window = (Stage) b_orders.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
-    }         
+    } 
+    
     @FXML
     public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
@@ -195,6 +218,7 @@ public class DiscountsFXMLController implements Initializable {
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
+    
     @FXML
     public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
@@ -205,10 +229,25 @@ public class DiscountsFXMLController implements Initializable {
     }
     
     @FXML
-    public void handleProductNames(){
-        
+    public void handleMouseAction() {
+        Discounts selectedIndexId = table_discounts.getSelectionModel().getSelectedItem();
+        if(selectedIndexId != null){
+            b_update.setDisable(false);
+            b_remove.setDisable(false);
+        } 
+        Discounts dis = table_discounts.getSelectionModel().getSelectedItem();
+        String getIdFromProdName = JDBCPosrgreSQLConnector.getProductNameFromProdId(dis.getId());
+        prod_names.getSelectionModel().select(dis.getProductid());
+        tf_value.setText(String.valueOf(dis.getValue()));
+        tf_description.setText(dis.getDescription());  
     }
-
+    
+    @FXML
+    public void handleMouseExit(){
+        System.out.println("mphke");
+        b_update.setDisable(true);
+        b_remove.setDisable(true);
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -217,6 +256,8 @@ public class DiscountsFXMLController implements Initializable {
         for(Products pr : listPr){
             prod_names.getItems().add(pr.getName());
         }
+        b_update.setDisable(true);
+        b_remove.setDisable(true);
     }    
     
 }

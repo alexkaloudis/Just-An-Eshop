@@ -29,13 +29,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="278.0" layoutY="476.0" prefHeight="19.0" prefWidth="18.0" text="ID" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_id" layoutX="213.0" layoutY="499.0" />
-            <Label layoutX="254.0" layoutY="547.0" text="Product Name" textFill="WHITE">
+            <Label layoutX="252.0" layoutY="507.0" text="Product Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -52,10 +46,10 @@
                </font>
             </Label>
             <TextField fx:id="tf_description" layoutX="427.0" layoutY="572.0" />
-            <ChoiceBox fx:id="prod_names" layoutX="212.0" layoutY="584.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="prod_names" layoutX="221.0" layoutY="552.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <TableView fx:id="table_discounts" layoutX="286.0" prefHeight="451.0" prefWidth="705.0">
+      <TableView fx:id="table_discounts" layoutX="286.0" onMouseClicked="#handleMouseAction" prefHeight="451.0" prefWidth="705.0">
          <columns>
             <TableColumn fx:id="col_id" prefWidth="106.0" text="ID" />
             <TableColumn fx:id="col_PR_ID" minWidth="0.0" prefWidth="152.0" text="Product ID" />

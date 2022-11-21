@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -28,31 +29,24 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="278.0" layoutY="476.0" prefHeight="19.0" prefWidth="18.0" text="ID" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="269.0" layoutY="476.0" text="Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_id" layoutX="213.0" layoutY="499.0" />
-            <Label layoutX="269.0" layoutY="547.0" text="Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_name" layoutX="213.0" layoutY="572.0" />
+            <TextField fx:id="tf_name" layoutX="213.0" layoutY="499.0" />
             <Label layoutX="486.0" layoutY="476.0" text="Price" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="tf_price" layoutX="427.0" layoutY="499.0" />
-            <Label layoutX="466.0" layoutY="547.0" text="Description" textFill="WHITE">
+            <Label layoutX="349.0" layoutY="537.0" text="Description" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_description" layoutX="427.0" layoutY="572.0" />
-            <TableView fx:id="table_products" prefHeight="442.0" prefWidth="698.0">
+            <TableView fx:id="table_products" onMouseClicked="#handleMouseAction" prefHeight="442.0" prefWidth="698.0">
                <columns>
                   <TableColumn fx:id="col_id" prefWidth="106.0" text="ID" />
                   <TableColumn fx:id="col_name" minWidth="0.0" prefWidth="152.0" text="Name" />
@@ -64,6 +58,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <TextArea fx:id="ta_description" layoutX="284.0" layoutY="557.0" prefHeight="158.0" prefWidth="208.0" />
          </children>
       </Pane>
       <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">

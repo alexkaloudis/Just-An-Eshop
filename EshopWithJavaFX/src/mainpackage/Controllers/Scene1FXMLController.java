@@ -171,19 +171,23 @@ public class Scene1FXMLController implements Initializable {
     
     
     public void handleUpdateButton(){
+        int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
         String query = "UPDATE users SET username = '"+tf_username.getText()
                 +"', password = '"+tf_password.getText()
                 +"', email= '"+tf_email.getText()
                 +"', phonenumber= '"+tf_phonenumber.getText()
                 +"', fname= '"+tf_fName.getText()
                 +"', lname= '"+tf_lName.getText()
-                +"', age= "+tf_age.getText()+" where age = "+tf_age.getText();
+                +"', age= "+tf_age.getText()+" where id = "+selectedIndexId;
         executeQuery(query);
         showUsers();
         
     }
     public void handleDeleteButton(){
-        String query = "DELETE FROM users WHERE id ='" +tf_id.getText()+"'";
+        int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
+        String queryToDeleteChildren = "DELETE FROM useraddress WHERE userid =" +selectedIndexId;
+        String query = "DELETE FROM users WHERE id =" +selectedIndexId;
+        executeQuery(queryToDeleteChildren);
         executeQuery(query);
         showUsers();        
     }
@@ -197,7 +201,7 @@ public class Scene1FXMLController implements Initializable {
     }
 
     
-public void handleButtonHome() throws Exception{
+    public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         

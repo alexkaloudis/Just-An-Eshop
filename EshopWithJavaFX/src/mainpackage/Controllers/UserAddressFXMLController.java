@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -75,8 +76,8 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     private TextField tf_country;
 
-    @FXML
-    private TextField tf_id;
+//    @FXML
+//    private TextField tf_id;
 
     @FXML
     private TextField tf_number;
@@ -90,7 +91,12 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     private TextField tf_street;
     
+    @FXML
+    private ChoiceBox cb_usernames;
+    
     ObservableList<UserAddress> listM;
+    
+    ObservableList<Users> listUsernames;
     
     int index = -1;
     
@@ -99,7 +105,7 @@ public class UserAddressFXMLController implements Initializable {
     PreparedStatement ps=null;
     
     
-    public void showUserAddress(){
+    public void showUserAddresses(){
         listM = JDBCPosrgreSQLConnector.getDataUserAddress();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("userid"));
@@ -123,8 +129,9 @@ public class UserAddressFXMLController implements Initializable {
     }        
     @FXML
     public void handleCreateButton() {
+        int idFromUsername = JDBCPosrgreSQLConnector.getUserIdFromUsername(cb_usernames.getSelectionModel().getSelectedItem().toString());
         String query = "INSERT INTO useraddress(userid,country,region,city,street,number,postalcode) VALUES (" 
-                +tf_id.getText()
+                +idFromUsername
                 +",'" +tf_country.getText()
                 +"','"+tf_region.getText()
                 +"','"+tf_city.getText()
@@ -132,30 +139,42 @@ public class UserAddressFXMLController implements Initializable {
                 +"',"+tf_number.getText()
                 +",'"+tf_postal_code.getText()+"')";
         executeQuery(query);
-        showUserAddress();        
+        showUserAddresses();        
 
     }
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM products WHERE id =" +tf_id.getText()+"";
-
+        int selectedIndexId = table_user_address.getSelectionModel().getSelectedItem().getId();
+        String query = "DELETE FROM useraddress WHERE id =" +selectedIndexId+"";
         executeQuery(query);
-        showUserAddress();
+        showUserAddresses();
     }
     
+    @FXML
+    public void handleMouseAction() {
+        UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
+//        tf_id.setText(""+user.getId());
+          tf_country.setText(userAd.getCountry());
+          tf_region.setText(userAd.getRegion());
+          tf_city.setText(userAd.getCity());
+          tf_street.setText(userAd.getStreet());
+          tf_number.setText(String.valueOf(userAd.getNumber()));
+          tf_postal_code.setText(userAd.getPostalcode()); 
+    } 
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE users SET country = "+tf_country.getText()
+        int selectedIndexId = table_user_address.getSelectionModel().getSelectedItem().getId();
+        String query = "UPDATE useraddress SET country = "+tf_country.getText()
                 +"', region = '"+tf_region.getText()
                 +"', city = '"+tf_city.getText()
                 +"', street = '"+tf_street.getText()
                 +"', number = '"+tf_number.getText()
-                +"', postalcode = '"+tf_postal_code.getText()+"";
+                +"', postalcode = '"+tf_postal_code.getText()+"' where id = "+selectedIndexId;
 
         executeQuery(query);
-        showUserAddress();        
+        showUserAddresses();        
     }
     
     @FXML
@@ -223,7 +242,11 @@ public class UserAddressFXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showUserAddress();
+        showUserAddresses();
+        listUsernames = JDBCPosrgreSQLConnector.getDataUsers();
+        for(Users user : listUsernames){
+            cb_usernames.getItems().add(user.getUsername());
+        }
     }    
     
 }
