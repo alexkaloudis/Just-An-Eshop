@@ -80,7 +80,7 @@ public class JDBCPosrgreSQLConnector {
     }
     
     public static String getProductNameFromProdId(int prodid) {
-        String SQL = "SELECT id FROM products where id = '"+prodid+"'";
+        String SQL = "SELECT name FROM products where id = '"+prodid+"'";
         String prodname="";
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();

@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Discounts;
+import mainpackage.Models.Orders;
 import mainpackage.Models.Products;
 
 
@@ -75,13 +74,9 @@ public class DiscountsFXMLController implements Initializable {
     private TextField tf_description;
 
     @FXML
-    private TextField tf_id;
-
-    @FXML
     private TextField tf_value;
     
-    @FXML
-    private TextField tf_PR_ID;
+    
     
     @FXML
     private ChoiceBox prod_names;
@@ -234,8 +229,8 @@ public class DiscountsFXMLController implements Initializable {
     public void handleMouseAction() {
         Discounts selectedIndexId = table_discounts.getSelectionModel().getSelectedItem(); 
         Discounts dis = table_discounts.getSelectionModel().getSelectedItem();
-        String getIdFromProdName = JDBCPosrgreSQLConnector.getProductNameFromProdId(dis.getId());
-        prod_names.getSelectionModel().select(dis.getProductid());
+        String getProdName = JDBCPosrgreSQLConnector.getProductNameFromProdId(dis.getId());
+        prod_names.getSelectionModel().select(getProdName);
         tf_value.setText(String.valueOf(dis.getValue()));
         tf_description.setText(dis.getDescription());  
     }
@@ -247,6 +242,7 @@ public class DiscountsFXMLController implements Initializable {
         for(Products pr : listPr){
             prod_names.getItems().add(pr.getName());
         }
+      
 
     }    
     

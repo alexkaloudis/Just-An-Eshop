@@ -28,18 +28,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="278.0" layoutY="476.0" prefHeight="19.0" prefWidth="18.0" text="ID" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="254.0" layoutY="476.0" text="FIrst Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_id" layoutX="213.0" layoutY="499.0" />
-            <Label layoutX="254.0" layoutY="547.0" text="FIrst Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_fName" layoutX="213.0" layoutY="572.0" />
+            <TextField fx:id="tf_fName" layoutX="213.0" layoutY="499.0" />
             <Label layoutX="469.0" layoutY="476.0" text="Last Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
