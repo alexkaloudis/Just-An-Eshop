@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -230,23 +232,12 @@ public class DiscountsFXMLController implements Initializable {
     
     @FXML
     public void handleMouseAction() {
-        Discounts selectedIndexId = table_discounts.getSelectionModel().getSelectedItem();
-        if(selectedIndexId != null){
-            b_update.setDisable(false);
-            b_remove.setDisable(false);
-        } 
+        Discounts selectedIndexId = table_discounts.getSelectionModel().getSelectedItem(); 
         Discounts dis = table_discounts.getSelectionModel().getSelectedItem();
         String getIdFromProdName = JDBCPosrgreSQLConnector.getProductNameFromProdId(dis.getId());
         prod_names.getSelectionModel().select(dis.getProductid());
         tf_value.setText(String.valueOf(dis.getValue()));
         tf_description.setText(dis.getDescription());  
-    }
-    
-    @FXML
-    public void handleMouseExit(){
-        System.out.println("mphke");
-        b_update.setDisable(true);
-        b_remove.setDisable(true);
     }
     
     @Override
@@ -256,8 +247,7 @@ public class DiscountsFXMLController implements Initializable {
         for(Products pr : listPr){
             prod_names.getItems().add(pr.getName());
         }
-        b_update.setDisable(true);
-        b_remove.setDisable(true);
+
     }    
     
 }

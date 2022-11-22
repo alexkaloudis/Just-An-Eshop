@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -244,8 +246,6 @@ public class ProductsFXMLController implements Initializable {
     @FXML
     public void handleMouseAction() {
         Products pr = table_products.getSelectionModel().getSelectedItem();
-        b_update.setDisable(false);
-        b_remove.setDisable(false);
         tf_name.setText(pr.getName());
         tf_price.setText(String.valueOf(pr.getPrice()));
         ta_description.setText(pr.getDescription());  
@@ -255,8 +255,7 @@ public class ProductsFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         showProducts();
         ta_description.setWrapText(true);
-        b_update.setDisable(true);
-        b_remove.setDisable(true);
+       
     }    
     
 }

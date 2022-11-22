@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -202,13 +204,18 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
 
-    
+    @FXML
+    public void handleMouseAction() {
+        OrderProducts op = table_order_products.getSelectionModel().getSelectedItem();
+        tf_quantity.setText(String.valueOf(op.getQuantity()));
+        tf_order_value.setText(String.valueOf(op.getOrdervalue()));
+
+    } 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        showOrderProducts();
+    }
 }
 
 
