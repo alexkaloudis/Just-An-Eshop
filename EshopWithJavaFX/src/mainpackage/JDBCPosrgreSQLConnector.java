@@ -80,7 +80,7 @@ public class JDBCPosrgreSQLConnector {
     }
     
     public static String getProductNameFromProdId(int prodid) {
-        String SQL = "SELECT name FROM products where id = '"+prodid+"'";
+        String SQL = "SELECT name FROM products where id = "+prodid;
         String prodname="";
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();
@@ -106,6 +106,20 @@ public class JDBCPosrgreSQLConnector {
         }
 
         return userid;
+    }
+    
+    public static String getUserNameFromUserid(int userid) {
+        String SQL = "SELECT username FROM users where id = "+userid;
+        String username="";
+        try ( Connection con = ConnectDb();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+            rs.next();
+            username = rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return username;
     }
     
     public static ObservableList<Products> getDataProducts(){

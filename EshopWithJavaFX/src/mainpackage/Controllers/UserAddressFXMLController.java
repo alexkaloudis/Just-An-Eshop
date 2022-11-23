@@ -27,11 +27,6 @@ import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.UserAddress;
 import mainpackage.Models.Users;
 
-/**
- * FXML Controller class
- *
- * @author Mike
- */
 public class UserAddressFXMLController implements Initializable {
 
     @FXML
@@ -75,9 +70,6 @@ public class UserAddressFXMLController implements Initializable {
 
     @FXML
     private TextField tf_country;
-
-//    @FXML
-//    private TextField tf_id;
 
     @FXML
     private TextField tf_number;
@@ -154,24 +146,26 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleMouseAction() {
         UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
-//        tf_id.setText(""+user.getId());
-          tf_country.setText(userAd.getCountry());
-          tf_region.setText(userAd.getRegion());
-          tf_city.setText(userAd.getCity());
-          tf_street.setText(userAd.getStreet());
-          tf_number.setText(String.valueOf(userAd.getNumber()));
-          tf_postal_code.setText(userAd.getPostalcode()); 
+        String username = JDBCPosrgreSQLConnector.getUserNameFromUserid(userAd.getUserid());
+        cb_usernames.getSelectionModel().select(username);
+        tf_country.setText(userAd.getCountry());
+        tf_region.setText(userAd.getRegion());
+        tf_city.setText(userAd.getCity());
+        tf_street.setText(userAd.getStreet());
+        tf_number.setText(String.valueOf(userAd.getNumber()));
+        tf_postal_code.setText(userAd.getPostalcode()); 
     } 
 
     @FXML
     public void handleUpdateButton() {
-        int selectedIndexId = table_user_address.getSelectionModel().getSelectedItem().getId();
-        String query = "UPDATE useraddress SET country = "+tf_country.getText()
+        UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
+        int selectedIndexUAdId = table_user_address.getSelectionModel().getSelectedItem().getId();
+        String query = "UPDATE useraddress SET country = '"+tf_country.getText()
                 +"', region = '"+tf_region.getText()
                 +"', city = '"+tf_city.getText()
                 +"', street = '"+tf_street.getText()
                 +"', number = '"+tf_number.getText()
-                +"', postalcode = '"+tf_postal_code.getText()+"' where id = "+selectedIndexId;
+                +"', postalcode = '"+tf_postal_code.getText()+"' where id = "+selectedIndexUAdId;
 
         executeQuery(query);
         showUserAddresses();        
