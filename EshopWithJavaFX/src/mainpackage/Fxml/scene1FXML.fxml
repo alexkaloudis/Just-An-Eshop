@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -13,64 +14,50 @@
    <children>
       <Pane layoutX="290.0" prefHeight="730.0" prefWidth="705.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="b_add" layoutX="47.0" layoutY="474.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" text="ADD" textFill="WHITE">
+            <Button fx:id="b_add" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/icons8-plus-math-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="b_update" layoutX="39.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="UPDATE" textFill="WHITE">
+            <Button fx:id="b_update" layoutX="46.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/icons8-pencil-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="b_remove" layoutX="36.0" layoutY="586.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" text="REMOVE" textFill="WHITE">
+            <Button fx:id="b_remove" layoutX="46.0" layoutY="585.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Label layoutX="265.0" layoutY="458.0" prefHeight="17.0" prefWidth="75.0" text="User Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_username" layoutX="228.0" layoutY="481.0" />
-            <Label layoutX="273.0" layoutY="525.0" text="Password" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_password" layoutX="228.0" layoutY="547.0" />
-            <Label layoutX="285.0" layoutY="585.0" text="Email" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_email" layoutX="228.0" layoutY="610.0" />
-            <Label layoutX="483.0" layoutY="458.0" text="Phonenumber" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_phonenumber" layoutX="451.0" layoutY="481.0" />
-            <Label layoutX="490.0" layoutY="511.0" text="First Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_fName" layoutX="451.0" layoutY="534.0" />
-            <Label layoutX="494.0" layoutY="563.0" text="Last Name" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_lName" layoutX="449.0" layoutY="582.0" />
-            <Label layoutX="511.0" layoutY="613.0" text="Age" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_age" layoutX="449.0" layoutY="635.0" />
-            <TableView fx:id="table_users" layoutX="8.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="706.0">
+            <TextField fx:id="tf_username" layoutX="211.0" layoutY="446.0" promptText="Username" />
+            <TextField fx:id="tf_password" layoutX="211.0" layoutY="478.0" promptText="Password" />
+            <TextField fx:id="tf_email" layoutX="211.0" layoutY="509.0" promptText="Email" />
+            <TextField fx:id="tf_phonenumber" layoutX="211.0" layoutY="542.0" promptText="Phone Number" />
+            <TextField fx:id="tf_fName" layoutX="211.0" layoutY="573.0" promptText="First Name" />
+            <TextField fx:id="tf_lName" layoutX="211.0" layoutY="605.0" promptText="Last Name" />
+            <TextField fx:id="tf_age" layoutX="211.0" layoutY="635.0" promptText="Age" />
+            <TableView fx:id="table_users" layoutX="7.0" layoutY="8.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="706.0">
                <columns>
                   <TableColumn fx:id="col_id" maxWidth="50.0" prefWidth="50.0" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />
