@@ -148,12 +148,11 @@ public class Scene1FXMLController implements Initializable {
             e.printStackTrace();
         }
     } 
-    
-    //leitoyrgei gia kapoio logo   
+      
     @FXML
     public void handleMouseAction() {
         Users user = table_users.getSelectionModel().getSelectedItem();
-        tf_id.setText(""+user.getId());
+//        tf_id.setText(""+user.getId());
         tf_username.setText(user.getUsername());
         tf_password.setText(user.getPassword());
         tf_email.setText(user.getEmail());

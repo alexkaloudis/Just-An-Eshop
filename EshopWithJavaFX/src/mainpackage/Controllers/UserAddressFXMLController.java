@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -83,8 +84,11 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     private TextField tf_street;
     
+//    @FXML
+//    private ChoiceBox cb_usernames;
+    
     @FXML
-    private ChoiceBox cb_usernames;
+    private ComboBox combo_usernames;
     
     ObservableList<UserAddress> listM;
     
@@ -121,7 +125,7 @@ public class UserAddressFXMLController implements Initializable {
     }        
     @FXML
     public void handleCreateButton() {
-        int idFromUsername = JDBCPosrgreSQLConnector.getUserIdFromUsername(cb_usernames.getSelectionModel().getSelectedItem().toString());
+        int idFromUsername = JDBCPosrgreSQLConnector.getUserIdFromUsername(combo_usernames.getSelectionModel().getSelectedItem().toString());
         String query = "INSERT INTO useraddress(userid,country,region,city,street,number,postalcode) VALUES (" 
                 +idFromUsername
                 +",'" +tf_country.getText()
@@ -147,7 +151,7 @@ public class UserAddressFXMLController implements Initializable {
     public void handleMouseAction() {
         UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
         String username = JDBCPosrgreSQLConnector.getUserNameFromUserid(userAd.getUserid());
-        cb_usernames.getSelectionModel().select(username);
+        combo_usernames.getSelectionModel().select(username);
         tf_country.setText(userAd.getCountry());
         tf_region.setText(userAd.getRegion());
         tf_city.setText(userAd.getCity());
@@ -239,7 +243,7 @@ public class UserAddressFXMLController implements Initializable {
         showUserAddresses();
         listUsernames = JDBCPosrgreSQLConnector.getDataUsers();
         for(Users user : listUsernames){
-            cb_usernames.getItems().add(user.getUsername());
+            combo_usernames.getItems().add(user.getUsername());
         }
     }    
     

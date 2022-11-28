@@ -18,7 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -67,13 +67,13 @@ public class OrderProductsFXMLController implements Initializable {
 
     @FXML
     private TextField tf_quantity;
+     
+    @FXML
+    private ComboBox combo_order_no;
     
     @FXML
-    private ChoiceBox order_numbers;
-    
-    @FXML
-    private ChoiceBox prod_names;
-    
+    private ComboBox combo_products;
+
     ObservableList<OrderProducts> listM; 
     ObservableList<Products> listPr;
     ObservableList<Orders> listOrd;
@@ -107,9 +107,9 @@ public class OrderProductsFXMLController implements Initializable {
     }        
     @FXML
     public void handleCreateButton() {
-        int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(prod_names.getSelectionModel().getSelectedItem().toString());
+        int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
         String query = "INSERT INTO orderproducts(orderno,productid,quantity,ordervalue) VALUES ('"
-                +order_numbers.getSelectionModel().getSelectedItem()
+                +combo_order_no.getSelectionModel().getSelectedItem()
                 +"','"+getIdFromProdName
                 +"',"+tf_quantity.getText()
                 +","+tf_order_value.getText()+")";
@@ -130,7 +130,7 @@ public class OrderProductsFXMLController implements Initializable {
     @FXML
     public void handleUpdateButton() {
         String query = "UPDATE orderproducts SET orderno = '"
-                +order_numbers.getSelectionModel().getSelectedItem()
+                +combo_order_no.getSelectionModel().getSelectedItem()
                 +"', productid = "+table_order_products.getSelectionModel().getSelectedItem().getProductid()
                 +", quantity = "+tf_quantity.getText()
                 +", ordervalue = "+tf_order_value.getText()+" where id = "
@@ -206,8 +206,8 @@ public class OrderProductsFXMLController implements Initializable {
     public void handleMouseAction() {
         OrderProducts op = table_order_products.getSelectionModel().getSelectedItem();
         String prodName = JDBCPosrgreSQLConnector.getProductNameFromProdId(op.getId());
-        order_numbers.getSelectionModel().select(op.getOrderno());
-        prod_names.getSelectionModel().select(prodName);
+        combo_order_no.getSelectionModel().select(op.getOrderno());
+        combo_products.getSelectionModel().select(prodName);
         System.out.println(prodName);
         tf_quantity.setText(String.valueOf(op.getQuantity()));
         tf_order_value.setText(String.valueOf(op.getOrdervalue()));
@@ -219,11 +219,11 @@ public class OrderProductsFXMLController implements Initializable {
         showOrderProducts();
         listPr = JDBCPosrgreSQLConnector.getDataProducts();
         for(Products pr : listPr){
-            prod_names.getItems().add(pr.getName());
+            combo_products.getItems().add(pr.getName());
         }
         listOrd = JDBCPosrgreSQLConnector.getDataOrders();
         for(Orders or : listOrd){
-            order_numbers.getItems().add(or.getOrderno());
+            combo_order_no.getItems().add(or.getOrderno());
         }
     }
 }

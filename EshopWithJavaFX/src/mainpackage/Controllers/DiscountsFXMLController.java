@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +23,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import mainpackage.JDBCPosrgreSQLConnector;
 import mainpackage.Models.Discounts;
@@ -76,10 +80,13 @@ public class DiscountsFXMLController implements Initializable {
     @FXML
     private TextField tf_value;
     
-    
+//    @FXML
+//    private VBox left_vbox;
+//    @FXML
+//    private ChoiceBox prod_names;
     
     @FXML
-    private ChoiceBox prod_names;
+    private ComboBox combo_products;
     
     
     ObservableList<Discounts> listM;
@@ -145,7 +152,7 @@ public class DiscountsFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         
-        int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(prod_names.getSelectionModel().getSelectedItem().toString());
+        int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
         String query = "INSERT INTO discounts(productid,value,description) VALUES ('" 
                 +getIdFromProdName
                 +"','"+ tf_value.getText()
@@ -230,7 +237,7 @@ public class DiscountsFXMLController implements Initializable {
         Discounts selectedIndexId = table_discounts.getSelectionModel().getSelectedItem(); 
         Discounts dis = table_discounts.getSelectionModel().getSelectedItem();
         String getProdName = JDBCPosrgreSQLConnector.getProductNameFromProdId(dis.getId());
-        prod_names.getSelectionModel().select(getProdName);
+        combo_products.getSelectionModel().select(getProdName);
         tf_value.setText(String.valueOf(dis.getValue()));
         tf_description.setText(dis.getDescription());  
     }
@@ -239,10 +246,20 @@ public class DiscountsFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         showDiscounts();
         listPr = JDBCPosrgreSQLConnector.getDataProducts();
+//        for(Products pr : listPr){
+//            prod_names.getItems().add(pr.getName());
+//        } 
+        listPr = JDBCPosrgreSQLConnector.getDataProducts();
         for(Products pr : listPr){
-            prod_names.getItems().add(pr.getName());
+            combo_products.getItems().add(pr.getName());
         }
-      
+//        left_vbox.widthProperty().addListener(new ChangeListener<Number>() {
+//        @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+//            if(newSceneWidth!=oldSceneWidth){
+//                System.out.println("pame");
+//            }
+//        }
+//        });
 
     }    
     
