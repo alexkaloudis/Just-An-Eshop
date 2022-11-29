@@ -108,7 +108,7 @@ public class OrderProductsFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
-        String query = "INSERT INTO orderproducts(orderno,productid,quantity,ordervalue) VALUES ('"
+        String query = "call insert_into_orderproducts('"
                 +combo_order_no.getSelectionModel().getSelectedItem()
                 +"','"+getIdFromProdName
                 +"',"+tf_quantity.getText()
@@ -120,8 +120,8 @@ public class OrderProductsFXMLController implements Initializable {
 
     @FXML
     public void handleDeleteButton() {
-        String query = "DELETE FROM orderproducts WHERE id =" 
-                +table_order_products.getSelectionModel().getSelectedItem().getId();
+        String query = "call delete_from_orderproducts(" 
+                +table_order_products.getSelectionModel().getSelectedItem().getId()+")";
         executeQuery(query);
         showOrderProducts();
     }
@@ -129,12 +129,12 @@ public class OrderProductsFXMLController implements Initializable {
 
     @FXML
     public void handleUpdateButton() {
-        String query = "UPDATE orderproducts SET orderno = '"
+        String query = "call update_orderproducts('"
                 +combo_order_no.getSelectionModel().getSelectedItem()
-                +"', productid = "+table_order_products.getSelectionModel().getSelectedItem().getProductid()
-                +", quantity = "+tf_quantity.getText()
-                +", ordervalue = "+tf_order_value.getText()+" where id = "
-                +table_order_products.getSelectionModel().getSelectedItem().getId();
+                +"',"+table_order_products.getSelectionModel().getSelectedItem().getProductid()
+                +","+tf_quantity.getText()
+                +","+tf_order_value.getText()
+                +","+table_order_products.getSelectionModel().getSelectedItem().getId()+")";
 
         executeQuery(query);
         showOrderProducts();        

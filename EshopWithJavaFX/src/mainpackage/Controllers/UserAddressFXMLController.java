@@ -17,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -104,7 +103,7 @@ public class UserAddressFXMLController implements Initializable {
     public void showUserAddresses(){
         listM = JDBCPosrgreSQLConnector.getDataUserAddress();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
-        col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("userid"));
+        col_id.setCellValueFactory(new PropertyValueFactory<UserAddress,Integer>("id"));
         col_country.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("country"));
         col_region.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("region"));
         col_city.setCellValueFactory(new PropertyValueFactory<UserAddress,String>("city"));
@@ -126,7 +125,7 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         int idFromUsername = JDBCPosrgreSQLConnector.getUserIdFromUsername(combo_usernames.getSelectionModel().getSelectedItem().toString());
-        String query = "INSERT INTO useraddress(userid,country,region,city,street,number,postalcode) VALUES (" 
+        String query = "call insert_into_useraddress(" 
                 +idFromUsername
                 +",'" +tf_country.getText()
                 +"','"+tf_region.getText()
@@ -142,7 +141,7 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleDeleteButton() {
         int selectedIndexId = table_user_address.getSelectionModel().getSelectedItem().getId();
-        String query = "DELETE FROM useraddress WHERE id =" +selectedIndexId+"";
+        String query = "call delete_from_useraddress(" +selectedIndexId+")";
         executeQuery(query);
         showUserAddresses();
     }
@@ -163,13 +162,15 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleUpdateButton() {
         UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
+        String username = combo_usernames.getSelectionModel().getSelectedItem().toString();
         int selectedIndexUAdId = table_user_address.getSelectionModel().getSelectedItem().getId();
-        String query = "UPDATE useraddress SET country = '"+tf_country.getText()
-                +"', region = '"+tf_region.getText()
-                +"', city = '"+tf_city.getText()
-                +"', street = '"+tf_street.getText()
-                +"', number = '"+tf_number.getText()
-                +"', postalcode = '"+tf_postal_code.getText()+"' where id = "+selectedIndexUAdId;
+        String query = "call update_useraddress("+JDBCPosrgreSQLConnector.getUserIdFromUsername(username)
+                +",'"+tf_country.getText()
+                +"','"+tf_region.getText()
+                +"','"+tf_city.getText()
+                +"','"+tf_street.getText()
+                +"','"+tf_number.getText()
+                +"','"+tf_postal_code.getText()+"',"+selectedIndexUAdId+")";
 
         executeQuery(query);
         showUserAddresses();        

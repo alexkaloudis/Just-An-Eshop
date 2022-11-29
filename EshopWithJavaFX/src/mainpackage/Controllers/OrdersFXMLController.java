@@ -154,7 +154,7 @@ public class OrdersFXMLController implements Initializable {
 
     @FXML
     public void handleCreateButton() {
-        String query = "INSERT INTO orders(fname,lname,comments) VALUES ('" 
+        String query = "call insert_into_orders('" 
                 + tf_fName.getText()
                 +"','"+tf_lName.getText()
                 +"','"+tf_comment.getText()+"')";
@@ -168,7 +168,7 @@ public class OrdersFXMLController implements Initializable {
         try{     
             UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
             if(selectedIndexId != null){
-                String query = "DELETE FROM orders WHERE orderno ='" + selectedIndexId + "'";
+                String query = "call delete_from_orders('" + selectedIndexId + "')";
 
         executeQuery(query);
         showOrders(); 
@@ -187,10 +187,10 @@ public class OrdersFXMLController implements Initializable {
         try{     
             UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
             if(selectedIndexId != null){
-                String query = "UPDATE orders SET fname = '"+tf_fName.getText()
-                +"', lname = '"+tf_lName.getText()
-                +"', comments = '"+tf_comment.getText()
-                +"' where orderno = '"+selectedIndexId+"'";
+                String query = "call update_orders('"+tf_fName.getText()
+                +"','"+tf_lName.getText()
+                +"','"+tf_comment.getText()
+                +"','"+selectedIndexId+"')";
                 executeQuery(query);
                 showOrders(); 
             }   
@@ -228,7 +228,6 @@ public class OrdersFXMLController implements Initializable {
     @FXML
     public void handleMouseAction() {
         Orders order = table_orders.getSelectionModel().getSelectedItem();
-        tf_id.setText(String.valueOf(order.getOrderno()));
         tf_fName.setText(order.getFname());
         tf_lName.setText(order.getLname());
         tf_comment.setText(order.getComments());   

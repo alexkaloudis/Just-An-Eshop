@@ -126,7 +126,7 @@ public class Scene1FXMLController implements Initializable {
         table_users.setItems(listM);
     }
     public void insertUser(){
-        String query = "INSERT INTO users(username,password,email,phonenumber,fname,lname,age) VALUES ('" 
+        String query = "call insert_into_users('" 
                 + tf_username.getText()
                 +"','"+tf_password.getText()
                 +"','"+tf_email.getText()
@@ -171,21 +171,21 @@ public class Scene1FXMLController implements Initializable {
     
     public void handleUpdateButton(){
         int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
-        String query = "UPDATE users SET username = '"+tf_username.getText()
-                +"', password = '"+tf_password.getText()
-                +"', email= '"+tf_email.getText()
-                +"', phonenumber= '"+tf_phonenumber.getText()
-                +"', fname= '"+tf_fName.getText()
-                +"', lname= '"+tf_lName.getText()
-                +"', age= "+tf_age.getText()+" where id = "+selectedIndexId;
+        String query = "call update_users('"+tf_username.getText()
+                +"','"+tf_password.getText()
+                +"','"+tf_email.getText()
+                +"','"+tf_phonenumber.getText()
+                +"','"+tf_fName.getText()
+                +"','"+tf_lName.getText()
+                +"',"+tf_age.getText()+","+selectedIndexId+")";
         executeQuery(query);
         showUsers();
         
     }
     public void handleDeleteButton(){
         int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
-        String queryToDeleteChildren = "DELETE FROM useraddress WHERE userid =" +selectedIndexId;
-        String query = "DELETE FROM users WHERE id =" +selectedIndexId;
+        String queryToDeleteChildren = "call delete_from_useraddress_withuserid(" +selectedIndexId+")";
+        String query = "call delete_from_users(" +selectedIndexId+")";
         executeQuery(queryToDeleteChildren);
         executeQuery(query);
         showUsers();        

@@ -72,6 +72,7 @@ public class MainFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showUsers();
+        table_users.getColumns().removeAll(listM);     
     }    
     
 }

@@ -44,7 +44,7 @@ public class JDBCPosrgreSQLConnector {
         Connection con = ConnectDb();
         ObservableList<Users> list = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con.prepareStatement("Select * from users");
+            PreparedStatement ps = con.prepareStatement("select * from get_users()");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -65,7 +65,7 @@ public class JDBCPosrgreSQLConnector {
         return list;
     }
     public static int getProductId(String prodname) {
-        String SQL = "SELECT id FROM products where name = '"+prodname+"'";
+        String SQL = "select get_productid_with_name('"+prodname+"')";
         int prodid=0;
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();
@@ -80,7 +80,7 @@ public class JDBCPosrgreSQLConnector {
     }
     
     public static String getProductNameFromProdId(int prodid) {
-        String SQL = "SELECT name FROM products where id = "+prodid;
+        String SQL = "select get_productname_with_id("+prodid+")";
         String prodname="";
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();
@@ -94,7 +94,7 @@ public class JDBCPosrgreSQLConnector {
     }
     
     public static int getUserIdFromUsername(String username) {
-        String SQL = "SELECT id FROM users where username = '"+username+"'";
+        String SQL = "select  get_id_with_username('"+username+"')";
         int userid=0;
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();
@@ -109,7 +109,7 @@ public class JDBCPosrgreSQLConnector {
     }
     
     public static String getUserNameFromUserid(int userid) {
-        String SQL = "SELECT username FROM users where id = "+userid;
+        String SQL = "select get_username_with_id("+userid+")";
         String username="";
         try ( Connection con = ConnectDb();
                 Statement stmt = con.createStatement();
@@ -126,7 +126,7 @@ public class JDBCPosrgreSQLConnector {
         Connection con = ConnectDb();
         ObservableList<Products> list = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con.prepareStatement("Select * from products");
+            PreparedStatement ps = con.prepareStatement("select * from get_products()");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -148,7 +148,7 @@ public class JDBCPosrgreSQLConnector {
         Connection con = ConnectDb();
         ObservableList<Discounts> list = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con.prepareStatement("Select * from discounts");
+            PreparedStatement ps = con.prepareStatement("select * from get_discounts()");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -169,7 +169,7 @@ public class JDBCPosrgreSQLConnector {
         Connection con = ConnectDb();
         ObservableList<Orders> list = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con.prepareStatement("Select * from orders");
+            PreparedStatement ps = con.prepareStatement("select * from get_orders()");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -192,7 +192,7 @@ public class JDBCPosrgreSQLConnector {
             Connection con = ConnectDb();
             ObservableList<OrderProducts> list = FXCollections.observableArrayList();
             try{
-                PreparedStatement ps = con.prepareStatement("Select * from orderproducts");
+                PreparedStatement ps = con.prepareStatement("select * from get_order_products()");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -213,7 +213,7 @@ public class JDBCPosrgreSQLConnector {
             Connection con = ConnectDb();
             ObservableList<UserAddress> list = FXCollections.observableArrayList();
             try{
-                PreparedStatement ps = con.prepareStatement("Select * from useraddress");
+                PreparedStatement ps = con.prepareStatement("select * from get_useraddress()");
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka

@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -127,7 +125,7 @@ public class ProductsFXMLController implements Initializable {
         Alert a = new Alert(AlertType.NONE);
         try{ 
             if(tf_name.getText() != "" && tf_price.getText() != "" && ta_description.getText() != ""){
-                String query = "INSERT INTO products(name,price,description) VALUES ('" 
+                String query = "call insert_into_products('" 
                 + tf_name.getText()
                 +"',"+tf_price.getText()
                 +",'"+ta_description.getText()+"')";
@@ -151,7 +149,7 @@ public class ProductsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "DELETE FROM products WHERE id = " +selectedIndexId;
+                String query = "call delete_from_products(" +selectedIndexId+")";
                 executeQuery(query);
                 showProducts();
             }    
@@ -170,9 +168,9 @@ public class ProductsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "UPDATE products SET name = '"+tf_name.getText()
-                    +"', price = "+tf_price.getText()
-                    +", description = '"+ta_description.getText()+"' where id = "+selectedIndexId;
+                String query = "call update_products('"+tf_name.getText()
+                    +"',"+tf_price.getText()
+                    +",'"+ta_description.getText()+"',"+selectedIndexId+")";
 
                 executeQuery(query);
                 showProducts();
