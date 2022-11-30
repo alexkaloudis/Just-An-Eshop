@@ -5,6 +5,9 @@
 package mainpackage;
 
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -64,6 +67,298 @@ public class JDBCPosrgreSQLConnector {
 
         return list;
     }
+    
+    public static void getDataUsersLogs(){
+        Connection con = ConnectDb();
+
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_users_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("userslog.txt");
+            FileWriter myWriter = new FileWriter("userslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "username : " + rs.getString("username")+"\n"+
+                                                    "password : " + rs.getString("password")+"\n"+
+                                                    "email : " + rs.getString("email")+"\n"+
+                                                    "phonenumber : " + rs.getString("phonenumber")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname : " + rs.getString("lname")+"\n"+
+                                                    "age: " + rs.getInt("age")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "username : " + rs.getString("username")+"\n"+
+                                                    "password : " + rs.getString("password")+"\n"+
+                                                    "email : " + rs.getString("email")+"\n"+
+                                                    "phonenumber : " + rs.getString("phonenumber")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname : " + rs.getString("lname")+"\n"+
+                                                    "age: " + rs.getInt("age")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "username : " + rs.getString("username")+"\n"+
+                                                    "password : " + rs.getString("password")+"\n"+
+                                                    "email : " + rs.getString("email")+"\n"+
+                                                    "phonenumber : " + rs.getString("phonenumber")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname : " + rs.getString("lname")+"\n"+
+                                                    "age: " + rs.getInt("age")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void getDataProductsLogs(){
+        Connection con = ConnectDb();
+
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_product_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("productslog.txt");
+            FileWriter myWriter = new FileWriter("productslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "name : " + rs.getString("name")+"\n"+
+                                                    "price : " + rs.getFloat("price")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "name : " + rs.getString("name")+"\n"+
+                                                    "price : " + rs.getFloat("price")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "name : " + rs.getString("name")+"\n"+
+                                                    "price : " + rs.getFloat("price")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void getDataDiscountsLogs(){
+        Connection con = ConnectDb();
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_discount_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("discountslog.txt");
+            FileWriter myWriter = new FileWriter("discountslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "value: " + rs.getFloat("value")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "value: " + rs.getFloat("value")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "value: " + rs.getFloat("value")+"\n"+
+                                                    "description : " + rs.getString("description")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void getDataOrdersLogs(){
+        Connection con = ConnectDb();
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_orders_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("orderslog.txt");
+            FileWriter myWriter = new FileWriter("orderslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("orderno : " + rs.getString("orderno")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname: " + rs.getString("lname")+"\n"+
+                                                    "comments : " + rs.getString("comments")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("orderno : " + rs.getString("orderno")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname: " + rs.getString("lname")+"\n"+
+                                                    "comments : " + rs.getString("comments")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("orderno : " + rs.getString("orderno")+"\n"+
+                                                    "fname : " + rs.getString("fname")+"\n"+
+                                                    "lname: " + rs.getString("lname")+"\n"+
+                                                    "comments : " + rs.getString("comments")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+    
+        public static void getDataOrderProductsLogs(){
+        Connection con = ConnectDb();
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_order_products_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("orderproductslog.txt");
+            FileWriter myWriter = new FileWriter("orderproductslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "orderno : " + rs.getString("orderno")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "quantity : " + rs.getInt("quantity")+"\n"+
+                                                    "ordervalue : " + rs.getString("ordervalue")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "orderno : " + rs.getString("orderno")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "quantity : " + rs.getInt("quantity")+"\n"+
+                                                    "ordervalue : " + rs.getString("ordervalue")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("id : " + rs.getInt("id")+"\n"+
+                                                    "orderno : " + rs.getString("orderno")+"\n"+
+                                                    "productid : " + rs.getInt("productid")+"\n"+
+                                                    "quantity : " + rs.getInt("quantity")+"\n"+
+                                                    "ordervalue : " + rs.getString("ordervalue")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+        
+    public static void getDataUserAddressLogs(){
+        Connection con = ConnectDb();
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from get_useraddress_logs()");
+            ResultSet rs = ps.executeQuery();
+            File textFile = new File("useraddresslog.txt");
+            FileWriter myWriter = new FileWriter("useraddresslog.txt");
+            Desktop desktop = Desktop.getDesktop();
+            if(textFile.exists()){
+                desktop.open(textFile);
+            }
+            myWriter.write("");
+            
+            while(rs.next()){
+                if(rs.getTimestamp("inserted_on") != null){
+                    myWriter.write(String.format("userid : " + rs.getInt("userid")+"\n"+
+                                                    "country : " + rs.getString("country")+"\n"+
+                                                    "region : " + rs.getString("region")+"\n"+
+                                                    "city : " + rs.getString("city")+"\n"+
+                                                    "street : " + rs.getString("street")+"\n"+
+                                                    "number : " + rs.getInt("number")+"\n"+
+                                                    "postalcode : " + rs.getString("postalcode")+"\n"+
+                                                    "id : " + rs.getInt("id")+"\n"+
+                                                    "inserted_on: " + rs.getTimestamp("inserted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else if(rs.getTimestamp("updated_on") != null){
+                    myWriter.write(String.format("userid : " + rs.getInt("userid")+"\n"+
+                                                    "country : " + rs.getString("country")+"\n"+
+                                                    "region : " + rs.getString("region")+"\n"+
+                                                    "city : " + rs.getString("city")+"\n"+
+                                                    "street : " + rs.getString("street")+"\n"+
+                                                    "number : " + rs.getInt("number")+"\n"+
+                                                    "postalcode : " + rs.getString("postalcode")+"\n"+
+                                                    "id : " + rs.getInt("id")+"\n"+
+                                                    "updated_on: " + rs.getTimestamp("updated_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }else{
+                    myWriter.write(String.format("userid : " + rs.getInt("userid")+"\n"+
+                                                    "country : " + rs.getString("country")+"\n"+
+                                                    "region : " + rs.getString("region")+"\n"+
+                                                    "city : " + rs.getString("city")+"\n"+
+                                                    "street : " + rs.getString("street")+"\n"+
+                                                    "number : " + rs.getInt("number")+"\n"+
+                                                    "postalcode : " + rs.getString("postalcode")+"\n"+
+                                                    "id : " + rs.getInt("id")+"\n"+
+                                                    "deleted_on: " + rs.getTimestamp("deleted_on")+"\n"));
+                    myWriter.write(String.format("--------------------------------------%n"));
+                }
+            }
+            myWriter.close();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+    }
+    
     public static int getProductId(String prodname) {
         String SQL = "select get_productid_with_name('"+prodname+"')";
         int prodid=0;

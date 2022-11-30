@@ -51,6 +51,9 @@ public class MenuFXMLController implements Initializable {
     private Button b_update;
 
     @FXML
+    private Button btn_gotologs;
+    
+    @FXML
      public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -121,6 +124,14 @@ public class MenuFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }    
      
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) b_user_address.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
+    } 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,47 +32,35 @@ import mainpackage.Models.Products;
 
 public class OrderProductsFXMLController implements Initializable {
 
+    private Button b_user_address;
+    private Button b_Dsc;
+
     
     @FXML
-    private Button b_user_address,
-                   b_Dsc,
-                   b_Pr,
-                   b_add,
+    private Button b_Pr,
                    b_home,
                    b_orders,
                    b_orders_products,
-                   b_remove,
-                   b_s1,
-                   b_update;
+                   b_s1;
 
-    @FXML
     private TableColumn<OrderProducts, Integer> col_id;
 
-    @FXML
     private TableColumn<OrderProducts, UUID> col_order_number;
 
-    @FXML
     private TableColumn<OrderProducts, Float> col_order_value;
 
-    @FXML
     private TableColumn<OrderProducts, Integer> col_prod_id;
 
-    @FXML
     private TableColumn<OrderProducts, Integer> col_quantity;
 
-    @FXML
     private TableView<OrderProducts> table_order_products;
 
-    @FXML
     private TextField tf_order_value;
 
-    @FXML
     private TextField tf_quantity;
      
-    @FXML
     private ComboBox combo_order_no;
     
-    @FXML
     private ComboBox combo_products;
 
     ObservableList<OrderProducts> listM; 
@@ -83,6 +72,8 @@ public class OrderProductsFXMLController implements Initializable {
     Connection con = null;
     ResultSet set = null;
     PreparedStatement ps=null;
+    @FXML
+    private TableView<?> logs_projector;
     
     
     public void showOrderProducts(){
@@ -105,7 +96,6 @@ public class OrderProductsFXMLController implements Initializable {
             e.printStackTrace();
         }
     }        
-    @FXML
     public void handleCreateButton() {
         int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
         String query = "call insert_into_orderproducts('"
@@ -118,7 +108,6 @@ public class OrderProductsFXMLController implements Initializable {
 
     }
 
-    @FXML
     public void handleDeleteButton() {
         String query = "call delete_from_orderproducts(" 
                 +table_order_products.getSelectionModel().getSelectedItem().getId()+")";
@@ -127,7 +116,6 @@ public class OrderProductsFXMLController implements Initializable {
     }
     
 
-    @FXML
     public void handleUpdateButton() {
         String query = "call update_orderproducts('"
                 +combo_order_no.getSelectionModel().getSelectedItem()
@@ -140,7 +128,6 @@ public class OrderProductsFXMLController implements Initializable {
         showOrderProducts();        
     }
     
-    @FXML
     public void handleButtonHome() throws Exception{
         URL url = new File("src/mainpackage/Fxml/menuFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -149,7 +136,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
      
-    @FXML
     public void handleButtonScene1() throws Exception{
         URL url = new File("src/mainpackage/Fxml/scene1FXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -158,7 +144,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
     
-    @FXML
     public void handleButtonProducts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/productsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -167,7 +152,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
      
-    @FXML
     public void handleButtonDiscounts() throws Exception{
         URL url = new File("src/mainpackage/Fxml/discountsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -176,7 +160,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
     
-    @FXML
     public void handleButtonOrders()throws Exception {
         URL url = new File("src/mainpackage/Fxml/ordersFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -185,7 +168,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
     
-    @FXML
     public void handleButtonOrders_prod()throws Exception {
         URL url = new File("src/mainpackage/Fxml/orderProductsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -193,7 +175,6 @@ public class OrderProductsFXMLController implements Initializable {
         Stage window = (Stage) b_orders_products.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
-    @FXML
     public void handleButtonUserAddress()throws Exception {
         URL url = new File("src/mainpackage/Fxml/userAddressFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
@@ -202,7 +183,6 @@ public class OrderProductsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }
 
-    @FXML
     public void handleMouseAction() {
         OrderProducts op = table_order_products.getSelectionModel().getSelectedItem();
         String prodName = JDBCPosrgreSQLConnector.getProductNameFromProdId(op.getId());
@@ -225,6 +205,10 @@ public class OrderProductsFXMLController implements Initializable {
         for(Orders or : listOrd){
             combo_order_no.getItems().add(or.getOrderno());
         }
+    }
+
+    @FXML
+    private void generateFillTableUsers(ActionEvent event) {
     }
 }
 

@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
    <children>
-      <AnchorPane prefHeight="730.0" prefWidth="335.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane fx:id="btn_goto_logs" prefHeight="730.0" prefWidth="335.0" style="-fx-background-color: #3f2b63;">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>
@@ -54,6 +54,11 @@
                   </Label>
                </children>
             </Pane>
+            <Button fx:id="btn_gotologs" layoutX="91.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleButtonLogs" style="-fx-background-color: #3f2b63;" text="Logs" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
