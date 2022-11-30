@@ -55,6 +55,8 @@ public class DiscountsFXMLController implements Initializable {
             b_s1,
             b_update,
             b_user_address;
+        @FXML
+    private Button b_defaultView;
 
     @FXML
     private TableColumn<Discounts, Integer> col_PR_ID;
@@ -241,6 +243,12 @@ public class DiscountsFXMLController implements Initializable {
         tf_value.setText(String.valueOf(dis.getValue()));
         tf_description.setText(dis.getDescription());  
     }
+    
+        @FXML
+    void handleDefaultView() {
+        showDiscounts();      
+    }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

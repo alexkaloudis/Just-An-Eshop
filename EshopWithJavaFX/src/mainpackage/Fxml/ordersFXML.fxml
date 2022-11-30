@@ -10,51 +10,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="713.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.OrdersFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.OrdersFXMLController">
    <children>
-      <Pane layoutX="281.0" prefHeight="730.0" prefWidth="698.0" style="-fx-background-color: #1b827f;">
+      <Pane layoutX="281.0" prefHeight="730.0" prefWidth="707.0" style="-fx-background-color: #1b827f;">
          <children>
             <Button fx:id="b_add" layoutX="80.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/icons8-plus-math-30.png" />
-                     </image></ImageView>
-               </graphic>
             </Button>
             <Button fx:id="b_update" layoutX="70.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/icons8-pencil-50.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
             <Button fx:id="b_remove" layoutX="70.0" layoutY="578.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icons/delete.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
-            <TextField fx:id="tf_fName" layoutX="213.0" layoutY="499.0" promptText="First Name" />
-            <TextField fx:id="tf_lName" layoutX="213.0" layoutY="535.0" promptText="Last Name" />
-            <TextField fx:id="tf_comment" layoutX="213.0" layoutY="572.0" promptText="Comments" />
+            <TextField fx:id="tf_fName" layoutX="139.0" layoutY="506.0" promptText="First Name" />
+            <TextField fx:id="tf_lName" layoutX="139.0" layoutY="548.0" promptText="Last Name" />
+            <TextField fx:id="tf_comment" layoutX="139.0" layoutY="597.0" promptText="Comments" />
+            <ImageView fitHeight="37.0" fitWidth="90.0" layoutX="62.0" layoutY="597.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/delete.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="90.0" layoutX="62.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/icons8-pencil-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="90.0" layoutX="62.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/icons8-plus-math-30.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <TableView fx:id="table_orders" layoutX="290.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="462.0" prefWidth="689.0">
+      <TableView fx:id="table_orders" layoutX="290.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="462.0" prefWidth="697.0">
          <columns>
             <TableColumn fx:id="col_uuid" prefWidth="106.0" text="Order ID" />
             <TableColumn fx:id="col_dateoforder" prefWidth="156.0" text="Order Date" />

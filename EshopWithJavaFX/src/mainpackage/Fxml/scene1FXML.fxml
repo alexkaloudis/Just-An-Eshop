@@ -14,12 +14,12 @@
    <children>
       <Pane layoutX="290.0" prefHeight="730.0" prefWidth="705.0" style="-fx-background-color: #1b827f;" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="b_add" layoutX="57.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
+            <Button fx:id="b_add" layoutX="57.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/icons8-plus-math-30.png" />
                      </image>
@@ -31,19 +31,19 @@
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/icons8-pencil-50.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="b_remove" layoutX="46.0" layoutY="585.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
+            <Button fx:id="b_remove" layoutX="48.0" layoutY="574.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1b827f;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/delete.png" />
                      </image>
@@ -57,7 +57,7 @@
             <TextField fx:id="tf_fName" layoutX="211.0" layoutY="573.0" promptText="First Name" />
             <TextField fx:id="tf_lName" layoutX="211.0" layoutY="605.0" promptText="Last Name" />
             <TextField fx:id="tf_age" layoutX="211.0" layoutY="635.0" promptText="Age" />
-            <TableView fx:id="table_users" layoutX="7.0" layoutY="8.0" onMouseClicked="#handleMouseAction" prefHeight="428.0" prefWidth="706.0">
+            <TableView fx:id="table_users" layoutX="7.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="437.0" prefWidth="706.0">
                <columns>
                   <TableColumn fx:id="col_id" maxWidth="50.0" prefWidth="50.0" text="Id" />
                   <TableColumn fx:id="col_username" prefWidth="75.99995422363281" text="Username" />

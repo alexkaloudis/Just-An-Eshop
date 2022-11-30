@@ -17,39 +17,39 @@
    <children>
       <BorderPane prefHeight="730.0" prefWidth="992.0">
          <left>
-            <VBox fx:id="left_vbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="730.0" prefWidth="318.0" style="-fx-background-color: #3f2b63;" BorderPane.alignment="CENTER">
+            <VBox fx:id="left_vbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="730.0" prefWidth="292.0" style="-fx-background-color: #3f2b63;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="b_home" mnemonicParsing="false" onAction="#handleButtonHome" prefHeight="52.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Home" textFill="WHITE">
+                  <Button fx:id="b_home" mnemonicParsing="false" onAction="#handleButtonHome" prefHeight="52.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Home" textFill="WHITE" translateY="50.0">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_s1" mnemonicParsing="false" onAction="#handleButtonScene1" prefHeight="43.0" prefWidth="285.0" style="-fx-background-color: #3f2b63;" text="Users" textFill="WHITE">
+                  <Button fx:id="b_s1" mnemonicParsing="false" onAction="#handleButtonScene1" prefHeight="43.0" prefWidth="285.0" style="-fx-background-color: #3f2b63;" text="Users" textFill="WHITE" translateY="79.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_Pr" mnemonicParsing="false" onAction="#handleButtonProducts" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Products" textFill="WHITE">
+                  <Button fx:id="b_Pr" mnemonicParsing="false" onAction="#handleButtonProducts" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Products" textFill="WHITE" translateY="72.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_Dsc" mnemonicParsing="false" onAction="#handleButtonDiscounts" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Discounts" textFill="WHITE">
+                  <Button fx:id="b_Dsc" mnemonicParsing="false" onAction="#handleButtonDiscounts" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Discounts" textFill="WHITE" translateY="71.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_orders" mnemonicParsing="false" onAction="#handleButtonOrders" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
+                  <Button fx:id="b_orders" mnemonicParsing="false" onAction="#handleButtonOrders" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE" translateY="63.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_orders_products" mnemonicParsing="false" onAction="#handleButtonOrders_prod" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: #3f2b63;" text="Orders Products" textFill="WHITE">
+                  <Button fx:id="b_orders_products" mnemonicParsing="false" onAction="#handleButtonOrders_prod" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: #3f2b63;" text="Orders Products" textFill="WHITE" translateY="56.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="b_user_address" mnemonicParsing="false" onAction="#handleButtonUserAddress" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="User Address" textFill="WHITE">
+                  <Button fx:id="b_user_address" mnemonicParsing="false" onAction="#handleButtonUserAddress" prefHeight="43.0" prefWidth="286.0" style="-fx-background-color: #3f2b63;" text="User Address" textFill="WHITE" translateY="52.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -66,7 +66,7 @@
                            <columns>
                               <TableColumn fx:id="col_id" minWidth="1.0" prefWidth="20.0" text="ID" />
                               <TableColumn fx:id="col_PR_ID" minWidth="0.0" prefWidth="21.5999755859375" text="Product ID" />
-                              <TableColumn fx:id="col_value" prefWidth="255.199951171875" text="Value" />
+                              <TableColumn fx:id="col_value" prefWidth="255.199951171875" text="Discount" />
                               <TableColumn fx:id="col_dateofcreation" prefWidth="156.0" text="Date of Creation" />
                               <TableColumn fx:id="col_description" prefWidth="141.0" text="Description" />
                            </columns>
@@ -83,7 +83,7 @@
                               <Font size="18.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../icons/delete.png" />
                                  </image>
@@ -95,7 +95,7 @@
                               <Font size="18.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../icons/icons8-plus-math-30.png" />
                                  </image>
@@ -107,7 +107,7 @@
                               <Font size="18.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="21.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../icons/icons8-pencil-50.png" />
                                  </image>
@@ -117,6 +117,24 @@
                         <TextField fx:id="tf_value" layoutX="153.0" layoutY="81.0" promptText="Value" />
                         <TextField fx:id="tf_description" layoutX="153.0" layoutY="124.0" promptText="Description" />
                         <ComboBox fx:id="combo_products" layoutX="152.0" layoutY="36.0" prefWidth="150.0" promptText="Products" />
+                        <ComboBox fx:id="combo_queries" layoutX="498.0" layoutY="36.0" prefHeight="25.0" prefWidth="185.0" promptText="Querry" />
+                        <Button fx:id="b_defaultView" layoutX="24.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleDefaultView" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icons/icons8-eye-30.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="424.0" layoutY="81.0" mnemonicParsing="false" style="-fx-background-color: #1b827f;" text="Products with discounts in BF and Christmas" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
                </children>

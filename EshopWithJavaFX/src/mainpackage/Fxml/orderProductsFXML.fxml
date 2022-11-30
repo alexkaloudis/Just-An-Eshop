@@ -20,7 +20,7 @@
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/icons8-plus-math-30.png" />
                      </image>
@@ -32,7 +32,7 @@
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/icons8-pencil-50.png" />
                      </image>
@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/delete.png" />
                      </image>
