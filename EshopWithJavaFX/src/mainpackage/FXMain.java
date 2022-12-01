@@ -25,7 +25,7 @@ public class FXMain extends Application {
             
             Scene scene = new Scene(root, 988, 730);
             
-            primaryStage.setTitle("Hello World!");
+            primaryStage.setTitle("Just an eshop");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

@@ -55,6 +55,8 @@ public class Scene1FXMLController implements Initializable {
 
     @FXML
     private Button b_update;
+        @FXML
+    private Button b_findQueryButton;
     @FXML
     private TableView<Users> table_users;
     @FXML
@@ -103,6 +105,12 @@ public class Scene1FXMLController implements Initializable {
     @FXML
     private TextField tf_username;
     
+    @FXML
+    private TextField tf_findUserID;
+
+    @FXML
+    private TextField tf_findUserName;
+    
     ObservableList<Users> listM;
     
     int index = -1;
@@ -125,6 +133,25 @@ public class Scene1FXMLController implements Initializable {
         col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Users,Date>("dateofcreation"));
         table_users.setItems(listM);
     }
+    
+    
+        public void showSelectedIDUsers(){
+        listM = JDBCPosrgreSQLConnector.getUserIdFromUsersDQuery();
+        //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
+        col_id.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Id"));
+        col_username.setCellValueFactory(new PropertyValueFactory<Users,String>("Username"));
+        col_password.setCellValueFactory(new PropertyValueFactory<Users,String>("Password"));
+        col_email.setCellValueFactory(new PropertyValueFactory<Users,String>("Email"));
+        col_phonenumber.setCellValueFactory(new PropertyValueFactory<Users,String>("Phonenumber"));
+        col_firstname.setCellValueFactory(new PropertyValueFactory<Users,String>("Firstname"));
+        col_lastname.setCellValueFactory(new PropertyValueFactory<Users,String>("Lastname"));
+        col_age.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Age"));
+        col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Users,Date>("dateofcreation"));
+        table_users.setItems(listM);
+    }
+    
+    
+    
     public void insertUser(){
         String query = "INSERT INTO users(username,password,email,phonenumber,fname,lname,age) VALUES ('" 
                 + tf_username.getText()
@@ -137,7 +164,7 @@ public class Scene1FXMLController implements Initializable {
         executeQuery(query);
         showUsers();
     }
-    
+
     
     public void executeQuery(String query){
         con = JDBCPosrgreSQLConnector.ConnectDb(); 
@@ -259,6 +286,19 @@ public class Scene1FXMLController implements Initializable {
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     } 
+    
+    @FXML
+    void handleDefaultView() {
+        showUsers();
+    }
+    
+        @FXML
+    void handleQueryButton() {
+        String selectstring = "SELECT fn_getusername('"+tf_findUserID.getText()+"') AS ANSWER" ;
+        executeQuery(selectstring);
+        showSelectedIDUsers();  
+
+    }
 
     
 }
