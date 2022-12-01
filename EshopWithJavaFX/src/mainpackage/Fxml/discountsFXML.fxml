@@ -117,7 +117,6 @@
                         <TextField fx:id="tf_value" layoutX="153.0" layoutY="81.0" promptText="Value" />
                         <TextField fx:id="tf_description" layoutX="153.0" layoutY="124.0" promptText="Description" />
                         <ComboBox fx:id="combo_products" layoutX="152.0" layoutY="36.0" prefWidth="150.0" promptText="Products" />
-                        <ComboBox fx:id="combo_queries" layoutX="498.0" layoutY="36.0" prefHeight="25.0" prefWidth="185.0" promptText="Querry" />
                         <Button fx:id="b_defaultView" layoutX="24.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleDefaultView" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                            <font>
                               <Font size="18.0" />
@@ -130,10 +129,18 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="424.0" layoutY="81.0" mnemonicParsing="false" style="-fx-background-color: #1b827f;" text="Products with discounts in BF and Christmas" textFill="WHITE">
+                        <TextField fx:id="tf_findUserID" layoutX="396.0" layoutY="40.0" promptText="Search discount" />
+                        <Button fx:id="b_findQueryButton" layoutX="565.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                            <font>
-                              <Font name="System Bold" size="13.0" />
+                              <Font size="18.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icons/icons8-enter-key-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                      </children>
                   </Pane>

@@ -84,7 +84,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="b_findQueryButton" layoutX="586.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+            <Button fx:id="b_findQueryButton" layoutX="589.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                <font>
                   <Font size="18.0" />
                </font>

@@ -47,6 +47,20 @@
                   <Image url="@../../icons/icons8-plus-math-30.png" />
                </image>
             </ImageView>
+            <Button fx:id="b_findQueryButton" layoutX="583.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/icons8-enter-key-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="tf_findFname" layoutX="420.0" layoutY="509.0" promptText="First name" />
+            <TextField fx:id="tf_findLastname" layoutX="420.0" layoutY="548.0" promptText="Last name" />
          </children>
       </Pane>
       <TableView fx:id="table_orders" layoutX="290.0" layoutY="-1.0" onMouseClicked="#handleMouseAction" prefHeight="462.0" prefWidth="697.0">

@@ -97,6 +97,19 @@
             <TextField fx:id="tf_number" layoutX="153.0" layoutY="618.0" promptText="Number" />
             <TextField fx:id="tf_postal_code" layoutX="153.0" layoutY="655.0" promptText="Postal Code" />
             <ComboBox fx:id="combo_usernames" layoutX="152.0" layoutY="437.0" prefWidth="150.0" promptText="username" />
+            <TextField fx:id="tf_findcountry" layoutX="389.0" layoutY="450.0" promptText="Find user's country" />
+            <Button fx:id="b_findQueryButton" layoutX="555.0" layoutY="438.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/icons8-enter-key-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
       <TableView fx:id="table_user_address" layoutX="281.0" onMouseClicked="#handleMouseAction" prefHeight="430.0" prefWidth="718.0">

@@ -108,7 +108,7 @@ public class JDBCPosrgreSQLConnector {
         return userid;
     }
     
-// dimiourgia          
+// apopira 1        
         public static ObservableList<Users> getUserIdFromUsersDQuery(){
         Connection con = ConnectDb();
         ObservableList<Users> list = FXCollections.observableArrayList();
@@ -133,7 +133,7 @@ public class JDBCPosrgreSQLConnector {
         return list;
     }
     
-//dokimi        
+//apopira 2     
     public static String getUserIdFromUsersDQuery1(int userid) {
         //"SELECT * FROM fn_getuserid ( ?)"
         //"SELECT username FROM users where id = "+userid
