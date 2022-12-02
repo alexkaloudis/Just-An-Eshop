@@ -63,6 +63,8 @@ public class ProductsFXMLController implements Initializable {
 
     @FXML
     private Button b_update;
+    @FXML
+    private Button btn_gotologs;
 
     @FXML
     private TableColumn<Products, Date> col_dateofcreation;
@@ -254,6 +256,15 @@ public class ProductsFXMLController implements Initializable {
         showProducts();
         ta_description.setWrapText(true);
        
-    }    
+    }  
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
+    }
+
     
 }

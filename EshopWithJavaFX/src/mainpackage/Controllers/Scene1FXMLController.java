@@ -37,24 +37,21 @@ public class Scene1FXMLController implements Initializable {
     private Button b_orders;
     @FXML
     private Button b_Dsc;
-    
+   
     @FXML
     private Button b_Pr;
-
     @FXML
     private Button b_add;
-
     @FXML
     private Button b_home;
-
     @FXML
     private Button b_remove;
-
     @FXML
     private Button b_s1;
-
     @FXML
     private Button b_update;
+    @FXML
+    private Button btn_gotologs;
     @FXML
     private TableView<Users> table_users;
     @FXML
@@ -258,7 +255,16 @@ public class Scene1FXMLController implements Initializable {
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
-    } 
+    }
+    
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
+    }
 
     
 }

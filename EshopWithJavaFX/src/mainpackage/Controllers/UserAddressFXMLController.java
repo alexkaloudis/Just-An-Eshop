@@ -40,6 +40,8 @@ public class UserAddressFXMLController implements Initializable {
             b_s1,
             b_update,
             b_user_address;
+    @FXML
+    private Button btn_gotologs;     
 
     @FXML
     private TableColumn<UserAddress, String> col_city;
@@ -238,6 +240,14 @@ public class UserAddressFXMLController implements Initializable {
         Stage window = (Stage) b_user_address.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
+    }    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

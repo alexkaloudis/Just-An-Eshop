@@ -5,10 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="987.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.Controllers.MenuFXMLController">
    <children>
-      <AnchorPane fx:id="btn_goto_logs" prefHeight="730.0" prefWidth="335.0" style="-fx-background-color: #3f2b63;">
+      <AnchorPane fx:id="btn_goto_logs" prefHeight="736.0" prefWidth="998.0" style="-fx-background-color: #3f2b63;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
             <Button fx:id="b_orders" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleButtonOrders" style="-fx-background-color: #3f2b63;" text="Orders" textFill="WHITE">
                <font>
@@ -45,13 +46,18 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Pane layoutX="331.0" prefHeight="730.0" prefWidth="716.0" style="-fx-background-color: #1b827f;">
+            <Pane layoutX="282.0" prefHeight="736.0" prefWidth="717.0" style="-fx-background-color: #1b827f;">
                <children>
-                  <Label layoutX="52.0" layoutY="79.0" prefHeight="89.0" prefWidth="524.0" text="This is home yoo." textFill="WHITE">
+                  <Label layoutX="272.0" layoutY="66.0" prefHeight="89.0" prefWidth="207.0" text="Information" textFill="WHITE">
                      <font>
-                        <Font name="System Bold Italic" size="57.0" />
+                        <Font name="System Bold Italic" size="31.0" />
                      </font>
                   </Label>
+                  <Text fill="WHITE" layoutX="229.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Η εφαρμογή δημιούργηθηκε από τον Αποστολίδη Μιχαήλ και τον Καλούδη Αλέξανδρο για τον μάθημα Τεχνολογόα Βάσεων Δεδομένων 2021-2022" wrappingWidth="324.0302734375">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Button fx:id="btn_gotologs" layoutX="91.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleButtonLogs" style="-fx-background-color: #3f2b63;" text="Logs" textFill="WHITE">

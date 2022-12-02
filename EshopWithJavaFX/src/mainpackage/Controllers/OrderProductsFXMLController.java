@@ -42,7 +42,8 @@ public class OrderProductsFXMLController implements Initializable {
                    b_orders,
                    b_orders_products,
                    b_s1;
-
+    @FXML
+    private Button btn_gotologs; 
     private TableColumn<OrderProducts, Integer> col_id;
 
     private TableColumn<OrderProducts, UUID> col_order_number;
@@ -180,6 +181,14 @@ public class OrderProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
+    }
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
 

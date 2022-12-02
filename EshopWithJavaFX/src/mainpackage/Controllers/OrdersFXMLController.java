@@ -43,6 +43,9 @@ public class OrdersFXMLController implements Initializable {
                 b_remove,
                 b_s1,
                 b_update;
+   
+    @FXML
+    private Button btn_gotologs;  
 
     @FXML
     private TableColumn<Orders, String> col_comments;
@@ -231,6 +234,14 @@ public class OrdersFXMLController implements Initializable {
         tf_fName.setText(order.getFname());
         tf_lName.setText(order.getLname());
         tf_comment.setText(order.getComments());   
+    }
+    @FXML
+    public void handleButtonLogs()throws Exception {
+        URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
+        window.setScene(new Scene(root,988,730));
     }
 
     

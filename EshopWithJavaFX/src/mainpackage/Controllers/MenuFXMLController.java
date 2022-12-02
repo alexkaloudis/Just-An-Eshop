@@ -129,7 +129,7 @@ public class MenuFXMLController implements Initializable {
         URL url = new File("src/mainpackage/Fxml/logsFXML.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         
-        Stage window = (Stage) b_user_address.getScene().getWindow();
+        Stage window = (Stage) btn_gotologs.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     } 
     @Override
