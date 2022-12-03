@@ -29,10 +29,11 @@ public class JDBCPosrgreSQLConnector {
     Connection con = null;
     public static Connection ConnectDb(){
         try{
-            String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
-            //String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
-            String username = "postgres";
-            String password = "1234";
+            //localhost connection
+            //String jdbcURL = "jdbc:postgresql:Just-An-Eshop-DB?user=postgres&password=1234";
+            String jdbcURL = "jdbc:postgresql://dblabs.iee.ihu.gr:5432/it185186";
+            String username = "it185186";
+            String password = "thisismydatabasepass";
             //String password = "310331";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
