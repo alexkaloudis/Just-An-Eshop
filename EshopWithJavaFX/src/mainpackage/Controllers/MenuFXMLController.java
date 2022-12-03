@@ -17,9 +17,7 @@ import javafx.scene.control.Button;
 
 public class MenuFXMLController implements Initializable {
 
-    @FXML
-    private Button b_s2; 
-    
+   
     @FXML
     private Button b_user_address;
     
@@ -69,15 +67,6 @@ public class MenuFXMLController implements Initializable {
         Stage window = (Stage) b_s1.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
     }
-    
-    @FXML
-    public void handleButtonScene2() throws Exception{
-        URL url = new File("src/mainpackage/Fxml/scene2FXML.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        
-        Stage window = (Stage) b_s2.getScene().getWindow();
-        window.setScene(new Scene(root,988,730));
-     }
      
      @FXML
      public void handleButtonProducts() throws Exception{
