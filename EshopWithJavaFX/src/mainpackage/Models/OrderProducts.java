@@ -13,10 +13,10 @@ import java.util.UUID;
  */
 public class OrderProducts {
     private int id,productid,quantity ;
-    private UUID orderno;
+    private int orderno;
     private float ordervalue;
 
-    public OrderProducts(int id,UUID orderno, int productid, int quantity, float ordervalue) {
+    public OrderProducts(int id,int orderno, int productid, int quantity, float ordervalue) {
         this.id = id;
         this.productid = productid;
         this.quantity = quantity;
@@ -36,7 +36,7 @@ public class OrderProducts {
         this.quantity = quantity;
     }
 
-    public void setOrderno(UUID orderno) {
+    public void setOrderno(int orderno) {
         this.orderno = orderno;
     }
 
@@ -55,7 +55,7 @@ public class OrderProducts {
         return quantity;
     }
 
-    public UUID getOrderno() {
+    public int getOrderno() {
         return orderno;
     }
 

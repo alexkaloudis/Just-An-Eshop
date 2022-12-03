@@ -404,6 +404,49 @@ public class JDBCPosrgreSQLConnector {
         return userid;
     }
     
+// apopira 1        
+        public static ObservableList<Users> getUserIdFromUsersDQuery(){
+        Connection con = ConnectDb();
+        ObservableList<Users> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM fn_getuserid(?)");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Users(rs.getInt("Id"),
+                        rs.getString("Username"),
+                        rs.getString("Password"),
+                        rs.getString("Email"),
+                        rs.getString("Phonenumber"),
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getInt("Age"),
+                        rs.getTimestamp("dateofcreation")));
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+//apopira 2     
+    public static String getUserIdFromUsersDQuery1(int userid) {
+        //"SELECT * FROM fn_getuserid ( ?)"
+        //"SELECT username FROM users where id = "+userid
+        String SQL = "SELECT * FROM fn_getuserid ( "+userid+")";
+        String username="";
+        try ( Connection con = ConnectDb();
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+            rs.next();
+            username = rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return username;
+    }
+    
+
     public static String getUserNameFromUserid(int userid) {
         String SQL = "select get_username_with_id("+userid+")";
         String username="";
@@ -417,6 +460,7 @@ public class JDBCPosrgreSQLConnector {
         }
         return username;
     }
+    
     
     public static ObservableList<Products> getDataProducts(){
         Connection con = ConnectDb();
@@ -469,7 +513,7 @@ public class JDBCPosrgreSQLConnector {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                list.add(new Orders(UUID.fromString(rs.getString("orderno")),
+                list.add(new Orders(rs.getInt("orderno"),
                         rs.getTimestamp("orderdate"), 
                         rs.getString("fname"),
                         rs.getString("lname"),
@@ -493,7 +537,7 @@ public class JDBCPosrgreSQLConnector {
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
                     list.add(new OrderProducts(rs.getInt("Id"),
-                            UUID.fromString(rs.getString("orderno")),
+                            rs.getInt("orderno"),
                             Integer.parseInt(rs.getString("productid")),
                             Integer.parseInt(rs.getString("quantity")),
                             Float.parseFloat(rs.getString("ordervalue"))));                                      
@@ -522,8 +566,12 @@ public class JDBCPosrgreSQLConnector {
                 }
             }catch(Exception e){
                     System.out.println(e.getMessage());
-            }
-            
+            }            
             return list;
-    }    
+    }
+    
+    
+
+
+    
 }

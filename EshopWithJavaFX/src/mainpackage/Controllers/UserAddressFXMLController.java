@@ -127,7 +127,7 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         int idFromUsername = JDBCPosrgreSQLConnector.getUserIdFromUsername(combo_usernames.getSelectionModel().getSelectedItem().toString());
-        String query = "call insert_into_useraddress(" 
+        String query = "select insert_into_useraddress(" 
                 +idFromUsername
                 +",'" +tf_country.getText()
                 +"','"+tf_region.getText()
@@ -143,7 +143,7 @@ public class UserAddressFXMLController implements Initializable {
     @FXML
     public void handleDeleteButton() {
         int selectedIndexId = table_user_address.getSelectionModel().getSelectedItem().getId();
-        String query = "call delete_from_useraddress(" +selectedIndexId+")";
+        String query = "select delete_from_useraddress(" +selectedIndexId+")";
         executeQuery(query);
         showUserAddresses();
     }
@@ -166,7 +166,7 @@ public class UserAddressFXMLController implements Initializable {
         UserAddress userAd = table_user_address.getSelectionModel().getSelectedItem();
         String username = combo_usernames.getSelectionModel().getSelectedItem().toString();
         int selectedIndexUAdId = table_user_address.getSelectionModel().getSelectedItem().getId();
-        String query = "call update_useraddress("+JDBCPosrgreSQLConnector.getUserIdFromUsername(username)
+        String query = "select update_useraddress("+JDBCPosrgreSQLConnector.getUserIdFromUsername(username)
                 +",'"+tf_country.getText()
                 +"','"+tf_region.getText()
                 +"','"+tf_city.getText()
@@ -247,7 +247,11 @@ public class UserAddressFXMLController implements Initializable {
         
         Stage window = (Stage) btn_gotologs.getScene().getWindow();
         window.setScene(new Scene(root,988,730));
-    }    
+    }   
+    
+    public void handleQueryButton(){
+        System.out.println("not implemented");
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
