@@ -48,12 +48,12 @@
             </Button>
             <Pane layoutX="282.0" prefHeight="736.0" prefWidth="717.0" style="-fx-background-color: #1b827f;">
                <children>
-                  <Label layoutX="272.0" layoutY="66.0" prefHeight="89.0" prefWidth="207.0" text="Information" textFill="WHITE">
+                  <Label layoutX="255.0" layoutY="124.0" prefHeight="89.0" prefWidth="207.0" text="Information" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="31.0" />
                      </font>
                   </Label>
-                  <Text fill="WHITE" layoutX="229.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Η εφαρμογή δημιούργηθηκε από τον Αποστολίδη Μιχαήλ και τον Καλούδη Αλέξανδρο για τον μάθημα Τεχνολογόα Βάσεων Δεδομένων 2021-2022" wrappingWidth="324.0302734375">
+                  <Text fill="WHITE" layoutX="196.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Η εφαρμογή δημιούργηθηκε από τον Αποστολίδη Μιχαήλ και τον Καλούδη Αλέξανδρο για τον μάθημα Τεχνολογία Βάσεων Δεδομένων 2022-2023" wrappingWidth="324.0302734375">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

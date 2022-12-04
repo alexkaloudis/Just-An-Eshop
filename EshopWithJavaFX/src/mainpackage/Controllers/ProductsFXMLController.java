@@ -244,7 +244,7 @@ public class ProductsFXMLController implements Initializable {
         Parent root = FXMLLoader.load(url);
         
         Stage window = (Stage) b_user_address.getScene().getWindow();
-        window.setScene(new Scene(root,988,730));
+        window.setScene(new Scene(root,1065,730));
     }
     @FXML
     public void handleMouseAction() {
