@@ -130,7 +130,7 @@ public class ProductsFXMLController implements Initializable {
         Alert a = new Alert(AlertType.NONE);
         try{ 
             if(tf_name.getText() != "" && tf_price.getText() != "" && ta_description.getText() != ""){
-                String query = "select insert_into_products('" 
+                String query = "call insert_into_products('" 
                 + tf_name.getText()
                 +"',"+tf_price.getText()
                 +",'"+ta_description.getText()+"')";
@@ -154,7 +154,7 @@ public class ProductsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "select delete_from_products(" +selectedIndexId+")";
+                String query = "call delete_from_products(" +selectedIndexId+")";
                 executeQuery(query);
                 showProducts();
             }    
@@ -173,7 +173,7 @@ public class ProductsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_products.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "select update_products('"+tf_name.getText()
+                String query = "call update_products('"+tf_name.getText()
                     +"',"+tf_price.getText()
                     +",'"+ta_description.getText()+"',"+selectedIndexId+")";
 

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +60,7 @@ public class OrdersFXMLController implements Initializable {
     private TableColumn<Orders, String> col_lName;
 
     @FXML
-    private TableColumn<Orders, Integer> col_uuid;
+    private TableColumn<Orders, UUID> col_uuid;
 
     @FXML
     private TableView<Orders> table_orders;
@@ -95,7 +96,7 @@ public class OrdersFXMLController implements Initializable {
     public void showOrders(){
         listM = JDBCPosrgreSQLConnector.getDataOrders();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
-        col_uuid.setCellValueFactory(new PropertyValueFactory<Orders,Integer>("orderno"));
+        col_uuid.setCellValueFactory(new PropertyValueFactory<Orders,UUID>("orderno"));
         col_dateoforder.setCellValueFactory(new PropertyValueFactory<Orders,Date>("orderdate"));
         col_fname.setCellValueFactory(new PropertyValueFactory<Orders,String>("fname"));
         col_lName.setCellValueFactory(new PropertyValueFactory<Orders,String>("lname"));
@@ -162,7 +163,7 @@ public class OrdersFXMLController implements Initializable {
 
     @FXML
     public void handleCreateButton() {
-        String query = "select insert_into_orders('" 
+        String query = "call insert_into_orders('" 
                 + tf_fName.getText()
                 +"','"+tf_lName.getText()
                 +"','"+tf_comment.getText()+"')";
@@ -174,9 +175,9 @@ public class OrdersFXMLController implements Initializable {
     public void handleDeleteButton() {
         Alert a = new Alert(AlertType.NONE);
         try{     
-            int selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
-            if(selectedIndexId != 0){
-                String query = "select delete_from_orders('" + selectedIndexId + "')";
+            UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
+            if(selectedIndexId != null){
+                String query = "call delete_from_orders('" + selectedIndexId + "')";
 
         executeQuery(query);
         showOrders(); 
@@ -201,9 +202,9 @@ public class OrdersFXMLController implements Initializable {
     public void handleUpdateButton() {
         Alert a = new Alert(AlertType.NONE);
         try{     
-            int selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
-            if(selectedIndexId != 0){
-                String query = "select update_orders('"+tf_fName.getText()
+            UUID selectedIndexId = table_orders.getSelectionModel().getSelectedItem().getOrderno();
+            if(selectedIndexId != null){
+                String query = "call update_orders('"+tf_fName.getText()
                 +"','"+tf_lName.getText()
                 +"','"+tf_comment.getText()
                 +"','"+selectedIndexId+"')";

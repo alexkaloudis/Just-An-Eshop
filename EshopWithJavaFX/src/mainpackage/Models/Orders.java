@@ -5,14 +5,15 @@
 package mainpackage.Models;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class Orders {
-   private int orderno;
+   private UUID orderno;
    private Timestamp orderdate;
    private String fname,lname,comments;
 
 
-    public Orders(int  orderno, Timestamp orderdate, String fname, String lname, String comments) {
+    public Orders(UUID  orderno, Timestamp orderdate, String fname, String lname, String comments) {
         this.orderno = orderno;
         this.orderdate = orderdate;
         this.fname = fname;
@@ -20,7 +21,7 @@ public class Orders {
         this.comments = comments;
     }
 
-    public int getOrderno() {
+    public UUID getOrderno() {
         return orderno;
     }
 
@@ -40,7 +41,7 @@ public class Orders {
         return comments;
     }
 
-    public void setOrderno(int orderno) {
+    public void setOrderno(UUID orderno) {
         this.orderno = orderno;
     }
 
