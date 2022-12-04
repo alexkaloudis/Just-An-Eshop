@@ -72,6 +72,12 @@ public class OrdersFXMLController implements Initializable {
 
     @FXML
     private TextField tf_id;
+    
+    @FXML
+    private TextField tf_findFname;
+    
+    @FXML
+    private TextField tf_findLastname;
 
     @FXML
     private TextField tf_lName;
@@ -185,7 +191,10 @@ public class OrdersFXMLController implements Initializable {
     
     @FXML
     public void handleQueryButton(){
-        System.out.println("lol");
+        String fname = tf_findFname.getText();
+        String lname = tf_findLastname.getText();
+        listM = JDBCPosrgreSQLConnector.getOrdersWithFnameLname(fname,lname);
+        table_orders.setItems(listM);
     }
     
     @FXML

@@ -21,7 +21,6 @@ import mainpackage.Models.Orders;
 import mainpackage.Models.Products;
 import mainpackage.Models.OrderProducts;
 import mainpackage.Models.UserAddress;
-import java.util.UUID;
 import mainpackage.Models.Users;
 
 
@@ -405,11 +404,11 @@ public class JDBCPosrgreSQLConnector {
     }
     
 // apopira 1        
-        public static ObservableList<Users> getUserIdFromUsersDQuery(){
+        public static ObservableList<Users> getUserIdFromUsersDQuery(int userid){
         Connection con = ConnectDb();
         ObservableList<Users> list = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM fn_getuserid(?)");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM fn_getuserid("+userid+")");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
@@ -428,24 +427,118 @@ public class JDBCPosrgreSQLConnector {
         }
         return list;
     }
-    
-//apopira 2     
-    public static String getUserIdFromUsersDQuery1(int userid) {
-        //"SELECT * FROM fn_getuserid ( ?)"
-        //"SELECT username FROM users where id = "+userid
-        String SQL = "SELECT * FROM fn_getuserid ( "+userid+")";
-        String username="";
-        try ( Connection con = ConnectDb();
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(SQL)) {
-            rs.next();
-            username = rs.getString(1);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        
+        public static ObservableList<Users> getUserWithUsername(String username){
+        Connection con = ConnectDb();
+        ObservableList<Users> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM fn_getusername('"+username+"')");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Users(rs.getInt("Id"),
+                        rs.getString("Username"),
+                        rs.getString("Password"),
+                        rs.getString("Email"),
+                        rs.getString("Phonenumber"),
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getInt("Age"),
+                        rs.getTimestamp("dateofcreation")));
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
         }
-        return username;
+        return list;
     }
+        
+       public static ObservableList<UserAddress> getUseraddressWithCountry(String country){
+        Connection con = ConnectDb();
+            ObservableList<UserAddress> list = FXCollections.observableArrayList();
+            try{
+                
+                PreparedStatement ps = con.prepareStatement("select * from fn_getuseraddcountry('"+country+"')");
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                    list.add(new UserAddress(rs.getInt("id"),
+                            Integer.parseInt(rs.getString("userid")),
+                            rs.getString("country"), 
+                            rs.getString("region"), rs.getString("city"),rs.getString("street"),
+                            Integer.parseInt(rs.getString("number")),
+                            rs.getString("postalcode")));                         
+                }
+            }catch(Exception e){
+                    System.out.println(e.getMessage());
+            }            
+            return list;
+    }
+       
+       public static ObservableList<Orders> getOrdersWithFnameLname(String fname,String lname){
+        Connection con = ConnectDb();
+        ObservableList<Orders> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from fn_getorderfandlname('"+fname+"','"+lname+"')");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Orders(rs.getInt("orderno"),
+                        rs.getTimestamp("orderdate"), 
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getString("comments")));
+
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
+    } 
     
+     public static ObservableList<Discounts> getDataDiscountsWithValue(float value){
+        Connection con = ConnectDb();
+        ObservableList<Discounts> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from fn_getdiscountnumber("+value+")");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Discounts(rs.getInt("id"),
+                        rs.getInt("productid"),
+                        rs.getFloat("value"),
+                        rs.getTimestamp("dateofcreation"),
+                        rs.getString("description")));                   
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
+    }  
+    
+     public static ObservableList<Discounts> getDataDiscountsWithDescriptionAndValue(String description,float value){
+        Connection con = ConnectDb();
+        ObservableList<Discounts> list = FXCollections.observableArrayList();
+        try{            
+            PreparedStatement ps = con.prepareStatement("select * from fn_discountValueAndDescr('"+description+"',"+value+")");
+//            PreparedStatement ps = con.prepareStatement("select * from fn_discountValueAndDescr('"+description+"',"+value+")");
+            ResultSet rs = ps.executeQuery();
+            System.out.println(rs);
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Discounts(rs.getInt("id"),
+                        rs.getInt("productid"),
+                        rs.getFloat("value"),
+                        rs.getTimestamp("dateofcreation"),
+                        rs.getString("description")));                   
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
+    }  
 
     public static String getUserNameFromUserid(int userid) {
         String SQL = "select get_username_with_id("+userid+")";
@@ -483,7 +576,26 @@ public class JDBCPosrgreSQLConnector {
         return list;
     }
     
-    
+    public static ObservableList<Products> getProductsWithPrice(float price){
+        Connection con = ConnectDb();
+        ObservableList<Products> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con.prepareStatement("select * from fn_getproductprice("+price+")");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
+                list.add(new Products(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getFloat("price"),
+                        rs.getString("description"),
+                        rs.getTimestamp("dateofcreation")));                   
+            }
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+
+        return list;
+    }
     public static ObservableList<Discounts> getDataDiscounts(){
         Connection con = ConnectDb();
         ObservableList<Discounts> list = FXCollections.observableArrayList();

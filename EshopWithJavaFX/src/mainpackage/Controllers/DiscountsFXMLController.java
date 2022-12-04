@@ -49,7 +49,8 @@ public class DiscountsFXMLController implements Initializable {
             b_remove,
             b_s1,
             b_update,
-            b_user_address;
+            b_user_address,
+            b_findQueryButton;
     @FXML
     private Button btn_gotologs;   
         @FXML
@@ -82,6 +83,14 @@ public class DiscountsFXMLController implements Initializable {
     @FXML
     private ComboBox combo_products;
     
+    @FXML
+    private TextField tf_findDiscountValue;
+    
+    @FXML
+    private TextField tf_findDesc;
+    
+    @FXML
+    private Button b_findValueAndDesc;
     
     ObservableList<Discounts> listM;
     ObservableList<Products> listPr;
@@ -248,13 +257,25 @@ public class DiscountsFXMLController implements Initializable {
         window.setScene(new Scene(root,988,730));
     }    
 
-    
-        @FXML
-    void handleDefaultView() {
+    @FXML
+    public void handleDefaultView() {
         showDiscounts();      
     }
-
     
+    public void handleQueryButton(){
+        float value = Float.parseFloat(tf_findDiscountValue.getText());
+        System.out.println(value);
+        listM = JDBCPosrgreSQLConnector.getDataDiscountsWithValue(value);
+        table_discounts.setItems(listM);
+    }
+    
+    
+    public void handleFindDescAndValueButton(){
+        float value = Float.parseFloat(tf_findDiscountValue.getText());
+        String desc = tf_findDesc.getText();
+        listM = JDBCPosrgreSQLConnector.getDataDiscountsWithDescriptionAndValue(desc,value);
+        table_discounts.setItems(listM);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showDiscounts();
@@ -276,7 +297,5 @@ public class DiscountsFXMLController implements Initializable {
 
     }
     
-    @FXML
-    public void handleQueryButton(){}
     
 }

@@ -71,7 +71,7 @@
                </columns>
             </TableView>
             <TextField fx:id="tf_findUserID" layoutX="434.0" layoutY="459.0" promptText="Find User ID" />
-            <TextField fx:id="tf_findUserName" layoutX="434.0" layoutY="497.0" promptText="Find Username" />
+            <TextField fx:id="tf_findUserName" layoutX="434.0" layoutY="529.0" promptText="Find Username" />
             <Button fx:id="b_defaultView" layoutX="50.0" layoutY="628.0" mnemonicParsing="false" onAction="#handleDefaultView" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                <font>
                   <Font size="18.0" />
@@ -85,6 +85,18 @@
                </graphic>
             </Button>
             <Button fx:id="b_findQueryButton" layoutX="589.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/icons8-enter-key-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="b_find_username" layoutX="589.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleSearchUsername" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                <font>
                   <Font size="18.0" />
                </font>

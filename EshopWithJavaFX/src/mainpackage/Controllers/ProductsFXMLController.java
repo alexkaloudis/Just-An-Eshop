@@ -93,6 +93,9 @@ public class ProductsFXMLController implements Initializable {
     @FXML
     private TextField tf_price;
     
+    @FXML
+    private TextField tf_findProduct;
+    
     ObservableList<Products> listM;
     
     int index = -1;
@@ -267,8 +270,10 @@ public class ProductsFXMLController implements Initializable {
     }
      @FXML
     public void handleQueryButton(){
-    
-    System.out.println("not implemented");}
+        float price = Float.parseFloat(tf_findProduct.getText());
+        listM = JDBCPosrgreSQLConnector.getProductsWithPrice(price);
+        table_products.setItems(listM);
+  }
 
     
 }

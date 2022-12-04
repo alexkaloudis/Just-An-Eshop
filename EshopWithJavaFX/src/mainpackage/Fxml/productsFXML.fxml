@@ -63,7 +63,7 @@
                </columns>
             </TableView>
             <TextArea fx:id="ta_description" layoutX="135.0" layoutY="582.0" prefHeight="134.0" prefWidth="194.0" promptText="Description" />
-            <Button fx:id="b_findQueryButton" layoutX="532.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+            <Button fx:id="b_findQueryButton" layoutX="554.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                <font>
                   <Font size="18.0" />
                </font>
@@ -75,7 +75,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField fx:id="tf_findProduct" layoutX="389.0" layoutY="474.0" promptText="Find product's price" />
+            <TextField fx:id="tf_findProduct" layoutX="337.0" layoutY="478.0" prefHeight="25.0" prefWidth="234.0" promptText="Find product's with price greater tha.." />
          </children>
       </Pane>
       <AnchorPane prefHeight="730.0" prefWidth="290.0" style="-fx-background-color: #3f2b63;">

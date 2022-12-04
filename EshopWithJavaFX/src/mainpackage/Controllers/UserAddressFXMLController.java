@@ -39,7 +39,8 @@ public class UserAddressFXMLController implements Initializable {
             b_remove,
             b_s1,
             b_update,
-            b_user_address;
+            b_user_address,
+            b_findQueryButton;
     @FXML
     private Button btn_gotologs;     
 
@@ -84,6 +85,8 @@ public class UserAddressFXMLController implements Initializable {
 
     @FXML
     private TextField tf_street;
+    @FXML
+    private TextField tf_findcountry;
     
 //    @FXML
 //    private ChoiceBox cb_usernames;
@@ -250,7 +253,9 @@ public class UserAddressFXMLController implements Initializable {
     }   
     
     public void handleQueryButton(){
-        System.out.println("not implemented");
+        String country = tf_findcountry.getText();
+        listM = JDBCPosrgreSQLConnector.getUseraddressWithCountry(country);
+        table_user_address.setItems(listM);
     }
     
     @Override

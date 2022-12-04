@@ -50,8 +50,10 @@ public class Scene1FXMLController implements Initializable {
     private Button b_s1;
     @FXML
     private Button b_update;
-        @FXML
+    @FXML
     private Button b_findQueryButton;
+    @FXML
+    private Button b_find_username;
     @FXML
     private Button btn_gotologs;
     @FXML
@@ -132,20 +134,20 @@ public class Scene1FXMLController implements Initializable {
     }
     
     
-        public void showSelectedIDUsers(){
-        listM = JDBCPosrgreSQLConnector.getUserIdFromUsersDQuery();
-        //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
-        col_id.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Id"));
-        col_username.setCellValueFactory(new PropertyValueFactory<Users,String>("Username"));
-        col_password.setCellValueFactory(new PropertyValueFactory<Users,String>("Password"));
-        col_email.setCellValueFactory(new PropertyValueFactory<Users,String>("Email"));
-        col_phonenumber.setCellValueFactory(new PropertyValueFactory<Users,String>("Phonenumber"));
-        col_firstname.setCellValueFactory(new PropertyValueFactory<Users,String>("Firstname"));
-        col_lastname.setCellValueFactory(new PropertyValueFactory<Users,String>("Lastname"));
-        col_age.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Age"));
-        col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Users,Date>("dateofcreation"));
-        table_users.setItems(listM);
-    }
+//    public void showSelectedIDUsers(){
+//        listM = JDBCPosrgreSQLConnector.getUserIdFromUsersDQuery();
+//        //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Users
+//        col_id.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Id"));
+//        col_username.setCellValueFactory(new PropertyValueFactory<Users,String>("Username"));
+//        col_password.setCellValueFactory(new PropertyValueFactory<Users,String>("Password"));
+//        col_email.setCellValueFactory(new PropertyValueFactory<Users,String>("Email"));
+//        col_phonenumber.setCellValueFactory(new PropertyValueFactory<Users,String>("Phonenumber"));
+//        col_firstname.setCellValueFactory(new PropertyValueFactory<Users,String>("Firstname"));
+//        col_lastname.setCellValueFactory(new PropertyValueFactory<Users,String>("Lastname"));
+//        col_age.setCellValueFactory(new PropertyValueFactory<Users,Integer>("Age"));
+//        col_dateofcreation.setCellValueFactory(new PropertyValueFactory<Users,Date>("dateofcreation"));
+//        table_users.setItems(listM);
+//    }
     
     
     
@@ -298,12 +300,18 @@ public class Scene1FXMLController implements Initializable {
         showUsers();
     }
     
-        @FXML
+    @FXML
     public void handleQueryButton() {
-        String selectstring = "SELECT fn_getusername('"+tf_findUserID.getText()+"') AS ANSWER" ;
-        executeQuery(selectstring);
-        showSelectedIDUsers();  
-
+        int userid = Integer.parseInt(tf_findUserID.getText());
+        listM = JDBCPosrgreSQLConnector.getUserIdFromUsersDQuery(userid);
+        table_users.setItems(listM);
+    }
+    
+    @FXML
+    private void handleSearchUsername(){
+        String username = tf_findUserName.getText();
+        listM = JDBCPosrgreSQLConnector.getUserWithUsername(username);
+        table_users.setItems(listM); 
     }
 
     

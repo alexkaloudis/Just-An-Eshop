@@ -129,8 +129,21 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <TextField fx:id="tf_findUserID" layoutX="396.0" layoutY="40.0" promptText="Search discount" />
+                        <TextField fx:id="tf_findDiscountValue" layoutX="396.0" layoutY="40.0" promptText=" Search with value" />
                         <Button fx:id="b_findQueryButton" layoutX="565.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleQueryButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icons/icons8-enter-key-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="tf_findDesc" layoutX="396.0" layoutY="124.0" promptText="Description" />
+                        <Button fx:id="b_findValueAndDesc" layoutX="565.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleFindDescAndValueButton" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1b827f;" textFill="#020e18">
                            <font>
                               <Font size="18.0" />
                            </font>
