@@ -131,7 +131,7 @@ public class DiscountsFXMLController implements Initializable {
     public void handleCreateButton() {
         
         int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
-        String query = "call insert_into_discounts('" 
+        String query = "select insert_into_discounts('" 
                 +getIdFromProdName
                 +"','"+ tf_value.getText()
                 +"','"+tf_description.getText()+"')";
@@ -145,7 +145,7 @@ public class DiscountsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_discounts.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "call delete_from_discounts(" +selectedIndexId+")";
+                String query = "select delete_from_discounts(" +selectedIndexId+")";
                 executeQuery(query);
                 showDiscounts();
             }   
@@ -162,7 +162,7 @@ public class DiscountsFXMLController implements Initializable {
         try{     
             int selectedIndexId = table_discounts.getSelectionModel().getSelectedItem().getId();
             if(selectedIndexId != 0){
-                String query = "call update_discounts("+selectedIndexId+","+tf_value.getText()
+                String query = "select update_discounts("+selectedIndexId+","+tf_value.getText()
                 +",'"+tf_description.getText()+"')";
                 executeQuery(query);
                 showDiscounts();

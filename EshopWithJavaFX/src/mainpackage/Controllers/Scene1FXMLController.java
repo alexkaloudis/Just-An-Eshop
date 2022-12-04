@@ -152,7 +152,7 @@ public class Scene1FXMLController implements Initializable {
     
     
     public void insertUser(){
-        String query = "call insert_into_users('" 
+        String query = "select insert_into_users('" 
                 + tf_username.getText()
                 +"','"+tf_password.getText()
                 +"','"+tf_email.getText()
@@ -197,7 +197,7 @@ public class Scene1FXMLController implements Initializable {
     
     public void handleUpdateButton(){
         int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
-        String query = "call update_users('"+tf_username.getText()
+        String query = "select update_users('"+tf_username.getText()
                 +"','"+tf_password.getText()
                 +"','"+tf_email.getText()
                 +"','"+tf_phonenumber.getText()
@@ -210,8 +210,8 @@ public class Scene1FXMLController implements Initializable {
     }
     public void handleDeleteButton(){
         int selectedIndexId = table_users.getSelectionModel().getSelectedItem().getId();
-        String queryToDeleteChildren = "call delete_from_useraddress_withuserid(" +selectedIndexId+")";
-        String query = "call delete_from_users(" +selectedIndexId+")";
+        String queryToDeleteChildren = "select delete_from_useraddress_withuserid(" +selectedIndexId+")";
+        String query = "select delete_from_users(" +selectedIndexId+")";
         executeQuery(queryToDeleteChildren);
         executeQuery(query);
         showUsers();        

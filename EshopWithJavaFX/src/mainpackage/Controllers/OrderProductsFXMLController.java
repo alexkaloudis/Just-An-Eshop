@@ -48,7 +48,7 @@ public class OrderProductsFXMLController implements Initializable {
     private TableColumn<OrderProducts, Integer> col_id;
 
     @FXML
-    private TableColumn<OrderProducts, UUID> col_order_number;
+    private TableColumn<OrderProducts, Integer> col_order_number;
 
     @FXML
     private TableColumn<OrderProducts, Float> col_order_value;
@@ -89,7 +89,7 @@ public class OrderProductsFXMLController implements Initializable {
         listM = JDBCPosrgreSQLConnector.getDataOrderProducts();
         //to PropertyValueFactory pairnei to argument apo ton Constructor ths klashs Products
         col_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("id"));
-        col_order_number.setCellValueFactory(new PropertyValueFactory<OrderProducts,UUID>("orderno"));
+        col_order_number.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("orderno"));
         col_prod_id.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("productid"));
         col_quantity.setCellValueFactory(new PropertyValueFactory<OrderProducts,Integer>("quantity"));
         col_order_value.setCellValueFactory(new PropertyValueFactory<OrderProducts,Float>("ordervalue"));
@@ -108,7 +108,7 @@ public class OrderProductsFXMLController implements Initializable {
     @FXML
     public void handleCreateButton() {
         int getIdFromProdName = JDBCPosrgreSQLConnector.getProductId(combo_products.getSelectionModel().getSelectedItem().toString());
-        String query = "call insert_into_orderproducts("
+        String query = "select insert_into_orderproducts("
                 +combo_order_no.getSelectionModel().getSelectedItem()
                 +",'"+getIdFromProdName
                 +"',"+tf_quantity.getText()
@@ -120,7 +120,7 @@ public class OrderProductsFXMLController implements Initializable {
 
     @FXML
     public void handleDeleteButton() {
-        String query = "call delete_from_orderproducts(" 
+        String query = "select delete_from_orderproducts(" 
                 +table_order_products.getSelectionModel().getSelectedItem().getId()+")";
         executeQuery(query);
         showOrderProducts();
@@ -129,13 +129,13 @@ public class OrderProductsFXMLController implements Initializable {
 
     @FXML
     public void handleUpdateButton() {
-        String query = "call update_orderproducts('"
+        String query = "select update_orderproducts("
                 +combo_order_no.getSelectionModel().getSelectedItem()
-                +"',"+table_order_products.getSelectionModel().getSelectedItem().getProductid()
+                +","+table_order_products.getSelectionModel().getSelectedItem().getProductid()
                 +","+tf_quantity.getText()
                 +","+tf_order_value.getText()
                 +","+table_order_products.getSelectionModel().getSelectedItem().getId()+")";
-
+        System.out.println(tf_quantity.getText());
         executeQuery(query);
         showOrderProducts();        
     }

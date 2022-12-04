@@ -30,12 +30,12 @@ public class JDBCPosrgreSQLConnector {
     public static Connection ConnectDb(){
         try{
             //localhost connection
-            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
-             String username = "postgres";
-            String password = "310331";
-            //String jdbcURL = "jdbc:postgresql://dblabs.iee.ihu.gr:5432/it185186";
-            //String username = "it185186";
-            //String password = "thisismydatabasepass";
+//            String jdbcURL = "jdbc:postgresql:DB_for_eshop?user=postgres&password=310331";
+//             String username = "postgres";
+//            String password = "310331";
+            String jdbcURL = "jdbc:postgresql://dblabs.iee.ihu.gr:5432/it185186";
+            String username = "it185186";
+            String password = "thisismydatabasepass";
             //String password = "310331";
            Connection con = DriverManager.getConnection(jdbcURL,username,password);
            
@@ -485,7 +485,7 @@ public class JDBCPosrgreSQLConnector {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                list.add(new Orders(UUID.fromString(rs.getString("orderno")),
+                list.add(new Orders(rs.getInt("orderno"),
                         rs.getTimestamp("orderdate"), 
                         rs.getString("fname"),
                         rs.getString("lname"),
@@ -628,7 +628,7 @@ public class JDBCPosrgreSQLConnector {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
-                list.add(new Orders(UUID.fromString(rs.getString("orderno")),
+                list.add(new Orders(rs.getInt("orderno"),
                         rs.getTimestamp("orderdate"), 
                         rs.getString("fname"),
                         rs.getString("lname"),
@@ -652,7 +652,7 @@ public class JDBCPosrgreSQLConnector {
                 while(rs.next()){
                     // sto getString mpainoun ta onomata apo tis kolwnes tou pinaka
                     list.add(new OrderProducts(rs.getInt("Id"),
-                            UUID.fromString(rs.getString("orderno")),
+                            rs.getInt("orderno"),
                             Integer.parseInt(rs.getString("productid")),
                             Integer.parseInt(rs.getString("quantity")),
                             Float.parseFloat(rs.getString("ordervalue"))));                                      
